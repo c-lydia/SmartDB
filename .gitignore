@@ -21,3 +21,13 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+
+# Docs build output
+docs/_build/
+
+# Generated proposal exports
+formal_docs/proposal/*.pdf
+
+# Generated reference exports
+docs/reference/digital_signal_processing/*.pdf
+docs/reference/yolo_architecture/*.pdf
