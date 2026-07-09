@@ -31,3 +31,7 @@ formal_docs/proposal/*.pdf
 # Generated reference exports
 docs/reference/digital_signal_processing/*.pdf
 docs/reference/yolo_architecture/*.pdf
+docs/reference/embedded_system/esp_idf/*.pdf
+docs/reference/embedded_system/communication_protocol/i2c_protocol/*.pdf
+docs/reference/embedded_system/free_rtos/*.pdf
+docs/reference/communication_system/*.pdf
