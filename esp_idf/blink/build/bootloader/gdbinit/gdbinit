@@ -1,0 +1,2 @@
+source /home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader/gdbinit/symbols
+source /home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader/gdbinit/connect

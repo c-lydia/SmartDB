@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/CMakeFiles/bootloader
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/CMakeFiles/bootloader.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/CMakeFiles/bootloader-complete.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+/home/chheng-lydia/projects/SmartDB/esp_idf/blink/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
