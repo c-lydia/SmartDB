@@ -37,3 +37,6 @@ docs/reference/embedded_system/free_rtos/*.pdf
 docs/reference/communication_system/*.pdf
 
 .venv/
+
+esp_idf/blink/build/
+esp_test/
