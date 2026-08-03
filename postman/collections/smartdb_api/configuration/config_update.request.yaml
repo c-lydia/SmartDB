@@ -1,0 +1,14 @@
+$kind: http-request
+name: update_config
+url: "{{base_url}}/devices/{{device_id}}/config"
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+     "max_temperature":75,
+     "max_current":10,
+     "sampling_rate":10
+    }
+examples: .resources/config_update.resources/examples
+order: 2284868053153771

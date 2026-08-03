@@ -1,0 +1,13 @@
+$kind: http-request
+name: heartbeat
+url: "{{base_url}}/devices/{{device_id}}/heartbeat"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+     "uptime":50000,
+     "wifi_rssi":-40
+    }
+examples: .resources/heartbeat.resources/examples
+order: 1263549878378590

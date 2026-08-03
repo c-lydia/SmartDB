@@ -1,0 +1,14 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/auth/logout"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+        "refresh_token": "dGhpc2lzYXJlZnJlc2h0b2tlbg..."
+      }
+response:
+  statusCode: 204
+  statusText: ""
+order: 1785773109274

@@ -1,0 +1,6 @@
+$kind: http-request
+name: device_status
+url: "{{base_url}}/devices/{{device_id}}/status"
+method: GET
+examples: .resources/device_status.resources/examples
+order: 2190952350550526

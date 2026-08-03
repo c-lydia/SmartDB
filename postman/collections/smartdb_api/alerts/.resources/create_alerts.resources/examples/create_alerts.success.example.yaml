@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/alerts"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+       "device_id":"ESP32_001",
+       "type":"OVERHEAT",
+     "severity":"high",
+       "message":"Temperature exceeded limit"
+      }
+response:
+  statusCode: 201
+  statusText: ""
+  body:
+    type: json
+    content: '{"id":1,"device_id":"ESP32_001","type":"OVERHEAT","severity":"high","message":"Temperature exceeded limit","status":"active"}'
+order: 1785774069530

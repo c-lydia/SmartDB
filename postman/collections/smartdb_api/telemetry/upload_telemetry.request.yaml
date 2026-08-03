@@ -1,0 +1,16 @@
+$kind: http-request
+name: upload_telemetry
+url: "{{base_url}}/devices/{{device_id}}/telemetry"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "voltage": 220.5,
+      "current": 2.4,
+      "power": 529,
+      "temperature": 35.2,
+      "timestamp": "2026-08-03T22:00:00"
+    } 
+examples: .resources/upload_telemetry.resources/examples
+order: 1785773735834

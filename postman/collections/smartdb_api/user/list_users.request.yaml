@@ -1,0 +1,6 @@
+$kind: http-request
+name: list_users
+url: "{{base_url}}/users"
+method: GET
+examples: .resources/list_users.resources/examples
+order: 4289443357709230

@@ -1,0 +1,23 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/device/register"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+       "serial_number":"AA:BB:CC:DD",
+       "hardware":"ESP32",
+       "firmware":"1.0.0"
+      }
+response:
+  statusCode: 201
+  statusText: ""
+  body:
+    type: json
+    content: |-
+      {
+       "device_id":"ESP32_001",
+       "device_key":"xxxxx"
+      }
+order: 1785775565170

@@ -1,0 +1,6 @@
+$kind: http-example
+request: {url: "{{base_url}}/users/me/notification-settings", method: GET}
+response:
+  statusCode: 200
+  statusText: OK
+  body: {type: json, content: '{"push":true,"email":true,"sms":false}'}

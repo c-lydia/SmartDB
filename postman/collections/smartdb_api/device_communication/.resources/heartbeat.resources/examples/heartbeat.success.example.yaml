@@ -1,0 +1,21 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/devices/{{device_id}}/heartbeat"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+       "uptime":50000,
+       "wifi_rssi":-40
+      }
+response:
+  statusCode: 202
+  statusText: ""
+  body:
+    type: json
+    content: |-
+      {
+       "status":"received"
+      }
+order: 1785775659134

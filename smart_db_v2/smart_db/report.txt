@@ -1,0 +1,156 @@
+Info: Processing symbol 'R6:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R15:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R14:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R13:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R12:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R11:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R10:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R9:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R8:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R7:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R16:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R5:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R4:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R3:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R2:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R1:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'Q2:Package_TO_SOT_SMD:SOT-23'.
+Info: Processing symbol 'Q1:Package_TO_SOT_THT:TO-220-3_Vertical'.
+Info: Processing symbol 'K1:rpi:RELAY_SLA-12VDC-SL-C'.
+Info: Processing symbol 'R25:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'U5:Package_DFN_QFN:QFN-28-1EP_5x5mm_P0.5mm_EP3.35x3.35mm'.
+Info: Processing symbol 'U4:Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP4x4mm'.
+Info: Processing symbol 'U3:Package_TO_SOT_SMD:SOT-223-3_TabPin2'.
+Info: Processing symbol 'U2:Package_DIP:DIP-4_W7.62mm'.
+Info: Processing symbol 'U1:Package_SO:TSSOP-10_3x3mm_P0.5mm'.
+Info: Processing symbol 'SW3:Button_Switch_SMD:SW_Push_1P1T-MP_NO_Horizontal_Alps_SKRTLAE010'.
+Info: Processing symbol 'SW2:Button_Switch_SMD:SW_Push_1P1T-MP_NO_Horizontal_Alps_SKRTLAE010'.
+Info: Processing symbol 'SW1:Button_Switch_SMD:SW_Push_1P1T-MP_NO_Horizontal_Alps_SKRTLAE010'.
+Info: Processing symbol 'C1:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'R24:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R23:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R22:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R21:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R20:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R19:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R18:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'R17:Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Info: Processing symbol 'C12:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'D7:rpi:SOT143'.
+Info: Processing symbol 'D6:LED_SMD:LED_RGB_5050-6'.
+Info: Processing symbol 'D5:LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder'.
+Info: Processing symbol 'D4:LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder'.
+Info: Processing symbol 'D3:LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder'.
+Info: Processing symbol 'D2:LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder'.
+Info: Processing symbol 'C18:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C17:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C16:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C15:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C14:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C13:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'D1:Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal'.
+Info: Processing symbol 'C11:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C10:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C9:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C8:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C7:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C6:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C5:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C4:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C3:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'C2:Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder'.
+Info: Processing symbol 'BZ1:Buzzer_Beeper:Buzzer_12x9.5RM7.6'.
+Info: Processing symbol 'J4:Connector_USB:USB_C_Receptacle_Amphenol_12401948E412A'.
+Info: Processing symbol 'J3:Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Horizontal'.
+Info: Processing symbol 'J2:TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2_1x02_P5.00mm_Horizontal'.
+Info: Processing symbol 'F1:Fuse:Fuse_0805_2012Metric_Pad1.15x1.40mm_HandSolder'.
+Info: Processing symbol 'J1:Connector_Audio:Jack_3.5mm_CUI_SJ-3523-SMT_Horizontal'.
+Info: Processing symbol 'F2:Fuse:Fuse_0805_2012Metric_Pad1.15x1.40mm_HandSolder'.
+Info: Processing symbol 'D8:LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder'.
+Info: Processing symbol 'FB1:Ferrite_THT:LairdTech_28C0236-0JW-10'.
+Updated R21 fields.
+Updated R17 fields.
+Changed R21 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R3 unit metadata.
+Updated R20 unit metadata.
+Updated R20 fields.
+Changed R20 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R19 unit metadata.
+Updated R19 fields.
+Changed R19 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Changed R4 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R18 unit metadata.
+Updated R18 fields.
+Changed R18 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R4 fields.
+Updated R17 unit metadata.
+Updated R6 fields.
+Changed R24 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Changed R1 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R1 fields.
+Updated R1 unit metadata.
+Updated R25 unit metadata.
+Updated R25 fields.
+Changed R25 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R24 unit metadata.
+Updated R24 fields.
+Updated R21 unit metadata.
+Updated R23 unit metadata.
+Updated R23 fields.
+Changed R23 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Changed R3 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R22 unit metadata.
+Updated R22 fields.
+Changed R22 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R3 fields.
+Updated R9 fields.
+Updated R5 unit metadata.
+Updated R11 unit metadata.
+Updated R11 fields.
+Changed R11 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R10 unit metadata.
+Updated R10 fields.
+Changed R10 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Changed R6 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R9 unit metadata.
+Updated R4 unit metadata.
+Changed R9 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R8 unit metadata.
+Updated R8 fields.
+Changed R8 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R7 unit metadata.
+Updated R7 fields.
+Changed R7 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R6 unit metadata.
+Updated R12 fields.
+Changed R17 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R16 unit metadata.
+Updated R16 fields.
+Changed R16 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R15 unit metadata.
+Updated R15 fields.
+Changed R15 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R14 unit metadata.
+Changed R14 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R14 fields.
+Changed R12 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Changed R5 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Updated R13 unit metadata.
+Updated R13 fields.
+Updated R12 unit metadata.
+Updated R5 fields.
+Changed R13 footprint from 'Resistor_SMD:R_0815_2038Metric_Pad1.20x4.05mm_HandSolder' to 'Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder'.
+Warning: No net found for component J4 pad B8 (no pin B8 in symbol).
+Warning: No net found for component J1 pad R (no pin R in symbol).
+Warning: No net found for component SW3 pad MP (no pin MP in symbol).
+Warning: No net found for component SW3 pad MP (no pin MP in symbol).
+Warning: No net found for component SW2 pad MP (no pin MP in symbol).
+Warning: No net found for component SW2 pad MP (no pin MP in symbol).
+Warning: No net found for component D6 pad 6 (no pin 6 in symbol).
+Warning: No net found for component SW1 pad MP (no pin MP in symbol).
+Warning: No net found for component SW1 pad MP (no pin MP in symbol).
+Warning: No net found for component D6 pad 5 (no pin 5 in symbol).
+Warning: No net found for component J4 pad A8 (no pin A8 in symbol).
+
+
+Info: Total warnings: 11, errors: 0.

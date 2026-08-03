@@ -1,0 +1,6 @@
+$kind: http-example
+request: {url: "{{base_url}}/alerts", method: GET}
+response:
+  statusCode: 200
+  statusText: OK
+  body: {type: json, content: '[{"id":1,"device_id":"ESP32_001","type":"OVER_CURRENT","severity":"high","message":"Current exceeded limit","status":"active"}]'}

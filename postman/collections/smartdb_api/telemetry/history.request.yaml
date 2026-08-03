@@ -1,0 +1,6 @@
+$kind: http-request
+name: telemetry_history
+url: "{{base_url}}/devices/{{device_id}}/telemetry?from={{from}}&to={{to}}&limit={{limit}}"
+method: GET
+examples: .resources/history.resources/examples
+order: 3937338377077811

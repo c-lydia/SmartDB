@@ -1,0 +1,6 @@
+$kind: http-request
+name: list_alerts
+url: "{{base_url}}/alerts"
+method: GET
+examples: .resources/list_alerts.resources/examples
+order: 1785773955448

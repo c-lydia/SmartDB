@@ -1,0 +1,562 @@
+Command: /home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python /home/chheng-lydia/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/esp32_cam.elf /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/bootloader.elf -m '/home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python' '/home/chheng-lydia/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6292
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-5706-ga602e67b0b 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Aug  2 2026 01:07:02[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0e460h ( 58464) map[0m
+[0;32mI (109) esp_image: segment 1: paddr=0001e488 vaddr=3ffb0000 size=01b90h (  7056) load[0m
+[0;32mI (112) esp_image: segment 2: paddr=00020020 vaddr=400d0020 size=1f89ch (129180) map[0m
+[0;32mI (159) esp_image: segment 3: paddr=0003f8c4 vaddr=3ffb1b90 size=035f4h ( 13812) load[0m
+[0;32mI (164) esp_image: segment 4: paddr=00042ec0 vaddr=40080000 size=0bf04h ( 48900) load[0m
+[0;32mI (184) esp_image: segment 5: paddr=0004edcc vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (192) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (192) boot: Disabling RNG early entropy source...[0m
+[0;32mI (203) cpu_start: Multicore app[0m
+[0;32mI (211) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (211) cpu_start: Pro cpu start user code[0m
+[0;32mI (211) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (213) app_init: Application information:[0m
+[0;32mI (217) app_init: Project name:     esp32_cam[0m
+[0;32mI (221) app_init: App version:      4d6d37f[0m
+[0;32mI (225) app_init: Compile time:     Aug  2 2026 01:07:03[0m
+[0;32mI (230) app_init: ELF file SHA256:  b84983d55...[0m
+[0;32mI (234) app_init: ESP-IDF:          v6.1-dev-5706-ga602e67b0b[0m
+[0;32mI (240) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (243) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (247) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (251) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (258) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (263) heap_init: At 3FFB64E8 len 00029B18 (166 KiB): DRAM[0m
+[0;32mI (268) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (273) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (279) heap_init: At 4008BF04 len 000140FC (80 KiB): IRAM[0m
+[0;33mW (285) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (297) spi_flash: detected chip: generic[0m
+[0;32mI (301) spi_flash: flash io: dio[0m
+[0;33mW (304) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (317) main_task: Started on CPU0[0m
+[0;32mI (317) main_task: Calling app_main()[0m
+[0;32mI (317) esp32cam_test: SmartDB ESP32-CAM basic test starting...[0m
+[0;32mI (327) esp32cam_test: Free heap: 291120 bytes[0m
+[0;32mI (327) esp32cam_test: Skipping SD init (avoiding GPIO conflicts)[0m
+[0;32mI (337) esp32cam_test: GPIO-level check: SDA=26 SCL=27[0m
+[0;32mI (337) esp32cam_test:   initial: SDA=0 SCL=1[0m
+[0;32mI (347) esp32cam_test:   with internal pull-ups: SDA=0 SCL=1[0m
+[0;32mI (347) esp32cam_test: Starting SCCB debug scan (this may take a few seconds)...[0m
+[0;32mI (357) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (357) sccb-ng: sccb_i2c_port=1[0m
+[0;33mW (367) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (367) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (377) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (377) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (387) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (397) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (397) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (407) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (417) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (417) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (427) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (427) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (437) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (447) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (447) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (457) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (467) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (467) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (477) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (497) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (497) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (507) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (507) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (517) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (527) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (527) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (537) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (547) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (547) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (557) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (557) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (567) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (577) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (587) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (587) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (597) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (607) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (607) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (617) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (627) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (627) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (637) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (637) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (647) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (657) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (657) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (667) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (677) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (677) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (687) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (697) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (697) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (707) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (717) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (717) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (727) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (737) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (737) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (747) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (757) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (757) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (767) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (767) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (777) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (787) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (797) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (797) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (807) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (817) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (817) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (827) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (837) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (837) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (847) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (847) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (857) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (867) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (867) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (877) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (887) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (887) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (897) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (897) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (907) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (917) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (927) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (927) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (937) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (947) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (947) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (957) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (967) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (967) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (977) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (977) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (987) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (997) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1007) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1007) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1017) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1027) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1027) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1037) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1047) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1047) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1057) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1057) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1067) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1077) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1077) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1087) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1097) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1107) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1107) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1117) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1127) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1127) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1137) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1137) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1147) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1157) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1157) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1167) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1177) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1177) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1187) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1197) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1207) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1207) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1217) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1217) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1227) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1237) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1237) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1247) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1257) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1257) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1267) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1277) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1287) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1287) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1297) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1297) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1307) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1317) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1317) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1327) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1337) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1337) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1347) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1357) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1357) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1367) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1377) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1377) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1387) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1397) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1397) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1407) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1417) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1417) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1427) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1427) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1437) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1447) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1457) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1457) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1467) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1477) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1477) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1497) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1497) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1507) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1507) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1517) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1527) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1537) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1537) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1547) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1557) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1557) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1567) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1577) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1577) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1587) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1587) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1597) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1607) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1617) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1617) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1627) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1637) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1637) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1647) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1657) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1657) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1667) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1667) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1677) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1687) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1697) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1697) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1707) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1717) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1717) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1727) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1737) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1737) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1747) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1747) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1757) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1767) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1777) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1777) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1787) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1797) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1797) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1807) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1817) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1817) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1827) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1827) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1837) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1847) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1857) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1857) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1867) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1877) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1877) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1887) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1897) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1897) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1907) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1907) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1917) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1927) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1927) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1937) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1947) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1957) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1957) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1967) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1977) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (1977) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (1987) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (1987) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (1997) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2007) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2007) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2017) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2027) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2027) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2037) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2047) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2057) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2057) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2067) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2067) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2077) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2087) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2087) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2097) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2107) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2107) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2117) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2127) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2137) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2137) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2147) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2147) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2157) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2167) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2167) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2177) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2187) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2187) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2197) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2207) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2207) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2217) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2227) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2227) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2237) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2247) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2247) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2257) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2267) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2267) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2277) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2277) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2287) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2297) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2307) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2307) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2317) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2327) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2327) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2337) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2347) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2347) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2357) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2357) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2367) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2377) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2387) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2387) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2397) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2407) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2407) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2417) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2427) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2427) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2437) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2437) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2447) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2457) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2467) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2467) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2477) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2487) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2487) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2497) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2507) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2507) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2517) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2517) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2527) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2537) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2547) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2547) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2557) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2567) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2567) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2577) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2587) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2587) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2597) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2597) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2607) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2617) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2627) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2627) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2637) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2647) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2647) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2657) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2667) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2667) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2677) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2677) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2687) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2697) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2707) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2707) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2717) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2727) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2727) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2737) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2747) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2747) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2757) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2757) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2767) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2777) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2777) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2787) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2797) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2807) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2807) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2817) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2827) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2827) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2837) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2837) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2847) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2857) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2857) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2867) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2877) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2877) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2887) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2897) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2907) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2907) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2917) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2917) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2927) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2937) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2937) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2947) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2957) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2957) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2967) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2977) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (2987) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (2987) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (2997) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (2997) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3007) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3017) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3017) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3027) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3037) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3037) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3047) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3057) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3057) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3067) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3077) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3077) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3087) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3097) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3097) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3107) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3117) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3117) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3127) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3127) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3137) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3147) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3157) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3157) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3167) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3177) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3177) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3187) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3197) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3197) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3207) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3207) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3217) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3227) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3237) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3237) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3247) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3257) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3257) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3267) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3277) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3277) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3287) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3287) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3297) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3307) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3317) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3317) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3327) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3337) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3337) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3347) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3357) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3357) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3367) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3367) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3377) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3387) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3397) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3397) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3407) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3417) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3417) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3427) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;33mW (3437) i2c.common: GPIO 26 is not usable, maybe conflict with others[0m
+[0;33mW (3437) i2c.common: GPIO 27 is not usable, maybe conflict with others[0m
+[1;31mE (3447) i2c.master: I2C hardware timeout detected[0m
+[1;31mE (3447) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[0;32mI (3457) esp32cam_test: SCCB debug scan complete[0m
+[0;32mI (3467) esp32cam_test: Initialising camera...[0m
+[0;32mI (3467) cam_hal: cam init ok[0m
+[0;32mI (3477) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (3477) sccb-ng: sccb_i2c_port=1[0m
+[1;31mE (4487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (5487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (6487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (7487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (8487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (9487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (10487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (11487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (12487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (13487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (14487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (15487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (16487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (17487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (18487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (19487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (20487) i2c.master: probe device timeout. Please check if xfer_timeout_ms and pull-ups are correctly set up[0m
+[1;31mE (20487) camera: Detected camera not supported.[0m
+[1;31mE (20487) camera: Camera probe failed with error 0x106(ESP_ERR_NOT_SUPPORTED)[0m
+[1;31mE (20497) esp32cam_test: Camera init failed: ESP_ERR_NOT_SUPPORTED[0m
+[1;31mE (20497) esp32cam_test: Camera init failed — halting[0m
+[0;32mI (20507) main_task: Returned from app_main()[0m

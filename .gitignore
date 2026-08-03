@@ -40,3 +40,22 @@ docs/reference/communication_system/*.pdf
 
 esp_idf/blink/build/
 esp_test/
+esp_idf/esp32_cam/.vscode
+esp_idf/esp32_cam/.pio
+esp32_cam/build
+esp32_cam/src.bak
+esp32_cam/esp32_cam.code-workspace
+esp32_cam/README.pdf
+
+smart_db/.history
+smart_db/filter_design
+smart_db/smart_db-backups
+smart_db/smartdb.zip
+smart_db/smart_db.recovered.*.kicad_pcb
+smart_db/.kicad_schem
+smart_db/report.txt
+
+smart_db_v2/smart_db/.history
+
+.postman/
+backend/.pytest_cache/

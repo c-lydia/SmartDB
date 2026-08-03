@@ -1,0 +1,12 @@
+$kind: http-request
+name: update_profile
+url: "{{base_url}}/users/me"
+method: PATCH
+body:
+  type: json
+  content: |-
+    {
+      "name":"SmartDB Administrator"
+    }
+examples: .resources/update_profile.resources/examples
+order: 1889505194584838

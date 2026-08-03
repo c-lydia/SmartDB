@@ -1,0 +1,26 @@
+Reference	Qty	Value	DNP	Exclude from BOM	Exclude from Board	Footprint	Datasheet	Package	PARTREV	Price	Description
+C1,C4,C6,C8	4	10u 25V				Capacitor_THT:CP_Radial_D5.0mm_P2.50mm					capacitor, US symbol
+C2	1	10n 25V				Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm					capacitor, US symbol
+C3,C5,C7	3	100n 25V				Capacitor_THT:C_Disc_D3.0mm_W1.6mm_P2.50mm					capacitor, US symbol
+D1	1	1N4007				Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal					Diode
+D2	1	LED_KRGB				LED_THT:LED_D5.0mm-4_RGB					RGB LED, cathode/red/green/blue
+F1	1	500mA/1A				Fuse:Fuse_Bourns_MF-RHT050					Resettable fuse, polymeric positive temperature coefficient
+F2	1	200mA/400mA				Fuse:Fuse_Bourns_MF-RHT050					Resettable fuse, polymeric positive temperature coefficient
+J1,J7,J9	3	Screw_Terminal_01x02				TerminalBlock_RND:TerminalBlock_RND_205-00276_1x02_P5.00mm_Vertical					Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)
+J2,J4,J5,J10,J11,J12,J13	7	Conn_01x02_Pin				Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical					Generic connector, single row, 01x02, script generated
+J3	1	Conn_01x04_Pin				Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical					Generic connector, single row, 01x04, script generated
+J6,J8	2	Conn_01x01_Pin				Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical					Generic connector, single row, 01x01, script generated
+K1	1	Fujitsu_FTR-LYAA005x				Relay_THT:Relay_SPST-NO_Fujitsu_FTR-LYAA005x_FormA_Vertical	https://www.fujitsu.com/sg/imagesgig5/ftr-ly.pdf				Relay, SPST Form A, vertical mount, 5-60V coil, 6A, 250VAC, 28 x 5 x 15mm
+M1	1	5V 0.1A				TerminalBlock_RND:TerminalBlock_RND_205-00276_1x02_P5.00mm_Vertical					Fan
+Q1	1	IRLZ44N				Package_TO_SOT_THT:TO-220-3_Vertical	http://www.irf.com/product-info/datasheets/data/irlz44n.pdf				47A Id, 55V Vds, 22mOhm Rds Single N-Channel HEXFET Power MOSFET, TO-220AB
+R1	1	33				Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal					Resistor, US symbol
+R2,R3,R4	3	10k				Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal					Resistor, US symbol
+R5	1	220				Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical					Resistor, US symbol
+R6	1	100				Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P2.54mm_Vertical					Resistor, US symbol
+R7,R8,R9	3	100				Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal					Resistor, US symbol
+SW1,SW2	2	250V 1A				Button_Switch_THT:SW_PUSH_1P1T_6x3.5mm_H5.0_APEM_MJTP1250					Push button switch, generic, two pins
+T1	1	Transformer_1P_1S				TerminalBlock_RND:TerminalBlock_RND_205-00278_1x04_P5.00mm_Vertical					Transformer, single primary, single secondary
+U1	1	ADS1115IDGS				Package_SO:TSSOP-10_3x3mm_P0.5mm	http://www.ti.com/lit/ds/symlink/ads1113.pdf				Ultra-Small, Low-Power, I2C-Compatible, 860-SPS, 16-Bit ADCs With Internal Reference, Oscillator, and Programmable Comparator, VSSOP-10
+U2	1	ESP32-DEVKIT-V1				devkit v1:MODULE_ESP32_DEVKIT_V1		None	N/A	None	Dual core, Wi-Fi: 2.4 GHz up to 150 Mbits/s,BLE (Bluetooth Low Energy) and legacy Bluetooth, 32 bits, Up to 240 MHz
+U3	1	PC817				Package_DIP:DIP-4_W7.62mm	http://www.soselectronic.cz/a_info/resource/d/pc817.pdf				DC Optocoupler, Vce 35V, CTR 50-300%, DIP-4
+U4	1	AMS1117				Package_TO_SOT_SMD:SOT-223-3_TabPin2	http://www.advanced-monolithic.com/pdf/ds1117.pdf				1A Low Dropout regulator, positive, adjustable output, SOT-223

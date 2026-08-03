@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/alerts/{{alert_id}}/resolve"
+  method: PUT
+  body:
+    type: json
+    content: |-
+      {
+       "message":"Alert resolved"
+      }
+response:
+  statusCode: 200
+  statusText: ""
+  body:
+    type: json
+    content: |-
+      {
+       "message":"Alert resolved"
+      }
+order: 1785774781614

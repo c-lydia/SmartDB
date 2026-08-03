@@ -1,0 +1,9 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/users/me"
+  method: PATCH
+  body: {type: json, content: '{"name":"SmartDB Administrator"}'}
+response:
+  statusCode: 200
+  statusText: OK
+  body: {type: json, content: '{"id":1,"email":"admin@smartdb.com","name":"SmartDB Administrator","role":"admin"}'}

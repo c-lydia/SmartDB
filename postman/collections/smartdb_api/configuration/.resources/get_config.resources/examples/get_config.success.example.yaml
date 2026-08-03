@@ -1,0 +1,6 @@
+$kind: http-example
+request: {url: "{{base_url}}/devices/{{device_id}}/config", method: GET}
+response:
+  statusCode: 200
+  statusText: OK
+  body: {type: json, content: '{"max_temperature":70,"max_current":10,"sampling_rate":5}'}

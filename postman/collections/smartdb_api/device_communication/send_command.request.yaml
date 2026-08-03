@@ -1,0 +1,13 @@
+$kind: http-request
+name: send_command
+url: "{{base_url}}/devices/{{device_id}}/commands"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+     "command":"SET_INTERVAL",
+     "value":5
+    }
+examples: .resources/send_cmd.resources/examples
+order: 3890310342182839

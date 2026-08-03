@@ -1,0 +1,313 @@
+Command: /home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python /home/chheng-lydia/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/esp32_cam.elf /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/bootloader.elf -m '/home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python' '/home/chheng-lydia/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6292
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-5706-ga602e67b0b 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Aug  2 2026 01:07:02[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=23e40h (147008) map[0m
+[0;32mI (140) esp_image: segment 1: paddr=00033e68 vaddr=3ffb0000 size=06cb0h ( 27824) load[0m
+[0;32mI (151) esp_image: segment 2: paddr=0003ab20 vaddr=40080000 size=054f8h ( 21752) load[0m
+[0;32mI (160) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=aa820h (698400) map[0m
+[0;32mI (410) esp_image: segment 4: paddr=000ea848 vaddr=400854f8 size=113bch ( 70588) load[0m
+[0;32mI (439) esp_image: segment 5: paddr=000fbc0c vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (451) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (451) boot: Disabling RNG early entropy source...[0m
+[0;32mI (462) cpu_start: Multicore app[0m
+[0;32mI (470) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (470) cpu_start: Pro cpu start user code[0m
+[0;32mI (470) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (472) app_init: Application information:[0m
+[0;32mI (476) app_init: Project name:     esp32_cam[0m
+[0;32mI (480) app_init: App version:      4d6d37f[0m
+[0;32mI (484) app_init: Compile time:     Aug  2 2026 01:07:03[0m
+[0;32mI (489) app_init: ELF file SHA256:  fe34f6393...[0m
+[0;32mI (493) app_init: ESP-IDF:          v6.1-dev-5706-ga602e67b0b[0m
+[0;32mI (499) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (502) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (506) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (511) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (517) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (522) heap_init: At 3FFBC150 len 00023EB0 (143 KiB): DRAM[0m
+[0;32mI (527) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (532) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (538) heap_init: At 400968B4 len 0000974C (37 KiB): IRAM[0m
+[0;33mW (544) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (556) spi_flash: detected chip: generic[0m
+[0;32mI (560) spi_flash: flash io: dio[0m
+[0;33mW (563) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (577) main_task: Started on CPU0[0m
+[0;32mI (577) main_task: Calling app_main()[0m
+[0;32mI (577) esp32cam_test: SmartDB ESP32-CAM basic test starting...[0m
+[0;32mI (587) esp32cam_test: Free heap: 263144 bytes[0m
+[0;32mI (587) esp32cam_test: Starting WiFi SoftAP 'ESP32_CAM_AP'...[0m
+[0;32mI (627) wifi:wifi driver task: 3ffc3b98, prio:23, stack:6656, core=0[0m
+[0;32mI (637) wifi:wifi firmware version: add112d[0m
+[0;32mI (637) wifi:wifi certification version: v7.0[0m
+[0;32mI (637) wifi:config NVS flash: enabled[0m
+[0;32mI (637) wifi:config nano formatting: disabled[0m
+[0;32mI (637) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (647) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (647) wifi:Init management short buffer num: 32[0m
+[0;32mI (657) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (657) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (657) wifi:Init static rx buffer num: 10[0m
+[0;32mI (667) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (667) wifi_init: rx ba win: 6[0m
+[0;32mI (667) wifi_init: accept mbox: 6[0m
+[0;32mI (677) wifi_init: tcpip mbox: 32[0m
+[0;32mI (677) wifi_init: udp mbox: 6[0m
+[0;32mI (677) wifi_init: tcp mbox: 6[0m
+[0;32mI (687) wifi_init: tcp tx win: 5760[0m
+[0;32mI (687) wifi_init: tcp rx win: 5760[0m
+[0;32mI (687) wifi_init: tcp mss: 1440[0m
+[0;32mI (697) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (697) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (707) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (777) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (797) wifi:mode : softAP (70:4b:ca:8b:91:89)[0m
+[0;32mI (807) wifi:Total power save buffer number: 16[0m
+[0;32mI (807) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (807) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (807) esp32cam_test: WiFi SoftAP started. SSID:'ESP32_CAM_AP' password:'esp32cam'[0m
+[0;32mI (807) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (827) esp32cam_test: AP IP: 192.168.4.1[0m
+[0;32mI (827) esp32cam_test: Initialising SD card...[0m
+[0;32mI (827) SD_HOST: src_freq_hz: 160000000[0m
+[0;33mW (897) SD_HOST: esp32 doesn't support input phase delay, fallback to 0 delay[0m
+[0;33mW (897) SD_HOST: input line delay not supported, fallback to 0 delay[0m
+Name: SD64G
+Type: SDHC
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 60906MB
+CSD: ver=2, sector_size=512, capacity=124735488 read_bl_len=9
+SSR: bus_width=1
+[0;32mI (917) esp32cam_test: SD card mounted at /sdcard[0m
+[0;32mI (917) esp32cam_test: GPIO-level check: SDA=26 SCL=27[0m
+[0;32mI (927) esp32cam_test:   initial: SDA=1 SCL=1[0m
+[0;32mI (937) esp32cam_test:   with internal pull-ups: SDA=1 SCL=1[0m
+[0;32mI (937) esp32cam_test: Starting SCCB debug scan (this may take a few seconds)...[0m
+[0;32mI (937) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (947) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (967) esp32cam_test: SCCB debug scan complete[0m
+[0;32mI (967) esp32cam_test: Initialising camera...[0m
+[0;32mI (967) cam_hal: cam init ok[0m
+[0;32mI (967) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (977) sccb-ng: sccb_i2c_port=1[0m
+[0;33mW (987) camera: No supported sensor detected — running fallback SCCB address scan 0x03..0x77[0m
+[0;32mI (1007) camera: Running targeted direct-read fallback on common addresses[0m
+[0;32mI (1007) camera:   Trying address 0x30[0m
+[1;31mE (1007) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1007) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1007) camera:     Direct read PID at 0x30 -> 0x0000[0m
+[1;31mE (1017) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1017) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1017) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1027) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1027) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1027) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1037) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1037) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1047) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1047) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1047) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1057) camera:       reg 0x3005 = 0x28[0m
+[0;32mI (1057) camera:   Trying address 0x3c[0m
+[1;31mE (1057) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1067) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1067) camera:     Direct read PID at 0x3c -> 0x0000[0m
+[1;31mE (1067) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1077) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1077) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1077) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1087) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1087) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1097) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1097) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1097) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1107) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1107) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1107) camera:       reg 0x3005 = 0x28[0m
+[0;32mI (1117) camera:   Trying address 0x21[0m
+[1;31mE (1117) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1117) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1127) camera:     Direct read PID at 0x21 -> 0x0000[0m
+[1;31mE (1127) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1127) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1137) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1137) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1137) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1147) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1147) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1147) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1157) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1157) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1167) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1167) camera:       reg 0x3005 = 0x28[0m
+[0;32mI (1167) camera:   Trying address 0x68[0m
+[1;31mE (1177) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1177) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1177) camera:     Direct read PID at 0x68 -> 0x0000[0m
+[1;31mE (1187) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1187) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1187) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1197) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1197) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1197) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1207) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1207) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1217) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1217) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1217) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1227) camera:       reg 0x3005 = 0x28[0m
+[0;32mI (1227) camera:   Trying address 0x2a[0m
+[1;31mE (1227) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1237) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1237) camera:     Direct read PID at 0x2a -> 0x0000[0m
+[1;31mE (1237) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1247) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1247) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1247) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1257) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1257) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1267) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1267) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1267) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1267) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1277) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1277) camera:       reg 0x3005 = 0x28[0m
+[0;32mI (1287) camera:   Trying address 0x12[0m
+[1;31mE (1287) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1287) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1297) camera:     Direct read PID at 0x12 -> 0x0000[0m
+[1;31mE (1297) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1297) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1307) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1307) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1307) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1317) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1317) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1317) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1327) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1327) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1337) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1337) camera:       reg 0x3005 = 0x28[0m
+[0;32mI (1337) camera:   Trying address 0x1f[0m
+[1;31mE (1347) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1347) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1347) camera:     Direct read PID at 0x1f -> 0x0000[0m
+[1;31mE (1357) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1357) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1357) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1367) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1367) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1367) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1377) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1377) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1387) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1387) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1387) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1397) camera:       reg 0x3005 = 0x28[0m
+[0;32mI (1397) camera:   Trying address 0x6e[0m
+[1;31mE (1397) sccb-ng: W [300a]=00 fail[0m
+
+[1;31mE (1407) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1407) camera:     Direct read PID at 0x6e -> 0x0000[0m
+[1;31mE (1407) sccb-ng: W [3000]=28 fail[0m
+
+[0;32mI (1417) camera:       reg 0x3000 = 0x28[0m
+[1;31mE (1417) sccb-ng: W [3001]=28 fail[0m
+
+[0;32mI (1417) camera:       reg 0x3001 = 0x28[0m
+[1;31mE (1427) sccb-ng: W [3002]=28 fail[0m
+
+[0;32mI (1427) camera:       reg 0x3002 = 0x28[0m
+[1;31mE (1427) sccb-ng: W [3003]=28 fail[0m
+
+[0;32mI (1437) camera:       reg 0x3003 = 0x28[0m
+[1;31mE (1437) sccb-ng: W [3004]=28 fail[0m
+
+[0;32mI (1437) camera:       reg 0x3004 = 0x28[0m
+[1;31mE (1447) sccb-ng: W [3005]=28 fail[0m
+
+[0;32mI (1447) camera:       reg 0x3005 = 0x28[0m
+[1;31mE (1457) camera: Detected camera not supported.[0m
+[1;31mE (1457) camera: Camera probe failed with error 0x106(ESP_ERR_NOT_SUPPORTED)[0m
+[1;31mE (1467) esp32cam_test: Camera init failed: ESP_ERR_NOT_SUPPORTED[0m
+[1;31mE (1467) esp32cam_test: Camera init failed — halting[0m
+[0;32mI (1477) main_task: Returned from app_main()[0m

@@ -1,0 +1,12 @@
+$kind: http-request
+name: acknowledge_command
+url: "{{base_url}}/devices/{{device_id}}/commands/{{command_id}}/ack"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+     "status":"success"
+    }
+examples: .resources/acknowledge_command.resources/examples
+order: 4297770703571015

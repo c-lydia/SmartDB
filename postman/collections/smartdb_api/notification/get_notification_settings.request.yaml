@@ -1,0 +1,6 @@
+$kind: http-request
+name: get_notification_settings
+url: "{{base_url}}/users/me/notification-settings"
+method: GET
+examples: .resources/get_notification_settings.resources/examples
+order: 2265124346305640

@@ -1,0 +1,18 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/notifications/{{notification_id}}/read"
+  method: PATCH
+  body:
+    type: json
+    content: |-
+      {
+      "read": true
+      }
+response:
+  statusCode: 200
+  statusText: ""
+  body:
+    type: json
+    content: |-
+      {"id":10,"title":"Overtemperature detected","read":true}
+order: 1785776176900

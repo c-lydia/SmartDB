@@ -1,0 +1,345 @@
+openapi: 3.1.0
+info:
+  title: SmartDB HTTP API
+  version: 1.0.0
+  description: |
+    User- and administration-facing API represented by the SmartDB Postman collection.
+    This HTTP API is distinct from the device CoAP/DTLS ingestion contract. Protected
+    operations use a bearer access token. Device provisioning endpoints additionally
+    require deployment-specific authorization and must never return stored secrets later.
+servers:
+  - url: http://localhost:8000/api/v1
+    description: Local development
+security:
+  - bearerAuth: []
+tags:
+  - {name: Authentication}
+  - {name: Users}
+  - {name: Devices}
+  - {name: Telemetry}
+  - {name: Alerts}
+  - {name: Notifications}
+  - {name: Commands}
+paths:
+  /auth/login:
+    post:
+      tags: [Authentication]
+      security: []
+      summary: Exchange credentials for access and refresh tokens
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/LoginRequest'}
+      responses:
+        '200': {description: Authenticated, content: {application/json: {schema: {$ref: '#/components/schemas/TokenPair'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+  /auth/refresh:
+    post:
+      tags: [Authentication]
+      security: []
+      summary: Rotate a refresh token and issue a new token pair
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/RefreshRequest'}}}
+      responses:
+        '200': {description: Token rotated, content: {application/json: {schema: {$ref: '#/components/schemas/TokenPair'}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+  /auth/logout:
+    post:
+      tags: [Authentication]
+      summary: Revoke a refresh token
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/RefreshRequest'}}}
+      responses:
+        '204': {description: Logged out}
+  /users:
+    get:
+      tags: [Users]
+      summary: List users (administrator)
+      responses:
+        '200': {description: Users, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/User'}}}}}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+  /users/me:
+    get:
+      tags: [Users]
+      summary: Get the current user
+      responses:
+        '200': {description: Current user, content: {application/json: {schema: {$ref: '#/components/schemas/User'}}}}
+    patch:
+      tags: [Users]
+      summary: Update the current user's profile
+      requestBody:
+        required: true
+        content: {application/json: {schema: {type: object, properties: {name: {type: string, minLength: 1, maxLength: 100}}, additionalProperties: false}}}
+      responses:
+        '200': {description: Updated user, content: {application/json: {schema: {$ref: '#/components/schemas/User'}}}}
+  /users/me/notification-settings:
+    get:
+      tags: [Notifications]
+      summary: Get notification preferences
+      responses:
+        '200': {description: Preferences, content: {application/json: {schema: {$ref: '#/components/schemas/NotificationSettings'}}}}
+  /devices:
+    get:
+      tags: [Devices]
+      summary: List registered devices
+      responses:
+        '200': {description: Devices, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Device'}}}}}
+    post:
+      tags: [Devices]
+      summary: Register a device record
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/DeviceCreate'}}}
+      responses:
+        '201': {description: Registered device, content: {application/json: {schema: {$ref: '#/components/schemas/Device'}}}}
+        '409': {$ref: '#/components/responses/Conflict'}
+  /device/register:
+    post:
+      tags: [Devices]
+      summary: Provision a device credential
+      description: Manufacturing/installation-only operation; the returned secret is shown once.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [serial_number, hardware, firmware]
+              properties: {serial_number: {type: string}, hardware: {type: string}, firmware: {type: string}}
+              additionalProperties: false
+      responses:
+        '201':
+          description: One-time credential
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [device_id, device_key]
+                properties: {device_id: {type: string}, device_key: {type: string, writeOnly: true}}
+  /devices/{device_id}:
+    parameters:
+      - {$ref: '#/components/parameters/DeviceId'}
+    get:
+      tags: [Devices]
+      summary: Get one device
+      responses:
+        '200': {description: Device, content: {application/json: {schema: {$ref: '#/components/schemas/Device'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /devices/{device_id}/status:
+    parameters: [{$ref: '#/components/parameters/DeviceId'}]
+    get:
+      tags: [Devices]
+      summary: Get connectivity and firmware status
+      responses:
+        '200': {description: Device status, content: {application/json: {schema: {$ref: '#/components/schemas/DeviceStatus'}}}}
+  /devices/{device_id}/heartbeat:
+    parameters: [{$ref: '#/components/parameters/DeviceId'}]
+    post:
+      tags: [Devices]
+      summary: Diagnostic HTTP heartbeat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {type: object, required: [uptime, wifi_rssi], properties: {uptime: {type: integer, minimum: 0}, wifi_rssi: {type: integer}}, additionalProperties: false}
+      responses:
+        '202': {description: Heartbeat accepted}
+  /devices/{device_id}/sync:
+    parameters: [{$ref: '#/components/parameters/DeviceId'}]
+    post:
+      tags: [Devices]
+      summary: Request a diagnostic synchronization range
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {type: object, required: [last_timestamp], properties: {last_timestamp: {type: string, format: date-time}}, additionalProperties: false}
+      responses:
+        '200':
+          description: Missing range
+          content:
+            application/json:
+              schema: {type: object, required: [missing_data], properties: {missing_data: {type: boolean}, upload_from: {type: string, format: date-time}, upload_to: {type: string, format: date-time}}}
+  /devices/{device_id}/config:
+    parameters: [{$ref: '#/components/parameters/DeviceId'}]
+    get:
+      tags: [Devices]
+      summary: Get desired device configuration
+      responses:
+        '200': {description: Configuration, content: {application/json: {schema: {$ref: '#/components/schemas/DeviceConfig'}}}}
+    put:
+      tags: [Devices]
+      summary: Replace desired device configuration
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/DeviceConfig'}}}
+      responses:
+        '200': {description: Updated configuration, content: {application/json: {schema: {$ref: '#/components/schemas/DeviceConfig'}}}}
+  /devices/{device_id}/telemetry:
+    parameters: [{$ref: '#/components/parameters/DeviceId'}]
+    get:
+      tags: [Telemetry]
+      summary: Query telemetry history
+      parameters:
+        - {name: from, in: query, schema: {type: string, format: date-time}}
+        - {name: to, in: query, schema: {type: string, format: date-time}}
+        - {name: limit, in: query, schema: {type: integer, minimum: 1, maximum: 1000, default: 100}}
+      responses:
+        '200': {description: Telemetry samples, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Telemetry'}}}}}
+    post:
+      tags: [Telemetry]
+      summary: Diagnostic HTTP telemetry upload
+      description: Production devices use CoAP/DTLS; this endpoint is for authorized diagnostics.
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Telemetry'}}}
+      responses:
+        '202': {description: Accepted}
+  /devices/{device_id}/telemetry/latest:
+    parameters: [{$ref: '#/components/parameters/DeviceId'}]
+    get:
+      tags: [Telemetry]
+      summary: Get the latest telemetry sample
+      responses:
+        '200': {description: Latest sample, content: {application/json: {schema: {$ref: '#/components/schemas/Telemetry'}}}}
+        '404': {$ref: '#/components/responses/NotFound'}
+  /alerts:
+    get:
+      tags: [Alerts]
+      summary: List alerts
+      responses:
+        '200': {description: Alerts, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Alert'}}}}}
+    post:
+      tags: [Alerts]
+      summary: Create an operator-originated alert
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/AlertCreate'}}}
+      responses:
+        '201': {description: Created alert, content: {application/json: {schema: {$ref: '#/components/schemas/Alert'}}}}
+  /alerts/{alert_id}/resolve:
+    put:
+      tags: [Alerts]
+      summary: Resolve an active alert
+      parameters: [{name: alert_id, in: path, required: true, schema: {type: integer}}]
+      requestBody:
+        content: {application/json: {schema: {type: object, properties: {message: {type: string}}, additionalProperties: false}}}
+      responses:
+        '200': {description: Resolved alert, content: {application/json: {schema: {$ref: '#/components/schemas/Alert'}}}}
+  /notifications:
+    get:
+      tags: [Notifications]
+      summary: List current user's notifications
+      responses:
+        '200': {description: Notifications, content: {application/json: {schema: {type: array, items: {$ref: '#/components/schemas/Notification'}}}}}
+  /notifications/{notification_id}/read:
+    patch:
+      tags: [Notifications]
+      summary: Set a notification's read state
+      parameters: [{name: notification_id, in: path, required: true, schema: {type: integer}}]
+      requestBody:
+        required: true
+        content: {application/json: {schema: {type: object, required: [read], properties: {read: {type: boolean}}, additionalProperties: false}}}
+      responses:
+        '200': {description: Updated notification, content: {application/json: {schema: {$ref: '#/components/schemas/Notification'}}}}
+  /devices/{device_id}/commands:
+    parameters: [{$ref: '#/components/parameters/DeviceId'}]
+    post:
+      tags: [Commands]
+      summary: Queue a device command
+      requestBody:
+        required: true
+        content: {application/json: {schema: {$ref: '#/components/schemas/Command'}}}
+      responses:
+        '202': {description: Command queued, content: {application/json: {schema: {type: object, required: [command_id, status], properties: {command_id: {type: integer}, status: {const: queued}}}}}}
+  /devices/{device_id}/commands/{command_id}/ack:
+    parameters:
+      - {$ref: '#/components/parameters/DeviceId'}
+      - {name: command_id, in: path, required: true, schema: {type: integer}}
+    post:
+      tags: [Commands]
+      summary: Acknowledge command execution
+      requestBody:
+        required: true
+        content: {application/json: {schema: {type: object, required: [status], properties: {status: {enum: [success, failed]}, detail: {type: string}}, additionalProperties: false}}}
+      responses:
+        '204': {description: Acknowledgement recorded}
+components:
+  securitySchemes:
+    bearerAuth: {type: http, scheme: bearer, bearerFormat: JWT}
+  parameters:
+    DeviceId: {name: device_id, in: path, required: true, schema: {type: string, pattern: '^[A-Za-z0-9._-]+$'}}
+  responses:
+    Unauthorized: {description: Missing, invalid, or expired credentials, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    NotFound: {description: Resource not found, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+    Conflict: {description: Resource already exists or version conflicts, content: {application/json: {schema: {$ref: '#/components/schemas/Error'}}}}
+  schemas:
+    Error:
+      type: object
+      required: [code, message]
+      properties: {code: {type: string}, message: {type: string}, request_id: {type: string}}
+      additionalProperties: false
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties: {email: {type: string, format: email}, password: {type: string, minLength: 8}}
+      additionalProperties: false
+    RefreshRequest:
+      type: object
+      required: [refresh_token]
+      properties: {refresh_token: {type: string, minLength: 20}}
+      additionalProperties: false
+    TokenPair:
+      type: object
+      required: [access_token, refresh_token, token_type, expires_in]
+      properties: {access_token: {type: string}, refresh_token: {type: string}, token_type: {const: bearer}, expires_in: {type: integer, minimum: 1}}
+    User:
+      type: object
+      required: [id, email, name, role]
+      properties: {id: {type: integer}, email: {type: string, format: email}, name: {type: string}, role: {enum: [admin, operator, viewer]}}
+    DeviceCreate:
+      type: object
+      required: [device_name, device_type, location]
+      properties: {device_name: {type: string}, device_type: {const: ESP32}, location: {type: string}}
+      additionalProperties: false
+    Device:
+      allOf:
+        - {$ref: '#/components/schemas/DeviceCreate'}
+        - {type: object, required: [device_id, status], properties: {device_id: {type: string}, status: {enum: [registered, online, offline, revoked]}}}
+    DeviceStatus:
+      type: object
+      required: [online, last_seen, firmware]
+      properties: {online: {type: boolean}, last_seen: {type: string, format: date-time}, firmware: {type: string}, ip: {type: string}}
+    DeviceConfig:
+      type: object
+      required: [max_temperature, max_current, sampling_rate]
+      properties: {max_temperature: {type: number}, max_current: {type: number, exclusiveMinimum: 0}, sampling_rate: {type: integer, minimum: 1}}
+      additionalProperties: false
+    Telemetry:
+      type: object
+      required: [voltage, current, power, temperature, timestamp]
+      properties: {voltage: {type: number}, current: {type: number, minimum: 0}, power: {type: number}, temperature: {type: number}, timestamp: {type: string, format: date-time}}
+    AlertCreate:
+      type: object
+      required: [device_id, type, severity, message]
+      properties: {device_id: {type: string}, type: {type: string}, severity: {enum: [low, medium, high, critical]}, message: {type: string}}
+    Alert:
+      allOf:
+        - {$ref: '#/components/schemas/AlertCreate'}
+        - {type: object, required: [id, status], properties: {id: {type: integer}, status: {enum: [active, resolved]}}}
+    Notification:
+      type: object
+      required: [id, title, read]
+      properties: {id: {type: integer}, title: {type: string}, read: {type: boolean}}
+    NotificationSettings:
+      type: object
+      required: [push, email, sms]
+      properties: {push: {type: boolean}, email: {type: boolean}, sms: {type: boolean}}
+    Command:
+      type: object
+      required: [command]
+      properties: {command: {enum: [SET_INTERVAL, REQUEST_STATUS, OPEN_RELAY]}, value: {}}
+      additionalProperties: false

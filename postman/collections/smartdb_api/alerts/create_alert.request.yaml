@@ -1,0 +1,15 @@
+$kind: http-request
+name: create_alert
+url: "{{base_url}}/alerts"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+     "device_id":"ESP32_001",
+     "type":"OVERHEAT",
+     "severity":"high",
+     "message":"Temperature exceeded limit"
+    }
+examples: .resources/create_alerts.resources/examples
+order: 234927524868690

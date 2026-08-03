@@ -1,0 +1,6 @@
+$kind: http-request
+name: get_current_user
+url: "{{base_url}}/users/me"
+method: GET
+examples: .resources/get_current_user.resources/examples
+order: 1785775267574

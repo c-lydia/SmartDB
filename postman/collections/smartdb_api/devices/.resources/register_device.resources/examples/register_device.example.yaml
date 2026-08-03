@@ -1,0 +1,26 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/devices"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+        "device_name": "Living Room Monitor",
+        "device_type": "ESP32",
+        "location": "Living Room"
+      }
+response:
+  statusCode: 201
+  statusText: ""
+  body:
+    type: json
+    content: |-
+      {
+        "device_id": "ESP32_001",
+        "device_name": "Living Room Monitor",
+        "device_type": "ESP32",
+        "location": "Living Room",
+        "status": "registered"
+      }
+order: 1785773504609

@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/devices/{{device_id}}/telemetry"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+        "voltage": 220.5,
+        "current": 2.4,
+        "power": 529,
+        "temperature": 35.2,
+        "timestamp": "2026-08-03T22:00:00"
+      } 
+response:
+  statusCode: 202
+  statusText: ""
+  body:
+    type: json
+    content: |-
+      {
+        "message": "Telemetry received"
+      }
+order: 1785773796733

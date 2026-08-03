@@ -1,0 +1,2 @@
+source /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/gdbinit/symbols
+source /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/gdbinit/connect

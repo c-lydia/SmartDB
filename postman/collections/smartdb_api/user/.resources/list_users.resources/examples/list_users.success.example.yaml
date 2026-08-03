@@ -1,0 +1,6 @@
+$kind: http-example
+request: {url: "{{base_url}}/users", method: GET}
+response:
+  statusCode: 200
+  statusText: OK
+  body: {type: json, content: '[{"id":1,"email":"admin@smartdb.com","name":"Admin","role":"admin"}]'}

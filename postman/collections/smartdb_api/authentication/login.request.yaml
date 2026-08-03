@@ -1,0 +1,26 @@
+$kind: http-request
+name: login
+url: "{{base_url}}/auth/login"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "email": "admin@smartdb.com",
+        "password": "12345"
+    }
+  $type: |-
+    {
+        "type": "object",
+        "properties": {
+            "email": {
+                "type": "string",
+                "format": "email"
+            },
+            "password": {
+                "type": "string"
+            }
+        }
+    }
+examples: .resources/login.resources/examples
+order: 1785769831336

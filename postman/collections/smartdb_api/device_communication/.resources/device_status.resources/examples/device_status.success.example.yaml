@@ -1,0 +1,6 @@
+$kind: http-example
+request: {url: "{{base_url}}/devices/{{device_id}}/status", method: GET}
+response:
+  statusCode: 200
+  statusText: OK
+  body: {type: json, content: '{"online":true,"last_seen":"2026-08-03T23:00:00Z","ip":"192.168.1.50","firmware":"1.2.0"}'}

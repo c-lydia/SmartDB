@@ -1,0 +1,12 @@
+$kind: http-request
+name: resolve_alert
+url: "{{base_url}}/alerts/{{alert_id}}/resolve"
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+     "message":"Alert resolved"
+    }
+examples: .resources/alert_resolve.resources/examples
+order: 1885375237933074

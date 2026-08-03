@@ -1,0 +1,6 @@
+$kind: http-request
+name: list_devices
+url: "{{base_url}}/devices"
+method: GET
+examples: .resources/list_devices.resources/examples
+order: 3522446432855875

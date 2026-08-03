@@ -1,0 +1,17 @@
+$kind: http-request
+name: refresh_token
+url: "{{base_url}}/auth/refresh"
+method: POST
+headers:
+  Idempotency-Key: stringstringstring
+  X-CSRF-Token: stringstringstringstringstringstring
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "refresh_token": "dGhpc2lzYXJlZnJlc2h0b2tlbg..."
+    }
+examples: .resources/refresh_token.resources/examples
+order: 920629322660384

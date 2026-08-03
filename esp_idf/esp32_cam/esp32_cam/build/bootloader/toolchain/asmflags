@@ -1,0 +1,6 @@
+"-specs=/home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/specs/picolibc.specs"
+-Wno-frame-address
+-mlongcalls
+-fno-builtin-memcpy
+-fno-builtin-memset
+-fno-builtin-bzero

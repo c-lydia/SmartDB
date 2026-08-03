@@ -1,0 +1,545 @@
+Command: /home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python /home/chheng-lydia/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/esp32_cam.elf /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/bootloader.elf -m '/home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python' '/home/chheng-lydia/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6292
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-5706-ga602e67b0b 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Aug  2 2026 01:07:02[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=252d0h (152272) map[0m
+[0;32mI (142) esp_image: segment 1: paddr=000352f8 vaddr=3ffb0000 size=06cb0h ( 27824) load[0m
+[0;32mI (153) esp_image: segment 2: paddr=0003bfb0 vaddr=40080000 size=04068h ( 16488) load[0m
+[0;32mI (160) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=aafa0h (700320) map[0m
+[0;32mI (410) esp_image: segment 4: paddr=000eafc8 vaddr=40084068 size=1284ch ( 75852) load[0m
+[0;32mI (441) esp_image: segment 5: paddr=000fd81c vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (454) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (454) boot: Disabling RNG early entropy source...[0m
+[0;32mI (464) cpu_start: Multicore app[0m
+[0;32mI (472) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (473) cpu_start: Pro cpu start user code[0m
+[0;32mI (473) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (475) app_init: Application information:[0m
+[0;32mI (478) app_init: Project name:     esp32_cam[0m
+[0;32mI (482) app_init: App version:      4d6d37f[0m
+[0;32mI (486) app_init: Compile time:     Aug  2 2026 01:07:03[0m
+[0;32mI (491) app_init: ELF file SHA256:  fb7eee293...[0m
+[0;32mI (496) app_init: ESP-IDF:          v6.1-dev-5706-ga602e67b0b[0m
+[0;32mI (501) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (505) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (509) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (513) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (519) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (524) heap_init: At 3FFBC150 len 00023EB0 (143 KiB): DRAM[0m
+[0;32mI (529) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (535) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (540) heap_init: At 400968B4 len 0000974C (37 KiB): IRAM[0m
+[0;33mW (547) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (559) spi_flash: detected chip: generic[0m
+[0;32mI (562) spi_flash: flash io: dio[0m
+[0;33mW (565) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (579) main_task: Started on CPU0[0m
+[0;32mI (579) main_task: Calling app_main()[0m
+[0;32mI (579) esp32cam_test: SmartDB ESP32-CAM basic test starting...[0m
+[0;32mI (589) esp32cam_test: Free heap: 263144 bytes[0m
+[0;32mI (589) esp32cam_test: Starting WiFi SoftAP 'esp_not_esp-ing'...[0m
+[0;32mI (629) wifi:wifi driver task: 3ffc3b98, prio:23, stack:6656, core=0[0m
+[0;32mI (639) wifi:wifi firmware version: add112d[0m
+[0;32mI (639) wifi:wifi certification version: v7.0[0m
+[0;32mI (639) wifi:config NVS flash: enabled[0m
+[0;32mI (639) wifi:config nano formatting: disabled[0m
+[0;32mI (639) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (649) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (649) wifi:Init management short buffer num: 32[0m
+[0;32mI (659) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (659) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (659) wifi:Init static rx buffer num: 10[0m
+[0;32mI (669) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (669) wifi_init: rx ba win: 6[0m
+[0;32mI (679) wifi_init: accept mbox: 6[0m
+[0;32mI (679) wifi_init: tcpip mbox: 32[0m
+[0;32mI (679) wifi_init: udp mbox: 6[0m
+[0;32mI (679) wifi_init: tcp mbox: 6[0m
+[0;32mI (689) wifi_init: tcp tx win: 5760[0m
+[0;32mI (689) wifi_init: tcp rx win: 5760[0m
+[0;32mI (689) wifi_init: tcp mss: 1440[0m
+[0;32mI (699) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (699) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (709) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (779) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (799) wifi:mode : softAP (70:4b:ca:8b:91:89)[0m
+[0;32mI (809) wifi:Total power save buffer number: 16[0m
+[0;32mI (809) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (809) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (809) esp32cam_test: WiFi SoftAP started. SSID:'esp_not_esp-ing' password:'SmartDBesp32cam'[0m
+[0;32mI (809) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (829) esp32cam_test: AP IP: 192.168.4.1[0m
+[0;32mI (829) esp32cam_test: Initialising SD card...[0m
+[0;32mI (829) SD_HOST: src_freq_hz: 160000000[0m
+[0;33mW (899) SD_HOST: esp32 doesn't support input phase delay, fallback to 0 delay[0m
+[0;33mW (899) SD_HOST: input line delay not supported, fallback to 0 delay[0m
+Name: SD64G
+Type: SDHC
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 60906MB
+CSD: ver=2, sector_size=512, capacity=124735488 read_bl_len=9
+SSR: bus_width=1
+[0;32mI (919) esp32cam_test: SD card mounted at /sdcard[0m
+[0;32mI (919) esp32cam_test: GPIO-level check: SDA=26 SCL=27[0m
+[0;32mI (929) esp32cam_test:   initial: SDA=1 SCL=1[0m
+[0;32mI (939) esp32cam_test:   with internal pull-ups: SDA=1 SCL=1[0m
+[0;32mI (939) esp32cam_test: Starting SCCB debug scan (this may take a few seconds)...[0m
+[0;32mI (939) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (949) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (969) esp32cam_test: SCCB debug scan complete[0m
+[0;32mI (969) esp32cam_test: Initialising camera...[0m
+[0;32mI (969) cam_hal: cam init ok[0m
+[0;32mI (969) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (979) sccb-ng: sccb_i2c_port=1[0m
+[0;33mW (989) camera: No supported sensor detected — running fallback SCCB address scan 0x03..0x77[0m
+[0;32mI (1009) camera: Running targeted direct-read fallback on common addresses[0m
+[0;32mI (1009) camera:   Trying address 0x30[0m
+[0;33mW (1009) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1019) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1029) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1039) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (1039) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1049) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1059) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1069) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1069) camera:     Direct read PID at 0x30 -> 0x0000[0m
+[0;33mW (1069) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1079) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1089) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1099) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (1099) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (1099) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1109) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1119) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1129) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (1129) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (1129) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1139) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1149) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1159) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (1159) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (1159) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1169) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1179) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1189) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (1189) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (1189) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1199) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1209) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1219) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (1219) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (1219) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1229) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1239) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1249) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (1249) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (1249) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1259) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1269) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1279) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (1279) camera:   Trying address 0x3c[0m
+[0;33mW (1279) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1289) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1299) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1309) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (1309) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1319) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1329) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1339) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1339) camera:     Direct read PID at 0x3c -> 0x0000[0m
+[0;33mW (1339) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1349) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1359) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1369) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (1369) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (1369) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1379) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1389) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1399) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (1399) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (1399) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1409) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1419) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1429) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (1429) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (1429) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1439) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1449) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1459) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (1459) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (1459) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1469) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1479) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1489) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (1489) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (1489) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1499) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1509) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1519) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (1519) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (1519) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1529) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1539) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1549) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (1549) camera:   Trying address 0x21[0m
+[0;33mW (1549) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1559) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1569) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1579) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (1579) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1589) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1599) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1609) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1609) camera:     Direct read PID at 0x21 -> 0x0000[0m
+[0;33mW (1609) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1619) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1629) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1639) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (1639) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (1639) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1649) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1659) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1669) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (1669) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (1669) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1679) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1689) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1699) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (1699) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (1699) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1709) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1719) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1729) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (1729) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (1729) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1739) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1749) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1759) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (1759) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (1759) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1769) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1779) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1789) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (1789) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (1789) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1799) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1809) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1819) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (1819) camera:   Trying address 0x68[0m
+[0;33mW (1819) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1829) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1839) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1849) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (1849) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1859) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1869) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1879) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (1879) camera:     Direct read PID at 0x68 -> 0x0000[0m
+[0;33mW (1879) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1889) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1899) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1909) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (1909) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (1909) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1919) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1929) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1939) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (1939) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (1939) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1949) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1959) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1969) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (1969) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (1969) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1979) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (1989) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (1999) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (1999) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (1999) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2009) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2019) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2029) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (2029) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (2029) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2039) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2049) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2059) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (2059) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (2059) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2069) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2079) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2089) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2089) camera:   Trying address 0x2a[0m
+[0;33mW (2089) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2099) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2109) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2119) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (2119) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2129) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2139) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2149) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (2149) camera:     Direct read PID at 0x2a -> 0x0000[0m
+[0;33mW (2149) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2159) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2169) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2179) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2179) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (2179) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2189) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2199) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2209) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (2209) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (2209) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2219) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2229) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2239) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (2239) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (2239) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2249) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2259) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2269) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (2269) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (2269) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2279) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2289) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2299) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (2299) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (2299) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2309) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2319) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2329) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (2329) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (2329) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2339) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2349) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2359) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2359) camera:   Trying address 0x12[0m
+[0;33mW (2359) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2369) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2379) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2389) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (2389) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2399) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2409) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2419) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (2419) camera:     Direct read PID at 0x12 -> 0x0000[0m
+[0;33mW (2419) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2429) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2439) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2449) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2449) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (2449) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2459) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2469) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2479) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (2479) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (2479) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2489) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2499) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2509) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (2509) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (2509) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2519) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2529) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2539) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (2539) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (2539) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2549) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2559) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2569) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (2569) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (2569) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2579) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2589) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2599) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (2599) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (2599) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2609) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2619) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2629) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2629) camera:   Trying address 0x1f[0m
+[0;33mW (2629) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2639) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2649) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2659) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (2659) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2669) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2679) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2689) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (2689) camera:     Direct read PID at 0x1f -> 0x0000[0m
+[0;33mW (2689) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2699) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2709) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2719) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2719) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (2719) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2729) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2739) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2749) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (2749) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (2749) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2759) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2769) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2779) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (2779) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (2779) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2789) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2799) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2809) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (2809) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (2809) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2819) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2829) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2839) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (2839) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (2839) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2849) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2859) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2869) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (2869) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (2869) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2879) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2889) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2899) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2899) camera:   Trying address 0x6e[0m
+[0;33mW (2899) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2909) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2919) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300a ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2929) sccb-ng: W [300a]=00 fail[0m
+
+[0;33mW (2929) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2939) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2949) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x300b ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2959) sccb-ng: W [300b]=00 fail[0m
+
+[0;32mI (2959) camera:     Direct read PID at 0x6e -> 0x0000[0m
+[0;33mW (2959) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2969) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2979) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (2989) sccb-ng: W [3000]=2c fail[0m
+
+[0;32mI (2989) camera:       reg 0x3000 = 0x2c[0m
+[0;33mW (2989) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (2999) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3009) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3001 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (3019) sccb-ng: W [3001]=2c fail[0m
+
+[0;32mI (3019) camera:       reg 0x3001 = 0x2c[0m
+[0;33mW (3019) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3029) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3039) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3002 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (3049) sccb-ng: W [3002]=2c fail[0m
+
+[0;32mI (3049) camera:       reg 0x3002 = 0x2c[0m
+[0;33mW (3049) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3059) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3069) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3003 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (3079) sccb-ng: W [3003]=2c fail[0m
+
+[0;32mI (3079) camera:       reg 0x3003 = 0x2c[0m
+[0;33mW (3079) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3089) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3099) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3004 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (3109) sccb-ng: W [3004]=2c fail[0m
+
+[0;32mI (3109) camera:       reg 0x3004 = 0x2c[0m
+[0;33mW (3109) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3119) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3129) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3005 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (3139) sccb-ng: W [3005]=2c fail[0m
+
+[0;32mI (3139) camera:       reg 0x3005 = 0x2c[0m
+[0;33mW (3139) sccb-ng: SCCB_Read16 attempt 1 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3149) sccb-ng: SCCB_Read16 attempt 2 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[0;33mW (3159) sccb-ng: SCCB_Read16 attempt 3 failed reg:0x3000 ret:ESP_ERR_INVALID_RESPONSE[0m
+[1;31mE (3169) sccb-ng: W [3000]=2c fail[0m
+
+[1;31mE (3169) camera: Detected camera not supported.[0m
+[1;31mE (3169) camera: Camera probe failed with error 0x106(ESP_ERR_NOT_SUPPORTED)[0m
+[1;31mE (3169) esp32cam_test: Camera init failed: ESP_ERR_NOT_SUPPORTED[0m
+[1;31mE (3179) esp32cam_test: Camera init failed — halting[0m
+[0;32mI (3179) main_task: Returned from app_main()[0m

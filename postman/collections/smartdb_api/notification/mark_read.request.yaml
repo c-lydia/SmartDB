@@ -1,0 +1,12 @@
+$kind: http-request
+name: mark_notification_read
+url: "{{base_url}}/notifications/{{notification_id}}/read"
+method: PATCH
+body:
+  type: json
+  content: |-
+    {
+        "read": true
+    }
+examples: .resources/mark_read.resources/examples
+order: 36888446801911

@@ -1,0 +1,14 @@
+$kind: http-request
+name: register_device
+url: "{{base_url}}/devices"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "device_name": "Living Room Monitor",
+      "device_type": "ESP32",
+      "location": "Living Room"
+    }
+examples: .resources/register_device.resources/examples
+order: 1785773406743

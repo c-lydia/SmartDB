@@ -1,0 +1,6 @@
+$kind: http-request
+name: list_notifications
+url: "{{base_url}}/notifications"
+method: GET
+examples: .resources/list_notifications.resources/examples
+order: 1785776020159

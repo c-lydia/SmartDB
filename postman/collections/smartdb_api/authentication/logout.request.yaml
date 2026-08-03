@@ -1,0 +1,12 @@
+$kind: http-request
+name: logout
+url: "{{base_url}}/auth/logout"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "refresh_token": "dGhpc2lzYXJlZnJlc2h0b2tlbg..."
+    }
+examples: .resources/logout.resources/examples
+order: 958121398974149

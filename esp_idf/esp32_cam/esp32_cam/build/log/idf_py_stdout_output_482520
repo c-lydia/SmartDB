@@ -1,0 +1,120 @@
+Command: /home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python /home/chheng-lydia/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/esp32_cam.elf /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/bootloader.elf -m '/home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python' '/home/chheng-lydia/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6292
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-5706-ga602e67b0b 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Aug  2 2026 01:07:02[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=23d60h (146784) map[0m
+[0;32mI (140) esp_image: segment 1: paddr=00033d88 vaddr=3ffb0000 size=06cb0h ( 27824) load[0m
+[0;32mI (151) esp_image: segment 2: paddr=0003aa40 vaddr=40080000 size=055d8h ( 21976) load[0m
+[0;32mI (160) esp_image: segment 3: paddr=00040020 vaddr=400d0020 size=aa720h (698144) map[0m
+[0;32mI (409) esp_image: segment 4: paddr=000ea748 vaddr=400855d8 size=112dch ( 70364) load[0m
+[0;32mI (439) esp_image: segment 5: paddr=000fba2c vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (451) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (451) boot: Disabling RNG early entropy source...[0m
+[0;32mI (461) cpu_start: Multicore app[0m
+[0;32mI (470) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (470) cpu_start: Pro cpu start user code[0m
+[0;32mI (470) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (472) app_init: Application information:[0m
+[0;32mI (476) app_init: Project name:     esp32_cam[0m
+[0;32mI (480) app_init: App version:      4d6d37f[0m
+[0;32mI (484) app_init: Compile time:     Aug  2 2026 01:07:03[0m
+[0;32mI (489) app_init: ELF file SHA256:  48c9f6ccf...[0m
+[0;32mI (493) app_init: ESP-IDF:          v6.1-dev-5706-ga602e67b0b[0m
+[0;32mI (498) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (502) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (506) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (510) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (516) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (521) heap_init: At 3FFBC150 len 00023EB0 (143 KiB): DRAM[0m
+[0;32mI (527) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (532) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (538) heap_init: At 400968B4 len 0000974C (37 KiB): IRAM[0m
+[0;33mW (544) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (556) spi_flash: detected chip: generic[0m
+[0;32mI (559) spi_flash: flash io: dio[0m
+[0;33mW (562) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (577) main_task: Started on CPU0[0m
+[0;32mI (577) main_task: Calling app_main()[0m
+[0;32mI (577) esp32cam_test: SmartDB ESP32-CAM basic test starting...[0m
+[0;32mI (587) esp32cam_test: Free heap: 263144 bytes[0m
+[0;32mI (587) esp32cam_test: Starting WiFi SoftAP 'ESP32_CAM_AP'...[0m
+[0;32mI (637) wifi:wifi driver task: 3ffc3b98, prio:23, stack:6656, core=0[0m
+[0;32mI (647) wifi:wifi firmware version: add112d[0m
+[0;32mI (647) wifi:wifi certification version: v7.0[0m
+[0;32mI (647) wifi:config NVS flash: enabled[0m
+[0;32mI (647) wifi:config nano formatting: disabled[0m
+[0;32mI (647) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (657) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (657) wifi:Init management short buffer num: 32[0m
+[0;32mI (667) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (667) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (667) wifi:Init static rx buffer num: 10[0m
+[0;32mI (677) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (677) wifi_init: rx ba win: 6[0m
+[0;32mI (677) wifi_init: accept mbox: 6[0m
+[0;32mI (687) wifi_init: tcpip mbox: 32[0m
+[0;32mI (687) wifi_init: udp mbox: 6[0m
+[0;32mI (687) wifi_init: tcp mbox: 6[0m
+[0;32mI (697) wifi_init: tcp tx win: 5760[0m
+[0;32mI (697) wifi_init: tcp rx win: 5760[0m
+[0;32mI (697) wifi_init: tcp mss: 1440[0m
+[0;32mI (707) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (707) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (717) phy_init: phy_version 4863,a3a4459,Oct 28 2025,14:30:06[0m
+[0;32mI (787) phy_init: Saving new calibration data due to checksum failure or outdated calibration data, mode(0)[0m
+[0;32mI (807) wifi:mode : softAP (70:4b:ca:8b:91:89)[0m
+[0;32mI (817) wifi:Total power save buffer number: 16[0m
+[0;32mI (817) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (817) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (817) esp32cam_test: WiFi SoftAP started. SSID:'ESP32_CAM_AP' password:'esp32cam'[0m
+[0;32mI (817) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (837) esp32cam_test: AP IP: 192.168.4.1[0m
+[0;32mI (837) esp32cam_test: Initialising SD card...[0m
+[0;32mI (837) SD_HOST: src_freq_hz: 160000000[0m
+[0;33mW (907) SD_HOST: esp32 doesn't support input phase delay, fallback to 0 delay[0m
+[0;33mW (907) SD_HOST: input line delay not supported, fallback to 0 delay[0m
+Name: SD64G
+Type: SDHC
+Speed: 20.00 MHz (limit: 20.00 MHz)
+Size: 60906MB
+CSD: ver=2, sector_size=512, capacity=124735488 read_bl_len=9
+SSR: bus_width=1
+[0;32mI (927) esp32cam_test: SD card mounted at /sdcard[0m
+[0;32mI (927) esp32cam_test: GPIO-level check: SDA=26 SCL=27[0m
+[0;32mI (937) esp32cam_test:   initial: SDA=1 SCL=1[0m
+[0;32mI (947) esp32cam_test:   with internal pull-ups: SDA=1 SCL=1[0m
+[0;32mI (947) esp32cam_test: Starting SCCB debug scan (this may take a few seconds)...[0m
+[0;32mI (947) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (957) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (977) esp32cam_test: SCCB debug scan complete[0m
+[0;32mI (977) esp32cam_test: Initialising camera...[0m
+[0;32mI (977) cam_hal: cam init ok[0m
+[0;32mI (977) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (977) sccb-ng: sccb_i2c_port=1[0m
+[0;33mW (997) camera: No supported sensor detected — running fallback SCCB address scan 0x03..0x77[0m
+[1;31mE (1017) camera: Detected camera not supported.[0m
+[1;31mE (1017) camera: Camera probe failed with error 0x106(ESP_ERR_NOT_SUPPORTED)[0m
+[1;31mE (1017) esp32cam_test: Camera init failed: ESP_ERR_NOT_SUPPORTED[0m
+[1;31mE (1017) esp32cam_test: Camera init failed — halting[0m
+[0;32mI (1027) main_task: Returned from app_main()[0m

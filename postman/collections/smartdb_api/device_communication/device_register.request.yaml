@@ -1,0 +1,14 @@
+$kind: http-request
+name: register_device_credential
+url: "{{base_url}}/device/register"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "serial_number":"AA:BB:CC:DD",
+      "hardware":"ESP32",
+      "firmware":"1.0.0"
+    }
+examples: .resources/device_register.resources/examples
+order: 1785775523159

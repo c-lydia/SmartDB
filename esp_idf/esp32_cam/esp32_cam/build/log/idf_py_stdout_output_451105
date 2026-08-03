@@ -1,0 +1,77 @@
+Command: /home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python /home/chheng-lydia/esp/esp-idf/tools/idf_monitor.py -p /dev/ttyUSB0 -b 115200 --toolchain-prefix xtensa-esp32-elf- --target esp32 --revision 0 /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/esp32_cam.elf /home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build/bootloader/bootloader.elf -m '/home/chheng-lydia/.espressif/python_env/idf6.2_py3.14_env/bin/python' '/home/chheng-lydia/esp/esp-idf/tools/idf.py' '-p' '/dev/ttyUSB0'
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0040,len:6292
+load:0x40078000,len:15820
+load:0x40080400,len:3988
+entry 0x40080644
+[0;32mI (27) boot: ESP-IDF v6.1-dev-5706-ga602e67b0b 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Aug  2 2026 01:07:02[0m
+[0;32mI (28) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v3.1[0m
+[0;32mI (33) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (37) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (40) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (44) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (51) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (57) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (64) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (77) boot: End of partition table[0m
+[0;32mI (80) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=0e460h ( 58464) map[0m
+[0;32mI (109) esp_image: segment 1: paddr=0001e488 vaddr=3ffb0000 size=01b90h (  7056) load[0m
+[0;32mI (112) esp_image: segment 2: paddr=00020020 vaddr=400d0020 size=1f89ch (129180) map[0m
+[0;32mI (159) esp_image: segment 3: paddr=0003f8c4 vaddr=3ffb1b90 size=035f4h ( 13812) load[0m
+[0;32mI (164) esp_image: segment 4: paddr=00042ec0 vaddr=40080000 size=0bf04h ( 48900) load[0m
+[0;32mI (184) esp_image: segment 5: paddr=0004edcc vaddr=50000000 size=00028h (    40) load[0m
+[0;32mI (192) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (192) boot: Disabling RNG early entropy source...[0m
+[0;32mI (203) cpu_start: Multicore app[0m
+[0;32mI (211) cpu_start: GPIO 3 and 1 are used as console UART I/O pins[0m
+[0;32mI (211) cpu_start: Pro cpu start user code[0m
+[0;32mI (211) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (213) app_init: Application information:[0m
+[0;32mI (217) app_init: Project name:     esp32_cam[0m
+[0;32mI (221) app_init: App version:      4d6d37f[0m
+[0;32mI (225) app_init: Compile time:     Aug  2 2026 01:07:03[0m
+[0;32mI (230) app_init: ELF file SHA256:  b84983d55...[0m
+[0;32mI (234) app_init: ESP-IDF:          v6.1-dev-5706-ga602e67b0b[0m
+[0;32mI (240) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (243) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (247) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (251) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (258) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (263) heap_init: At 3FFB64E8 len 00029B18 (166 KiB): DRAM[0m
+[0;32mI (268) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (273) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (279) heap_init: At 4008BF04 len 000140FC (80 KiB): IRAM[0m
+[0;33mW (285) spi_flash: Detected boya flash chip but using generic driver. For optimal functionality, enable `SPI_FLASH_SUPPORT_BOYA_CHIP` in menuconfig[0m
+[0;32mI (297) spi_flash: detected chip: generic[0m
+[0;32mI (301) spi_flash: flash io: dio[0m
+[0;33mW (304) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (317) main_task: Started on CPU0[0m
+[0;32mI (317) main_task: Calling app_main()[0m
+[0;32mI (317) esp32cam_test: SmartDB ESP32-CAM basic test starting...[0m
+[0;32mI (327) esp32cam_test: Free heap: 291120 bytes[0m
+[0;32mI (327) esp32cam_test: Skipping SD init (avoiding GPIO conflicts)[0m
+[0;32mI (337) esp32cam_test: GPIO-level check: SDA=26 SCL=27[0m
+[0;32mI (337) esp32cam_test:   initial: SDA=1 SCL=1[0m
+[0;32mI (347) esp32cam_test:   with internal pull-ups: SDA=1 SCL=1[0m
+[0;32mI (347) esp32cam_test: Starting SCCB debug scan (this may take a few seconds)...[0m
+[0;32mI (357) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (357) sccb-ng: sccb_i2c_port=1[0m
+[0;32mI (377) esp32cam_test: SCCB debug scan complete[0m
+[0;32mI (377) esp32cam_test: Initialising camera...[0m
+[0;32mI (387) cam_hal: cam init ok[0m
+[0;32mI (387) sccb-ng: pin_sda 26 pin_scl 27[0m
+[0;32mI (387) sccb-ng: sccb_i2c_port=1[0m
+[1;31mE (397) camera: Detected camera not supported.[0m
+[1;31mE (397) camera: Camera probe failed with error 0x106(ESP_ERR_NOT_SUPPORTED)[0m
+[1;31mE (397) esp32cam_test: Camera init failed: ESP_ERR_NOT_SUPPORTED[0m
+[1;31mE (407) esp32cam_test: Camera init failed — halting[0m
+[0;32mI (407) main_task: Returned from app_main()[0m

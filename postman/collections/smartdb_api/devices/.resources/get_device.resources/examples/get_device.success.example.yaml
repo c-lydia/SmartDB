@@ -1,0 +1,6 @@
+$kind: http-example
+request: {url: "{{base_url}}/devices/{{device_id}}", method: GET}
+response:
+  statusCode: 200
+  statusText: OK
+  body: {type: json, content: '{"device_id":"ESP32_001","device_name":"Living Room Monitor","device_type":"ESP32","location":"Living Room","status":"online"}'}

@@ -1,0 +1,6 @@
+$kind: http-request
+name: get_latest
+url: "{{base_url}}/devices/{{device_id}}/telemetry/latest"
+method: GET
+examples: .resources/get_latest.resources/examples
+order: 2465448435425205

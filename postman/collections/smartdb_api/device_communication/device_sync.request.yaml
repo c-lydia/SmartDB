@@ -1,0 +1,12 @@
+$kind: http-request
+name: device_sync
+url: "{{base_url}}/devices/{{device_id}}/sync"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+     "last_timestamp":"2026-08-03T10:00:00"
+    }
+examples: .resources/device_sync.resources/examples
+order: 3047327629597828

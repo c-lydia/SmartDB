@@ -1,0 +1,22 @@
+$kind: http-example
+request:
+  url: "{{base_url}}/devices/{{device_id}}/commands"
+  method: POST
+  body:
+    type: json
+    content: |-
+      {
+       "command":"SET_INTERVAL",
+       "value":5
+      }
+response:
+  statusCode: 202
+  statusText: ""
+  body:
+    type: json
+    content: |-
+      {
+       "command_id":1001,
+       "status":"queued"
+      }
+order: 1785775905619
