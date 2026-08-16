@@ -14,20 +14,70 @@ FirebaseAuth auth;
 FirebaseConfig config;
 
 bool signupOK = false;
+bool relayState = true;
+bool jetsonAvailable = false;
 
 float fakeTemperature = 25.0;
 float fakeCurrent = 2.5;
+float fakeVoltage = 220.0;
 int dataCounter = 0;
+
+unsigned long alertCooldown = 0;
+const unsigned long ALERT_COOLDOWN_MS = 30000;
+
+HardwareSerial JetsonSerial(2);
+
+enum AlertLevel {
+  ALERT_NONE = 0,
+  ALERT_WARNING = 1,
+  ALERT_CRITICAL = 2,
+  ALERT_EMERGENCY = 3
+};
+
+enum AlertType {
+  ALERT_OVERHEAT,
+  ALERT_OVERLOAD,
+  ALERT_VOLTAGE_FLUCTUATION,
+  ALERT_THERMAL_HOTSPOT,
+  ALERT_ANOMALY_DETECTED
+};
+
+struct Alert {
+  AlertType type;
+  AlertLevel level;
+  float value;
+  float threshold;
+  String message;
+  unsigned long timestamp;
+  bool acknowledged;
+  bool relayCut;
+};
+
+Alert currentAlert;
+
+const float TEMP_WARNING = 50.0;
+const float TEMP_CRITICAL = 60.0;
+const float TEMP_EMERGENCY = 70.0;
+
+const float CURRENT_WARNING = 7.0;
+const float CURRENT_CRITICAL = 10.0;
+const float CURRENT_EMERGENCY = 13.0;
+
+const float VOLTAGE_MIN = 200.0;
+const float VOLTAGE_MAX = 240.0;
 
 void setup() {
   Serial.begin(115200);
   delay(2000);
   
   Serial.println();
-  Serial.println("SmartDB Firebase Integration");
+  Serial.println("SmartDB System Starting");
+  Serial.println("================================");
   
   setupWiFi();
   setupFirebase();
+  setupJetsonCommunication();
+  setupRelay();
 }
 
 void setupWiFi() {
@@ -47,10 +97,10 @@ void setupWiFi() {
   
   if (WiFi.status() == WL_CONNECTED) {
     Serial.println("WiFi Connected");
-    Serial.print("IP: ");
+    Serial.print("IP Address: ");
     Serial.println(WiFi.localIP());
   } else {
-    Serial.println("WiFi Failed");
+    Serial.println("WiFi Connection Failed");
   }
 }
 
@@ -64,7 +114,8 @@ void setupFirebase() {
     Serial.println("Firebase signup successful");
     signupOK = true;
   } else {
-    Serial.printf("Firebase signup failed: %s\n", config.signer.signupError.message.c_str());
+    Serial.print("Firebase signup failed: ");
+    Serial.println(config.signer.signupError.message.c_str());
     signupOK = false;
   }
   
@@ -74,7 +125,19 @@ void setupFirebase() {
   Firebase.reconnectWiFi(true);
 }
 
-void sendDataToFirebase(float temperature, float current) {
+void setupJetsonCommunication() {
+  JetsonSerial.begin(115200, SERIAL_8N1, 16, 17);
+  Serial.println("Jetson Nano UART initialized on pins 16 and 17");
+}
+
+void setupRelay() {
+  pinMode(18, OUTPUT);
+  digitalWrite(18, HIGH);
+  relayState = true;
+  Serial.println("Relay initialized. Power ON");
+}
+
+void sendDataToFirebase(float temperature, float current, float voltage) {
   if (!signupOK) {
     Serial.println("Firebase not ready, skipping upload");
     return;
@@ -92,9 +155,11 @@ void sendDataToFirebase(float temperature, float current) {
   FirebaseJson json;
   json.set("temperature", temperature);
   json.set("current", current);
+  json.set("voltage", voltage);
   json.set("timestamp", Firebase.getTimestamp());
   json.set("device", "SmartDB_ESP32");
   json.set("readings_count", dataCounter);
+  json.set("relay_state", relayState);
   
   Serial.println("Sending data to Firebase...");
   Serial.print("Path: ");
@@ -110,19 +175,27 @@ void sendDataToFirebase(float temperature, float current) {
   }
 }
 
-void sendAlertToFirebase(String alertType, float value, float threshold) {
+void sendAlertToFirebase(Alert alert) {
   if (!signupOK) {
+    return;
+  }
+  
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("WiFi not connected, alert stored locally");
     return;
   }
   
   String path = "/alerts/alert_" + String(millis());
   
   FirebaseJson json;
-  json.set("alert_type", alertType);
-  json.set("value", value);
-  json.set("threshold", threshold);
+  json.set("type", getAlertTypeString(alert.type));
+  json.set("level", getAlertLevelString(alert.level));
+  json.set("value", alert.value);
+  json.set("threshold", alert.threshold);
+  json.set("message", alert.message);
+  json.set("relay_cut", alert.relayCut);
   json.set("timestamp", Firebase.getTimestamp());
-  json.set("status", "active");
+  json.set("acknowledged", false);
   json.set("device", "SmartDB_ESP32");
   
   Serial.println("Sending alert to Firebase...");
@@ -132,6 +205,192 @@ void sendAlertToFirebase(String alertType, float value, float threshold) {
   } else {
     Serial.print("Failed to send alert: ");
     Serial.println(fbdo.errorReason());
+  }
+}
+
+String getAlertTypeString(AlertType type) {
+  switch(type) {
+    case ALERT_OVERHEAT: return "OVERHEAT";
+    case ALERT_OVERLOAD: return "OVERLOAD";
+    case ALERT_VOLTAGE_FLUCTUATION: return "VOLTAGE_FLUCTUATION";
+    case ALERT_THERMAL_HOTSPOT: return "THERMAL_HOTSPOT";
+    case ALERT_ANOMALY_DETECTED: return "ANOMALY_DETECTED";
+    default: return "UNKNOWN";
+  }
+}
+
+String getAlertLevelString(AlertLevel level) {
+  switch(level) {
+    case ALERT_WARNING: return "WARNING";
+    case ALERT_CRITICAL: return "CRITICAL";
+    case ALERT_EMERGENCY: return "EMERGENCY";
+    default: return "NONE";
+  }
+}
+
+void checkAlerts(float temperature, float current, float voltage) {
+  unsigned long now = millis();
+  
+  if (now - alertCooldown < ALERT_COOLDOWN_MS) {
+    return;
+  }
+  
+  Alert newAlert;
+  newAlert.timestamp = now;
+  newAlert.acknowledged = false;
+  newAlert.relayCut = false;
+  newAlert.level = ALERT_NONE;
+  
+  if (temperature > TEMP_EMERGENCY) {
+    newAlert.type = ALERT_OVERHEAT;
+    newAlert.level = ALERT_EMERGENCY;
+    newAlert.value = temperature;
+    newAlert.threshold = TEMP_EMERGENCY;
+    newAlert.message = "Emergency: Extreme temperature detected";
+    newAlert.relayCut = true;
+    
+  } else if (temperature > TEMP_CRITICAL) {
+    newAlert.type = ALERT_OVERHEAT;
+    newAlert.level = ALERT_CRITICAL;
+    newAlert.value = temperature;
+    newAlert.threshold = TEMP_CRITICAL;
+    newAlert.message = "Critical: High temperature detected";
+    newAlert.relayCut = false;
+    
+  } else if (temperature > TEMP_WARNING) {
+    newAlert.type = ALERT_OVERHEAT;
+    newAlert.level = ALERT_WARNING;
+    newAlert.value = temperature;
+    newAlert.threshold = TEMP_WARNING;
+    newAlert.message = "Warning: Elevated temperature detected";
+    newAlert.relayCut = false;
+  }
+  
+  if (current > CURRENT_EMERGENCY && newAlert.level < ALERT_EMERGENCY) {
+    newAlert.type = ALERT_OVERLOAD;
+    newAlert.level = ALERT_EMERGENCY;
+    newAlert.value = current;
+    newAlert.threshold = CURRENT_EMERGENCY;
+    newAlert.message = "Emergency: Extreme current overload";
+    newAlert.relayCut = true;
+    
+  } else if (current > CURRENT_CRITICAL && newAlert.level < ALERT_CRITICAL) {
+    newAlert.type = ALERT_OVERLOAD;
+    newAlert.level = ALERT_CRITICAL;
+    newAlert.value = current;
+    newAlert.threshold = CURRENT_CRITICAL;
+    newAlert.message = "Critical: High current overload";
+    newAlert.relayCut = false;
+    
+  } else if (current > CURRENT_WARNING && newAlert.level < ALERT_WARNING) {
+    newAlert.type = ALERT_OVERLOAD;
+    newAlert.level = ALERT_WARNING;
+    newAlert.value = current;
+    newAlert.threshold = CURRENT_WARNING;
+    newAlert.message = "Warning: High current detected";
+    newAlert.relayCut = false;
+  }
+  
+  if ((voltage < VOLTAGE_MIN || voltage > VOLTAGE_MAX) && newAlert.level < ALERT_WARNING) {
+    newAlert.type = ALERT_VOLTAGE_FLUCTUATION;
+    newAlert.level = ALERT_WARNING;
+    newAlert.value = voltage;
+    newAlert.threshold = (voltage < VOLTAGE_MIN) ? VOLTAGE_MIN : VOLTAGE_MAX;
+    newAlert.message = "Warning: Voltage fluctuation detected";
+    newAlert.relayCut = false;
+  }
+  
+  if (newAlert.level != ALERT_NONE) {
+    currentAlert = newAlert;
+    alertCooldown = now;
+    
+    printAlert(newAlert);
+    sendAlertToFirebase(newAlert);
+    
+    if (newAlert.relayCut) {
+      cutRelay();
+    }
+  }
+}
+
+void printAlert(Alert alert) {
+  Serial.println("========================================");
+  Serial.println("ALERT TRIGGERED");
+  Serial.println("========================================");
+  
+  Serial.print("Level: ");
+  Serial.println(getAlertLevelString(alert.level));
+  
+  Serial.print("Type: ");
+  Serial.println(getAlertTypeString(alert.type));
+  
+  Serial.print("Value: ");
+  Serial.println(alert.value);
+  
+  Serial.print("Threshold: ");
+  Serial.println(alert.threshold);
+  
+  Serial.print("Message: ");
+  Serial.println(alert.message);
+  
+  Serial.print("Relay Cut: ");
+  Serial.println(alert.relayCut ? "Yes" : "No");
+  
+  Serial.println("========================================");
+}
+
+void cutRelay() {
+  Serial.println("Relay Cut. Power disconnected");
+  relayState = false;
+  digitalWrite(18, LOW);
+}
+
+void restoreRelay() {
+  Serial.println("Relay Restored. Power reconnected");
+  relayState = true;
+  digitalWrite(18, HIGH);
+}
+
+void sendDataToJetson(float temp, float current, float voltage) {
+  String data = String(temp) + "," + 
+                String(current) + "," + 
+                String(voltage) + "," + 
+                String(millis()) + "\n";
+  
+  JetsonSerial.print(data);
+}
+
+void receiveFromJetson() {
+  if (JetsonSerial.available()) {
+    String response = JetsonSerial.readStringUntil('\n');
+    
+    if (response.startsWith("ANOMALY_SCORE:")) {
+      int colonIndex = response.indexOf(':');
+      int pipeIndex = response.indexOf('|');
+      
+      if (pipeIndex > 0) {
+        float score = response.substring(colonIndex + 1, pipeIndex).toFloat();
+        String action = response.substring(pipeIndex + 1);
+        
+        Serial.print("Jetson AI Score: ");
+        Serial.println(score);
+        jetsonAvailable = true;
+        
+        if (score > 0.8) {
+          Serial.println("Jetson detected high anomaly");
+          cutRelay();
+          
+          Alert alert;
+          alert.type = ALERT_ANOMALY_DETECTED;
+          alert.level = ALERT_EMERGENCY;
+          alert.value = score;
+          alert.threshold = 0.8;
+          alert.message = "Jetson AI detected fire risk";
+          alert.relayCut = true;
+          sendAlertToFirebase(alert);
+        }
+      }
+    }
   }
 }
 
@@ -153,19 +412,40 @@ float generateFakeCurrent() {
   return fakeCurrent;
 }
 
-void checkForAlerts(float temperature, float current) {
-  const float TEMP_THRESHOLD = 60.0;
-  const float CURRENT_THRESHOLD = 10.0;
+float generateFakeVoltage() {
+  fakeVoltage += random(-3, 4) / 10.0;
   
-  if (temperature > TEMP_THRESHOLD) {
-    Serial.println("FIRE ALERT: Temperature exceeds threshold!");
-    sendAlertToFirebase("Overheat", temperature, TEMP_THRESHOLD);
-  }
+  if (fakeVoltage < 190) fakeVoltage = 190;
+  if (fakeVoltage > 250) fakeVoltage = 250;
   
-  if (current > CURRENT_THRESHOLD) {
-    Serial.println("OVERLOAD ALERT: Current exceeds threshold!");
-    sendAlertToFirebase("Overload", current, CURRENT_THRESHOLD);
-  }
+  return fakeVoltage;
+}
+
+void printSensorData(float temperature, float current, float voltage) {
+  Serial.println("================================");
+  Serial.println("Sensor Data");
+  Serial.println("-------------------------------");
+  Serial.print("Temperature: ");
+  Serial.print(temperature, 1);
+  Serial.println(" C");
+  
+  Serial.print("Current: ");
+  Serial.print(current, 2);
+  Serial.println(" A");
+  
+  Serial.print("Voltage: ");
+  Serial.print(voltage, 1);
+  Serial.println(" V");
+  
+  Serial.print("Relay State: ");
+  Serial.println(relayState ? "ON" : "OFF");
+  
+  Serial.print("Jetson Nano: ");
+  Serial.println(jetsonAvailable ? "Connected" : "Not Available");
+  
+  Serial.print("Data Counter: ");
+  Serial.println(dataCounter);
+  Serial.println("================================");
 }
 
 void loop() {
@@ -178,20 +458,19 @@ void loop() {
   
   float temperature = generateFakeTemperature();
   float current = generateFakeCurrent();
+  float voltage = generateFakeVoltage();
   
-  Serial.println("--- Sensor Data (Fake) ---");
-  Serial.print("Temperature: ");
-  Serial.print(temperature, 1);
-  Serial.println(" C");
+  sendDataToJetson(temperature, current, voltage);
+  receiveFromJetson();
   
-  Serial.print("Current: ");
-  Serial.print(current, 2);
-  Serial.println(" A");
+  checkAlerts(temperature, current, voltage);
   
-  sendDataToFirebase(temperature, current);
-  checkForAlerts(temperature, current);
+  static unsigned long lastPrint = 0;
+  if (millis() - lastPrint > 10000) {
+    lastPrint = millis();
+    printSensorData(temperature, current, voltage);
+    sendDataToFirebase(temperature, current, voltage);
+  }
   
-  Serial.println();
-  
-  delay(10000);
+  delay(500);
 }
