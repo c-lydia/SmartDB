@@ -2,12 +2,15 @@
 #include <WiFi.h>
 #include <Firebase_ESP_Client.h>
 #include <addons/TokenHelper.h>
+#include "config.h"  
 
-const char* WIFI_SSID = "Chau Darith";
-const char* WIFI_PASSWORD = "12345678";
+void setup(){
+WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+config.api_key = API_KEY;
+config.database_url = DATABASE_URL;
 
-#define API_KEY "AIzaSyAyLWOnnvc8AxLe8nRBnK9szMh-8l_HetU"
-#define DATABASE_URL "https://smartdb-3ca26-default-rtdb.asia-southeast1.firebasedatabase.app"
+}
+
 
 FirebaseData fbdo;
 FirebaseAuth auth;
@@ -27,44 +30,6 @@ const unsigned long ALERT_COOLDOWN_MS = 30000;
 
 HardwareSerial JetsonSerial(2);
 
-enum AlertLevel {
-  ALERT_NONE = 0,
-  ALERT_WARNING = 1,
-  ALERT_CRITICAL = 2,
-  ALERT_EMERGENCY = 3
-};
-
-enum AlertType {
-  ALERT_OVERHEAT,
-  ALERT_OVERLOAD,
-  ALERT_VOLTAGE_FLUCTUATION,
-  ALERT_THERMAL_HOTSPOT,
-  ALERT_ANOMALY_DETECTED
-};
-
-struct Alert {
-  AlertType type;
-  AlertLevel level;
-  float value;
-  float threshold;
-  String message;
-  unsigned long timestamp;
-  bool acknowledged;
-  bool relayCut;
-};
-
-Alert currentAlert;
-
-const float TEMP_WARNING = 50.0;
-const float TEMP_CRITICAL = 60.0;
-const float TEMP_EMERGENCY = 70.0;
-
-const float CURRENT_WARNING = 7.0;
-const float CURRENT_CRITICAL = 10.0;
-const float CURRENT_EMERGENCY = 13.0;
-
-const float VOLTAGE_MIN = 200.0;
-const float VOLTAGE_MAX = 240.0;
 
 void setup() {
   Serial.begin(115200);
@@ -82,9 +47,9 @@ void setup() {
 
 void setupWiFi() {
   Serial.print("Connecting to WiFi: ");
-  Serial.println(WIFI_SSID);
+  Serial.println(WIFI_SSID);  
   
-  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);  
   
   int count = 0;
   while (WiFi.status() != WL_CONNECTED && count < 30) {
@@ -107,8 +72,8 @@ void setupWiFi() {
 void setupFirebase() {
   Serial.println("Initializing Firebase...");
   
-  config.api_key = API_KEY;
-  config.database_url = DATABASE_URL;
+  config.api_key = API_KEY; 
+  config.database_url = DATABASE_URL;  
   
   if (Firebase.signUp(&config, &auth, "", "")) {
     Serial.println("Firebase signup successful");
@@ -124,6 +89,7 @@ void setupFirebase() {
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
 }
+
 
 void setupJetsonCommunication() {
   JetsonSerial.begin(115200, SERIAL_8N1, 16, 17);

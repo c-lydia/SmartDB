@@ -1,0 +1,10 @@
+#ifndef CONFIG_H
+#define CONFIG_H
+
+const char* WIFI_SSID = "TASTECOFFEE";
+const char* WIFI_PASSWORD = "11112222";
+
+#define API_KEY "AIzaSyAyLWOnnvc8AxLe8nRBnK9szMh-8l_HetU"
+#define DATABASE_URL "https://smartdb-3ca26-default-rtdb.asia-southeast1.firebasedatabase.app"
+
+#endif
