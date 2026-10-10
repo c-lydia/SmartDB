@@ -95,5 +95,4 @@ live electrical installation.
 
 ## Related projects
 
-- [ByteLab](docs/related/bytelab.md) — Flutter desktop workspace for firmware editing,
-  ESP-IDF development and serial inspection; see the guide for SmartDB integration limits.
+- [ByteLab](https://github.com/c-lydia/ByteLab) — firmware development workspace; [hosted browser edition](https://bytelab-web.vercel.app) and [SmartDB integration guide](https://smartdb-docs.vercel.app/related/bytelab.html).
