@@ -1,0 +1,74 @@
+{
+  "updated": "2026-10-10",
+  "connector": "J6",
+  "footprint": "Connector_JST:JST_PH_B2B-PH-K_1x02_P2.00mm_Vertical",
+  "position_mm": [
+    142.3,
+    120
+  ],
+  "pinout": {
+    "1": "BGND -> ESP32-CAM GND",
+    "2": "LOGIC_5V_FUSED -> ESP32-CAM 5V"
+  },
+  "mating_housing": "JST PHR-2, 2.0 mm pitch",
+  "contacts": "JST SPH-002T-P0.5S for suitable 24 AWG wire",
+  "cable": "Short 24 AWG pair, target <=0.2 m one-way; ESP32-CAM end uses appropriately insulated contacts for its header. Verify continuity and polarity against the labelled pins.",
+  "data_interface": "Existing Wi-Fi camera node; power only, no UART/I2C on J6",
+  "source": "J2 regulated 5 V -> F1 pin 1 -> F1 pin 2 -> new independent branch -> J6 pin 2",
+  "input_supply_target": "regulated 5 V, 2 A capable; shared fuse and thermal constraints still apply",
+  "shared_fuse": {
+    "part": "046701.5NRHF",
+    "type": "one-time fast-acting",
+    "rating_A": 1.5,
+    "continuous_derating_factor_at_25C": 0.75,
+    "continuous_allowance_A_at_25C": 1.125,
+    "datasheet_example_allowance_A_at_70C": 0.9,
+    "dedicated_camera_current_limiter": false
+  },
+  "provisional_current_budget_A": {
+    "ESP32_CAM": 0.5,
+    "other_board_loads_at_5V_input": 0.6,
+    "combined": 1.1,
+    "measured": false
+  },
+  "manufacturer_camera_figures": {
+    "flash_off_mA_at_5V": 180,
+    "flash_max_mA_at_5V": 310,
+    "these_are_not_guaranteed_startup_or_peak_limits": true
+  },
+  "routing": {
+    "main_branch_width_mm": 1,
+    "fuse_pad_connection_width_mm": 0.75,
+    "feed_vias": {
+      "count": 2,
+      "diameter_mm": 0.8,
+      "drill_mm": 0.4
+    },
+    "capacitor_ground_vias": 2,
+    "capacitor_power_vias": 2,
+    "original_segments_preserved": 589,
+    "original_vias_preserved": 80,
+    "new_segments": 11,
+    "new_vias": 6,
+    "rough_new_power_copper_resistance_ohm": 0.00993,
+    "resistance_calculation_scope": "Conservative sum of new 1.0/.75 mm power segments at 20C, nominal 35um copper; excludes via barrels, planes, upstream copper, contacts, fuse and cable; not thermal qualification."
+  },
+  "decoupling": {
+    "C25": "10uF 16V X7R 0805",
+    "C26": "100nF 16V X7R 0603",
+    "component_selection": "Nominal specifications; final MPN and effective capacitance under DC bias to be checked"
+  },
+  "validation": {
+    "erc_violations": 0,
+    "drc_violations": 0,
+    "unconnected": 0,
+    "schematic_parity": 0,
+    "step_export_exit_code": 0,
+    "hardware_current_thermal_startup_and_voltage_drop_validated": false
+  },
+  "sources": {
+    "connector": "https://www.jst-mfg.com/product/pdf/eng/ePH.pdf",
+    "fuse": "https://www.littelfuse.com/assetdocs/fuse-467-datasheet?assetguid=4a59f034-1cca-460e-a5ba-e1e66247c76d",
+    "camera_manufacturer_datasheet_mirror": "https://components101.com/sites/default/files/component_datasheet/ESP32-CAM_datasheet.pdf"
+  }
+}

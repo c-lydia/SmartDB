@@ -1,0 +1,167 @@
+[
+  {
+    "path": "fp-lib-table",
+    "source": "/tmp/smartdb_review/compact/smart_db_v2/smart_db/fp-lib-table",
+    "sha256": "3ba3806ed4097d8a1277b62d1c93c6bc28bb6f2d77a6cf51fb05a20f91fb5e86"
+  },
+  {
+    "path": "sym-lib-table",
+    "source": "/tmp/smartdb_review/compact/smart_db_v2/smart_db/sym-lib-table",
+    "sha256": "96316b180de4a9b13b0229149b6bf3e45a33ecdd8e8eb3df8842624860090243"
+  },
+  {
+    "path": "smart_db.kicad_pcb",
+    "source": "/tmp/smartdb_review/compact/smart_db_v2/smart_db/smart_db.kicad_pcb",
+    "sha256": "9962ed99b0d6a42b68b417f9e9a2b94086b26b3646b336244a5676e5abd776e8"
+  },
+  {
+    "path": "smart_db.kicad_sch",
+    "source": "/tmp/smartdb_review/compact/smart_db_v2/smart_db/smart_db.kicad_sch",
+    "sha256": "28ba5b2d7e77a89d23310f241246b7129b52f7de4e39568837210147dc7b40e3"
+  },
+  {
+    "path": "SmartDB.kicad_sym",
+    "source": "/tmp/smartdb_review/compact/smart_db_v2/smart_db/SmartDB.kicad_sym",
+    "sha256": "cd5f849d6b4fd30db560a7f19e45cd467713862ec64c3a17dca7144cf9f1da65"
+  },
+  {
+    "path": "smart_db.kicad_pro",
+    "source": "/tmp/smartdb_review/compact/smart_db_v2/smart_db/smart_db.kicad_pro",
+    "sha256": "31fe5ad40066cae33065b835711f2b0c8bdf7f5b8e86eacc40d09a4e9341fa04"
+  },
+  {
+    "path": "SmartDB.pretty/ESP32_S3_WROOM_1_Edge.kicad_mod",
+    "source": "/tmp/smartdb_review/compact/smart_db_v2/smart_db/SmartDB.pretty/ESP32_S3_WROOM_1_Edge.kicad_mod",
+    "sha256": "277a021df02396d43209a0858c2396abc3af1bf308f7258eb6a33adc274b5fa5"
+  },
+  {
+    "path": "work/refine2.py",
+    "source": "/tmp/smartdb_review/compact/refine2.py",
+    "sha256": "bf3c34c3f69e53b7dc0e087919387234557ba4ce68ecf1a3acf455d0bf6b3056"
+  },
+  {
+    "path": "work/erc_boxed2.json",
+    "source": "/tmp/smartdb_review/compact/erc_boxed2.json",
+    "sha256": "27b68303f2e2cf08aff8fa3eec722cd76a8f6fb66c30af200191d6ee327d43a2"
+  },
+  {
+    "path": "work/drc_placement2.json",
+    "source": "/tmp/smartdb_review/compact/drc_placement2.json",
+    "sha256": "71728641a0f12ac28f1df07dd114851da54f7bc839e66aedef3f3bd7f56c9252"
+  },
+  {
+    "path": "work/netlist_final.xml",
+    "source": "/tmp/smartdb_review/compact/netlist_final.xml",
+    "sha256": "b43e9402a754b0b24def678c2b0e41701457a0a5770d96591d1c2ca528831770"
+  },
+  {
+    "path": "work/smartdb-logo-monochrome.svg",
+    "source": "/tmp/smartdb_review/compact/smartdb-logo-monochrome.svg",
+    "sha256": "55ba921ecedb2d41591581360f6d902d0d2f7174cc132a7bb139d5e109a02d33"
+  },
+  {
+    "path": "work/logo_rects.json",
+    "source": "/tmp/smartdb_review/compact/logo_rects.json",
+    "sha256": "2eabee329d2d039a18b9788d995c3815c0ad556514514f57b2d065d1c27e6185"
+  },
+  {
+    "path": "work/extract_logo.py",
+    "source": "/tmp/smartdb_review/compact/extract_logo.py",
+    "sha256": "1d265b8903382faffbd2babfc494a940222a4a8d85278d7c0bab18c19b7d7beb"
+  },
+  {
+    "path": "work/refine.py",
+    "source": "/tmp/smartdb_review/compact/refine.py",
+    "sha256": "e2591a39d7a7a4ccdfdd9df16a7b2ba8f6198615d7d5db695eaf8eb5c1d83fad"
+  },
+  {
+    "path": "work/schematic.png",
+    "source": "/tmp/smartdb_review/compact/schematic.png",
+    "sha256": "08492a7b1678ef65a228f3bcd06100d0e5a3850973f6e56a1b617ac34ba71e1b"
+  },
+  {
+    "path": "work/placement.png",
+    "source": "/tmp/smartdb_review/compact/placement.png",
+    "sha256": "e05c5f6ec52f2eec8b701b64990ed138a7189c43ee49862ee8108f694e3be28c"
+  },
+  {
+    "path": "work/erc_boxed.json",
+    "source": "/tmp/smartdb_review/compact/erc_boxed.json",
+    "sha256": "da265f920c0a1c7bacb097353b2f504dee4a96163dcd0609bd5626e6887c858d"
+  },
+  {
+    "path": "work/drc_placement.json",
+    "source": "/tmp/smartdb_review/compact/drc_placement.json",
+    "sha256": "9c10319106947323dd2e35a273b4f296c73088851fbcd9d965b36b979e366df7"
+  },
+  {
+    "path": "work/placement.pdf",
+    "source": "/tmp/smartdb_review/compact/placement.pdf",
+    "sha256": "4dd15bd0d8161cae8c933421862fa0e0d4d25c506e40a7a065013ed17af50ce9"
+  },
+  {
+    "path": "work/schematic.pdf",
+    "source": "/tmp/smartdb_review/compact/schematic.pdf",
+    "sha256": "066563e9deea30df9d5b3a31c0e896856953d5c367b6a8a77b99784a8628914e"
+  },
+  {
+    "path": "work/board_io.py",
+    "source": "/tmp/smartdb_review/compact/board_io.py",
+    "sha256": "ec477a9ae792501584f82ff09609f1483b0346f8189523b20b4c7acef882c415"
+  },
+  {
+    "path": "work/positions.json",
+    "source": "/tmp/smartdb_review/compact/positions.json",
+    "sha256": "d4a80143021d85a36dd35f715825a3e98c09d994b4c2e9e9d4a631c398300db2"
+  },
+  {
+    "path": "work/placement.py",
+    "source": "/tmp/smartdb_review/compact/placement.py",
+    "sha256": "fc2e379663f3233cb4e14a23a4b3b2ab965fc60b306ce4fff646efb78dde619e"
+  },
+  {
+    "path": "work/proposal.txt",
+    "source": "/tmp/smartdb_review/compact/proposal.txt",
+    "sha256": "01906e5f2f41a6d006ce76283580464cb4536bcdf43687c69068cb80a9b7bb67"
+  },
+  {
+    "path": "work/proposal_cover.png",
+    "source": "/tmp/smartdb_review/compact/proposal_cover.png",
+    "sha256": "ae49d58533655085dc395f49f8d18e2092c2d5c5bce86cf04b7eb713de8e0ed9"
+  },
+  {
+    "path": "work/box_schematic.py",
+    "source": "/tmp/smartdb_review/compact/box_schematic.py",
+    "sha256": "7eb14651680dfee858f5068ecf4829e568a777242831cb158f1e89b696fa6006"
+  },
+  {
+    "path": "work/erc_power.json",
+    "source": "/tmp/smartdb_review/compact/erc_power.json",
+    "sha256": "2cc3f0f730167e43ad88849c4e8172235d01c36de55e92e1f7ecb3edf8f54979"
+  },
+  {
+    "path": "work/netlist.xml",
+    "source": "/tmp/smartdb_review/compact/netlist.xml",
+    "sha256": "1cc41c9a604fff1b985dc7075060c3bdbace9f7b0730372acb81df1d8cc84c72"
+  },
+  {
+    "path": "work/schematic.py",
+    "source": "/tmp/smartdb_review/compact/schematic.py",
+    "sha256": "41dad4ba8428354c84e6aa7bbc23218608d7749fc230410f0c9ebfe075a92186"
+  },
+  {
+    "path": "work/helpers/module_update/cad_edit.py",
+    "source": "/tmp/smartdb_review/module_update/cad_edit.py",
+    "sha256": "4a4e8d77a1e4da3ade3f10eb04eb5573c938a65173dea6bf99d7135b0a80274e"
+  },
+  {
+    "path": "work/helpers/module_update/pcb_edit.py",
+    "source": "/tmp/smartdb_review/module_update/pcb_edit.py",
+    "sha256": "ee3e185f97a587cc1d3b1f08ff8dcaa1510333e2f1c86fbad4a8ed4b7b0cd1a1"
+  },
+  {
+    "path": "work/helpers/violations_update/fix_schematic.py",
+    "source": "/tmp/smartdb_review/violations_update/fix_schematic.py",
+    "sha256": "05b41e53dffaabe1d7cced66b1dd62857e05339f713678e8e881da7453fff60a"
+  }
+]

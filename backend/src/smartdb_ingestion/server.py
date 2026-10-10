@@ -8,7 +8,7 @@ from pathlib import Path
 import aiocoap
 import aiocoap.resource as resource
 
-from .codec import CBOR_CONTENT_FORMAT, encode_cbor
+from .codec import CBOR_CONTENT_FORMAT, CodecError, decode_cbor, encode_cbor
 from .service import IngestionService
 from .settings import Settings
 from .storage import MessageStore
@@ -34,12 +34,19 @@ class IngestResource(resource.Resource):
     async def render_post(self, request: aiocoap.Message) -> aiocoap.Message:
         if request.opt.content_format != CBOR_CONTENT_FORMAT:
             return self._response("4.15", {"error": "Content-Format must be application/cbor"})
-        # Decode once to obtain the claim; the service performs authoritative validation
+        # Bound the body before decoding, including the preliminary identity claim.
+        # The service still owns schema validation and authenticated identity matching.
+        try:
+            decoded = decode_cbor(request.payload, self.service.max_payload_bytes)
+            if not isinstance(decoded, dict):
+                raise CodecError("CBOR envelope must be a map")
+            claim = decoded.get("device_id")
+            if not isinstance(claim, str) or not claim:
+                raise CodecError("device_id must be a nonempty string")
+        except CodecError:
+            return self._response("4.00", {"error": "invalid message"})
 
         try:
-            import cbor2
-
-            claim = cbor2.loads(request.payload).get("device_id")
             identity = self.identities.identity_for(request, claim).device_id
         except Exception as exc:
             LOG.warning("identity rejection: %s", exc)

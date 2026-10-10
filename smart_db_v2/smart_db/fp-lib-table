@@ -1,0 +1,1 @@
+(fp_lib_table (version 7) (lib (name "SmartDB") (type "KiCad") (uri "${KIPRJMOD}/SmartDB.pretty") (options "") (descr "SmartDB edge-placement variants")))

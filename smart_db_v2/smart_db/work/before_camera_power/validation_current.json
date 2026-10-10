@@ -1,0 +1,179 @@
+{
+  "recorded_at": "2026-10-08T18:23:58.244471+00:00",
+  "milestone": "Full board routed, with wider signal/power traces and zero unconnected items",
+  "kicad_version": "10.0.6",
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected_items": 0,
+  "schematic_parity_issues": 0,
+  "clearance_rules_and_exclusions_unchanged": true,
+  "requested_preferred_widths_mm": {
+    "Default": 0.3,
+    "Power": 0.6,
+    "Supply": 0.75,
+    "Load": 1.0
+  },
+  "actual_widths_mm": {
+    "0.4": {
+      "segments": 20,
+      "length_mm": 55.35
+    },
+    "0.6": {
+      "segments": 103,
+      "length_mm": 435.472
+    },
+    "0.2": {
+      "segments": 101,
+      "length_mm": 174.657
+    },
+    "0.75": {
+      "segments": 43,
+      "length_mm": 110.744
+    },
+    "0.5624": {
+      "segments": 2,
+      "length_mm": 5.691
+    },
+    "0.3": {
+      "segments": 238,
+      "length_mm": 635.301
+    },
+    "0.225": {
+      "segments": 2,
+      "length_mm": 1.883
+    },
+    "1.0": {
+      "segments": 18,
+      "length_mm": 84.006
+    },
+    "0.25": {
+      "segments": 59,
+      "length_mm": 88.289
+    },
+    "0.8": {
+      "segments": 3,
+      "length_mm": 3.1
+    }
+  },
+  "load_routes_minimum_1mm_without_vias": true,
+  "inner_ground_planes_preserved": true,
+  "four_layer_antenna_keepout_preserved": true,
+  "connector_label_net_checks": {
+    "J2": {
+      "1": "BGND",
+      "2": "LOGIC_5V_IN"
+    },
+    "J5": {
+      "1": "LOAD_IN",
+      "2": "LOAD_OUT"
+    },
+    "J3": {
+      "1": "SDA",
+      "2": "SCL",
+      "3": "BGND",
+      "4": "MCU_3V3"
+    },
+    "J1": {
+      "T": "CT_HI",
+      "S": "CT_BIAS"
+    }
+  },
+  "completed_nets": [
+    "ADC_3V3",
+    "ADC_AIN0",
+    "ADC_AIN1",
+    "ADC_LED_A",
+    "BGND",
+    "BOOT",
+    "BUCK_BST",
+    "BUCK_SW",
+    "BUZZER_DRIVE",
+    "BUZZER_LOW",
+    "CTL",
+    "CT_BIAS",
+    "CT_HI",
+    "EN",
+    "LED_B",
+    "LED_B_A",
+    "LED_G",
+    "LED_G_A",
+    "LED_R",
+    "LED_R_A",
+    "LOAD_IN",
+    "LOAD_OUT",
+    "LOGIC_5V_FUSED",
+    "LOGIC_5V_IN",
+    "MCU_3V3",
+    "Net-(D5-A)",
+    "Net-(Q2-G)",
+    "RELAY_GATE",
+    "RELAY_LOW",
+    "RX",
+    "SCL",
+    "SDA",
+    "TX",
+    "USB_CC1",
+    "USB_CC2",
+    "USB_D+",
+    "USB_D-",
+    "USB_LED_A",
+    "USB_RESET",
+    "USB_VBUS",
+    "USB_VBUS_SENSE",
+    "VCC"
+  ],
+  "track_count": 589,
+  "via_count": 80,
+  "inner_signal_track_count": 0,
+  "minimum_track_width_mm": 0.2,
+  "usb_paths": {
+    "D+_A6_to_U5": {
+      "planar_length_mm": 17.518,
+      "layer_transitions": 2
+    },
+    "D+_B6_to_U5": {
+      "planar_length_mm": 18.518,
+      "layer_transitions": 2
+    },
+    "D-_A7_to_U5": {
+      "planar_length_mm": 14.815,
+      "layer_transitions": 2
+    },
+    "D-_B7_to_U5": {
+      "planar_length_mm": 15.493,
+      "layer_transitions": 2
+    }
+  },
+  "usb_main_pair": {
+    "width_mm": 0.2,
+    "gap_mm": 0.3,
+    "reference": "In2.Cu ground",
+    "impedance_validated": false
+  },
+  "sha256": {
+    "smart_db.kicad_pcb": "1a44835c7f856db831d8aefda4ecd7e5e36efb33a092fb14270b9886f0ae058d",
+    "smart_db.kicad_sch": "b58c5fdf22de64b5eb317724a5d524681b1128cb27b2bc133b211052b2cb4b06",
+    "smart_db.kicad_pro": "95ef6f7beed5bea76eef0b0cd191d463f0c36ad269b9d64dc35875f3e474979a",
+    "SmartDB.pretty/ESP32_S3_WROOM_1_Edge.kicad_mod": "c436149ad146cea9c4ca31e8866c3846fc62a0126a564b55062ed109c7df6452",
+    "SmartDB.kicad_sym": "cd5f849d6b4fd30db560a7f19e45cd467713862ec64c3a17dca7144cf9f1da65",
+    "fp-lib-table": "3ba3806ed4097d8a1277b62d1c93c6bc28bb6f2d77a6cf51fb05a20f91fb5e86",
+    "sym-lib-table": "96316b180de4a9b13b0229149b6bf3e45a33ecdd8e8eb3df8842624860090243",
+    "work/erc_current.json": "a7d33c13764e3d8e6783b2484ae4ce04c4f745f86817062fc4cd63f13fcc8f09",
+    "work/drc_routing_current.json": "181b818bd681a99515636b0bb9fcfc326713c11e9845959234945a2c0779111d",
+    "work/netlist_current.xml": "aef8a0c8f0f304a3fe24879b76521354a5a1dbe7b5837cf80ee7259ca8b95aa0",
+    "work/placement_current.pdf": "31b0712176f97ba94b3d261811ec41cd0edf5efd6c34523351a3fb777e4a17d3",
+    "work/back_labels_current.pdf": "e80be2b41c64cb3e8b4966a4745a3386de2a337c7b64be0558f37b71104cfd8b",
+    "work/schematic_current.pdf": "917803fff10dd4d1cc9083842ee2a638ca9fd0e21c4af0aa13297b8e335b66bd",
+    "work/routing_current.pdf": "148671551130aea48dac57d51ec2dc25f801f78fa46f882dbc6d11ff8342d03c",
+    "SmartDB.pretty/PinHeader_1x04_P2.54mm_Horizontal_Edge.kicad_mod": "861cc907eb5850005a542f53ea40451534c9204c2c6c778ae7c4bfa786a7f7d3",
+    "SmartDB.pretty/USB_C_Receptacle_Amphenol_12401948E412A_Preview.kicad_mod": "f5d69a19686f4cc19b7603e9ca7c88df4e19243604e605a03faa2580da657288",
+    "SmartDB.3dshapes/USB_C_12401948_preview.wrl": "47a4ce7e356bb9d62b08d7e78582a3f26d27748bf60c39dd947fe81788695bde",
+    "SmartDB.3dshapes/USB_C_12401948_preview.step": "f00db7f633294194107b52d660d41a87725f7d9c1cd18958059fd6f36d3991e1",
+    "SmartDB.3dshapes/LED_ROHM_SMLVN6_preview.step": "c83c7e2b8578510f39de902dc8b7f89b963b1074649949914105363fa95f4a4a",
+    "SmartDB.3dshapes/SJ-3523-SMT_aligned.step": "441a7c029004bafa1f6213bc28dfd9dbdea551419992203fac0aa5a325859765",
+    "SmartDB.3dshapes/provenance.json": "1e9190db4db078d792378fdf5470a66ae2849cf3c142b045127438a2b336add1",
+    "SmartDB.pretty/LED_ROHM_SMLVN6_Preview.kicad_mod": "066a682e0f1c89cc066311f9f54739784de29898ed89da541fecaf85328ae5a4",
+    "SmartDB.pretty/Jack_3.5mm_SJ-3523-SMT_Local.kicad_mod": "eb3aa20e7c7b56f922d642002fc65ce8074b724fd59b105844f6b752b6352c71",
+    "smart_db.step": "63c4f664bde63283e67aa0395bd9734d162ec937fb3bcadf55ada33d0d6e0cb7"
+  }
+}

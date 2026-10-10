@@ -56,8 +56,8 @@ class IngestionService:
             "server_time": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         }
 
-        if stored.accepted_through_sequence is not None:
-            response["accepted_through_sequence"] = stored.accepted_through_sequence
+        # The development store has no durable, contiguous checkpoint. A cumulative
+        # acknowledgement here would incorrectly authorize deletion from device flash.
 
         codes = {
             "accepted": "2.04",

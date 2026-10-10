@@ -1,21 +1,29 @@
 name: smartdb_dev
 values:
-  - key: base_url
-    value: 'http://localhost:8000/api/v1'
-  - key: token
-    value: ''
-  - key: device_id
-    value: 'ESP32_001'
-  - key: alert_id
-    value: '1'
-  - key: notification_id
-    value: '10'
-  - key: command_id
-    value: '1001'
-  - key: from
-    value: '2026-08-03T00:00:00Z'
-  - key: to
-    value: '2026-08-04T00:00:00Z'
-  - key: limit
-    value: '100'
+- key: base_url
+  value: http://127.0.0.1:5000/api/v1
+- key: token
+  value: ''
+- key: device_token
+  value: ''
+- key: device_id
+  value: ESP32_001
+- key: alert_id
+  value: '1'
+- key: notification_id
+  value: '10'
+- key: command_id
+  value: '1001'
+- key: from
+  value: '2026-08-03T00:00:00Z'
+- key: to
+  value: '2026-08-04T00:00:00Z'
+- key: limit
+  value: '100'
+- key: firmware_url
+  value: http://192.168.1.51
+- key: camera_url
+  value: http://192.168.1.50
+- key: firmware_token
+  value: ''
 color: 240

@@ -1,16 +1,56 @@
 $kind: http-request
 name: upload_telemetry
-url: "{{base_url}}/devices/{{device_id}}/telemetry"
+url: '{{base_url}}/devices/{{device_id}}/telemetry'
 method: POST
+headers:
+  Authorization: Bearer {{token}}
+  Content-Type: application/json
 body:
   type: json
   content: |-
     {
-      "voltage": 220.5,
-      "current": 2.4,
-      "power": 529,
-      "temperature": 35.2,
-      "timestamp": "2026-08-03T22:00:00"
-    } 
+      "voltage": null,
+      "power": null,
+      "timestamp": "2026-10-10T08:00:00Z",
+      "sample_id": "example-boot:1",
+      "uptime_ms": 10000,
+      "time_quality": "synced",
+      "synthetic": false,
+      "current": 0.24,
+      "temperature": 31.5,
+      "relay_state": "open",
+      "protection_state": "disarmed",
+      "protection_reason": "not_commissioned",
+      "config_version": 1,
+      "commissioned": false,
+      "storage_ok": true,
+      "current_sensor": "SCT-013-000 AC only; 18 ohm burden",
+      "arc_detection_available": false,
+      "events": [],
+      "vision": {
+        "ready": false,
+        "synthetic": false,
+        "reason": "camera alignment not configured",
+        "installation_id": "panel-1",
+        "camera_id": "smartdb-camera-1",
+        "camera_frame_id": "",
+        "calibration_version": "uncalibrated",
+        "sequence": 0,
+        "display_min_c": 20,
+        "display_max_c": 80,
+        "regions": [
+          {
+            "id": "panel",
+            "supported": false,
+            "ambiguous": false,
+            "samples": 0,
+            "boundary_samples": 0,
+            "max_c": null,
+            "mean_c": null,
+            "rise_c_per_min": null
+          }
+        ]
+      }
+    }
 examples: .resources/upload_telemetry.resources/examples
 order: 1785773735834

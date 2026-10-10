@@ -1,0 +1,201 @@
+{
+  "recorded_at": "2026-10-10T06:51:59.664387+00:00",
+  "milestone": "Full board routed, including J6 USB-A fused 5 V output for external ESP32-CAM-MB",
+  "kicad_version": "10.0.6",
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected_items": 0,
+  "schematic_parity_issues": 0,
+  "clearance_rules_and_exclusions_unchanged": true,
+  "camera_addition_preserves_original_copper_and_placements": true,
+  "requested_preferred_widths_mm": {
+    "Default": 0.3,
+    "Power": 0.6,
+    "Supply": 0.75,
+    "Load": 1.0
+  },
+  "actual_widths_mm": {
+    "0.4": {
+      "segments": 20,
+      "length_mm": 55.35
+    },
+    "0.6": {
+      "segments": 107,
+      "length_mm": 441.172
+    },
+    "0.2": {
+      "segments": 101,
+      "length_mm": 174.657
+    },
+    "0.75": {
+      "segments": 50,
+      "length_mm": 128.126
+    },
+    "0.5624": {
+      "segments": 2,
+      "length_mm": 5.691
+    },
+    "1.0": {
+      "segments": 26,
+      "length_mm": 149.673
+    },
+    "0.3": {
+      "segments": 238,
+      "length_mm": 635.301
+    },
+    "0.225": {
+      "segments": 2,
+      "length_mm": 1.883
+    },
+    "0.25": {
+      "segments": 59,
+      "length_mm": 88.289
+    },
+    "0.8": {
+      "segments": 3,
+      "length_mm": 3.1
+    }
+  },
+  "load_routes_minimum_1mm_without_vias": true,
+  "inner_ground_planes_preserved": true,
+  "four_layer_antenna_keepout_preserved": true,
+  "connector_label_net_checks": {
+    "J2": {
+      "1": "BGND",
+      "2": "LOGIC_5V_IN"
+    },
+    "J5": {
+      "1": "LOAD_IN",
+      "2": "LOAD_OUT"
+    },
+    "J3": {
+      "1": "SDA",
+      "2": "SCL",
+      "3": "BGND",
+      "4": "MCU_3V3"
+    },
+    "J1": {
+      "T": "CT_HI",
+      "S": "CT_BIAS"
+    },
+    "J6": {
+      "1": "LOGIC_5V_FUSED",
+      "2": "unconnected-(J6-D--Pad2)",
+      "3": "unconnected-(J6-D+-Pad3)",
+      "4": "BGND",
+      "SH": "BGND"
+    },
+    "C25": {
+      "1": "LOGIC_5V_FUSED",
+      "2": "BGND"
+    },
+    "C26": {
+      "1": "LOGIC_5V_FUSED",
+      "2": "BGND"
+    }
+  },
+  "completed_nets": [
+    "ADC_3V3",
+    "ADC_AIN0",
+    "ADC_AIN1",
+    "ADC_LED_A",
+    "BGND",
+    "BOOT",
+    "BUCK_BST",
+    "BUCK_SW",
+    "BUZZER_DRIVE",
+    "BUZZER_LOW",
+    "CTL",
+    "CT_BIAS",
+    "CT_HI",
+    "EN",
+    "LED_B",
+    "LED_B_A",
+    "LED_G",
+    "LED_G_A",
+    "LED_R",
+    "LED_R_A",
+    "LOAD_IN",
+    "LOAD_OUT",
+    "LOGIC_5V_FUSED",
+    "LOGIC_5V_IN",
+    "MCU_3V3",
+    "Net-(D5-A)",
+    "Net-(Q2-G)",
+    "RELAY_GATE",
+    "RELAY_LOW",
+    "RX",
+    "SCL",
+    "SDA",
+    "TX",
+    "USB_CC1",
+    "USB_CC2",
+    "USB_D+",
+    "USB_D-",
+    "USB_LED_A",
+    "USB_RESET",
+    "USB_VBUS",
+    "USB_VBUS_SENSE",
+    "VCC"
+  ],
+  "track_count": 608,
+  "via_count": 88,
+  "inner_signal_track_count": 0,
+  "minimum_track_width_mm": 0.2,
+  "usb_paths": {
+    "D+_A6_to_U5": {
+      "planar_length_mm": 17.518,
+      "layer_transitions": 2
+    },
+    "D+_B6_to_U5": {
+      "planar_length_mm": 18.518,
+      "layer_transitions": 2
+    },
+    "D-_A7_to_U5": {
+      "planar_length_mm": 14.815,
+      "layer_transitions": 2
+    },
+    "D-_B7_to_U5": {
+      "planar_length_mm": 15.493,
+      "layer_transitions": 2
+    }
+  },
+  "camera_power_path": {
+    "planar_length_mm": 74.459,
+    "layer_transitions": 2
+  },
+  "usb_main_pair": {
+    "width_mm": 0.2,
+    "gap_mm": 0.3,
+    "reference": "In2.Cu ground",
+    "impedance_validated": false
+  },
+  "sha256": {
+    "smart_db.kicad_pcb": "798be2727739a8085aaa887bcbdb73641a2d08b6d6a5b587c89b4f2440a903ee",
+    "smart_db.kicad_sch": "502e9390c67cb98d36298f892148c142c00bc96cf5fa62cb422872d596191487",
+    "smart_db.kicad_pro": "d7f7ba15855ba88d9c6b7bb4704ce66e79a0241b0e761929e8eb81053f04c6ed",
+    "SmartDB.pretty/ESP32_S3_WROOM_1_Edge.kicad_mod": "c436149ad146cea9c4ca31e8866c3846fc62a0126a564b55062ed109c7df6452",
+    "SmartDB.kicad_sym": "cd5f849d6b4fd30db560a7f19e45cd467713862ec64c3a17dca7144cf9f1da65",
+    "fp-lib-table": "3ba3806ed4097d8a1277b62d1c93c6bc28bb6f2d77a6cf51fb05a20f91fb5e86",
+    "sym-lib-table": "96316b180de4a9b13b0229149b6bf3e45a33ecdd8e8eb3df8842624860090243",
+    "work/erc_current.json": "a2517f9ec0022b2b9032dfe3b43ed21ac0fcc35a99f1de09f08eaf5ae2811158",
+    "work/drc_routing_current.json": "795d63c91afef22c1a08f12b7a78bd39afa16027c19502fa00c2528e13de72fe",
+    "work/netlist_current.xml": "0571089918c232b734160aac8c1f77565f4985d558df990c6f52ca1fdd08d5dc",
+    "work/placement_current.pdf": "777ff1b08af0eb2335d5567364f4e7e13f3b5358f68dd6994cfb5c0a135e2cae",
+    "work/back_labels_current.pdf": "a6797c52a2354d75faa37679a1a6e785ed2a7460317af1bc4c70d102c373afbd",
+    "work/schematic_current.pdf": "d76a27d3c079e7fe707639b0e9f88d50f36f192f731b882934b7d254957ebfd7",
+    "work/routing_current.pdf": "f61829449549eff4dde1def37e7e08f14471a57b754f48ddff62b6299915f261",
+    "SmartDB.pretty/PinHeader_1x04_P2.54mm_Horizontal_Edge.kicad_mod": "861cc907eb5850005a542f53ea40451534c9204c2c6c778ae7c4bfa786a7f7d3",
+    "SmartDB.pretty/USB_C_Receptacle_Amphenol_12401948E412A_Preview.kicad_mod": "f5d69a19686f4cc19b7603e9ca7c88df4e19243604e605a03faa2580da657288",
+    "SmartDB.3dshapes/USB_C_12401948_preview.wrl": "47a4ce7e356bb9d62b08d7e78582a3f26d27748bf60c39dd947fe81788695bde",
+    "SmartDB.3dshapes/USB_C_12401948_preview.step": "f00db7f633294194107b52d660d41a87725f7d9c1cd18958059fd6f36d3991e1",
+    "SmartDB.3dshapes/LED_ROHM_SMLVN6_preview.step": "c83c7e2b8578510f39de902dc8b7f89b963b1074649949914105363fa95f4a4a",
+    "SmartDB.3dshapes/SJ-3523-SMT_aligned.step": "441a7c029004bafa1f6213bc28dfd9dbdea551419992203fac0aa5a325859765",
+    "SmartDB.3dshapes/provenance.json": "1e9190db4db078d792378fdf5470a66ae2849cf3c142b045127438a2b336add1",
+    "SmartDB.pretty/LED_ROHM_SMLVN6_Preview.kicad_mod": "066a682e0f1c89cc066311f9f54739784de29898ed89da541fecaf85328ae5a4",
+    "SmartDB.pretty/Jack_3.5mm_SJ-3523-SMT_Local.kicad_mod": "eb3aa20e7c7b56f922d642002fc65ce8074b724fd59b105844f6b752b6352c71",
+    "SmartDB.pretty/USB_A_TE_292303-7_Horizontal_Edge.kicad_mod": "d504f29b0681c356758872ac436945bd54da21bf55cd36f6d9e7d9e85bc22c40",
+    "smart_db.step": "1d3e31efa2c46ef3e917c895aaa29b2dbb158f0272031ac2c26193a7fd6da42d",
+    "work/camera_power_review.json": "cdeb66392410aa7311bbd60a585d5d1a38753e20cd9a24d890f733034ae73e3e"
+  }
+}

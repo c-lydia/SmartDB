@@ -1,70 +1,50 @@
-# PlatformIO Configuration
+# PlatformIO setup for SmartDB v2
 
-## Installation
+The current firmware already contains its PlatformIO configuration. Open
+[`esp_idf/smartdb_fusion`](../../../../esp_idf/smartdb_fusion/README.md) as the project
+folder in VS Code with the PlatformIO IDE extension installed. Do not create a new
+ESP Dev Module project for this board; use the checked-in targets and ESP-IDF framework.
 
-1. If haven't, install VSCode from Microsoft
-2. Open VSCode, go to Extension Marketplace
-3. Search for PlatformIO IDE
-4. Install PlatformIO IDE
+## Interactive setup
 
-## Setup the project
+Choose **Terminal → Run Task → SmartDB: Setup**, or run `./setup.sh` from the firmware
+folder. The menu uses PlatformIO's installed tools and handles building, flashing and
+USB configuration without a sequence of manual commands.
 
-1. On the left taskbar, click on PlatformIO icon
-2. Under Quick Access, click Open
-3. In the UI display in the text editor, click New Project
-4. In the Project Wizard, input project name, choose ESP Dev Module, and choose esp-idf framework
-5. Select location for the project, then click Finish
-6. Now, go to file explorer, open `/src/main.c`, then paste the provided code below
+1. Enter Wi-Fi and connection settings with menu **1**.
+2. Connect the camera's USB programmer base directly to the computer and choose **2**.
+3. Connect the SmartDB main board through J4 USB-C and choose **3**.
+4. Set protection limits using **4** when the installation settings are ready.
 
-``` C
-/**
- * Blink
- *
- * Turns on an LED on for one second,
- * then off for one second, repeatedly.
- */
-#include "Arduino.h"
+J6 USB-A is camera power only. It cannot program the camera. The camera sends images
+over Wi-Fi; the MLX90640 thermal module connects to the S3 over I²C.
 
-// Set LED_BUILTIN if it is not defined by Arduino framework
-// #define LED_BUILTIN 13
+## Build targets
 
-void setup() {
-  // initialize LED digital pin as an output.
-  pinMode(LED_BUILTIN, OUTPUT);
-}
+| Target | Hardware | Purpose |
+|---|---|---|
+| `smartdb_s3` | ESP32-S3-WROOM-1-N16R8 | Sensing, protection, fusion and telemetry |
+| `esp32cam` | Separate AI Thinker ESP32-CAM | Fresh JPEG capture over Wi-Fi |
+| `smartdb_s3_demo` | Same S3 board | Optional synthetic fusion demonstration; relay disabled |
 
-void loop() {
-  // turn the LED on (HIGH is the voltage level)
-  digitalWrite(LED_BUILTIN, HIGH);
+Each target produces one application image assembled from its source files. Flash the
+matching target onto each board. The shared project uses ESP-IDF, not Arduino `setup()`
+and `loop()` entry points. Menu **7** builds or updates the normal S3/camera target; the
+optional demo is available through PlatformIO's project tasks.
 
-  // wait for a second
-  delay(1000);
+## Configuration and recovery
 
-  // turn the LED off by making the voltage LOW
-  digitalWrite(LED_BUILTIN, LOW);
+Wi-Fi, tokens, camera address and telemetry settings persist in the boards' NVS storage.
+Menu **1** edits the local profile; **2** and **3** apply it to the corresponding board and
+restart it. Later changes need no firmware rebuild. Protection settings are versioned and
+persisted separately; updating them opens the relay and still requires physical re-arm.
 
-   // wait for a second
-  delay(1000);
-}
-```
+Close other serial monitors before setup. If a port is absent, check the USB data cable
+and programmer connection. If access is denied, check the operating system's serial-device
+permissions. If the board does not answer, release BOOT/IO0 and tap RESET; older firmware
+needs the setup-enabled update once. USB provisioning remains available without Wi-Fi.
 
-7. Connect the board, then change baudrate to 115200
-
-``` ini
-[env:esp32dev]
-platform = espressif32
-board = esp32dev
-framework = espidf
-monitor_speed = 115200
-```
-
-8. Press `ctrl + alt + b` to build the project
-9.  After the build succeeds, upload the project to the ESP32 board by press `ctrl + shift + P`, then search for `PlatformIO: Upload and Monitor`
-
-> Warning:
-> - If the upload fails follow the steps below:
->   - Open terminal inside VSCode
->   - Check if the device is detected or not, using `ls -l /dev/ttyUSB*`
->   - If it is detected, check group, `groups`
->   - If it is in the wrong group, using dialout command to allow permission, `sudo usermod -aG dialout $USER`
->   - If it still won't work, change permissions using chmod command, `sudo chmod 666 /dev/ttyUSB0`
+See the [firmware guide](../../../../esp_idf/smartdb_fusion/README.md) for the complete
+menu, storage behavior, manual build commands, calibration and troubleshooting. The
+[older ESP-IDF workflow notes](../esp_idf/workflow.md) are background reference, not the
+SmartDB v2 setup procedure.

@@ -1,0 +1,8 @@
+$kind: http-request
+name: get_config
+url: '{{firmware_url}}/config'
+method: GET
+headers:
+  Authorization: Bearer {{firmware_token}}
+examples: .resources/get_config.resources/examples
+order: 1791619200001

@@ -1,0 +1,13 @@
+$kind: http-example
+request:
+  url: '{{firmware_url}}/relay/open'
+  method: POST
+  headers:
+    Authorization: Bearer {{firmware_token}}
+response:
+  statusCode: 200
+  statusText: OK
+  body:
+    type: text
+    content: Relay opening; remote re-arm is not supported.
+order: 1791619200003

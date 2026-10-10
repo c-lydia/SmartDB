@@ -1,0 +1,46 @@
+{
+  "updated": "2026-10-09",
+  "units": "mm",
+  "models": {
+    "SJ-3523-SMT_aligned.step": {
+      "reference": "J1",
+      "kind": "manufacturer geometry, rigidly transformed",
+      "source": "https://www.sameskydevices.com/product/resource/3dmodel/sj-3523-smt-tr",
+      "download": "https://3dcadfiles.3dexchange.net/step_ap214/205/7814682/Same_Sky_SJ-3523-SMT-TR.zip",
+      "terms": "https://www.sameskydevices.com/cad-model-terms",
+      "original": "work/step_model_sources/Same_Sky_SJ-3523-SMT-TR.step",
+      "transform": "x_new=-x; y_new=z+6; z_new=y+2.5",
+      "alignment": "Locating posts at model (0,2.5) and (0,-4.5) match footprint holes (0,-2.5) and (0,4.5); posts extend below PCB top.",
+      "colors": "Source geometry retained; uniform default STEP color after normalization."
+    },
+    "LED_ROHM_SMLVN6_preview.step": {
+      "reference": "D6",
+      "kind": "simplified visual approximation",
+      "source": "https://fscdn.rohm.com/en/products/databook/catalog/common/shortform2023/SF2023_EN_P247_LEDs.pdf",
+      "drawing_page": 263,
+      "dimensions": "3.5 mm lead span; 3.1 x 2.8 mm molded body; nominal 0.6 mm height",
+      "limitations": "Terminals, recess, lens and index simplified; not manufacturer CAD or fit qualification.",
+      "generator": "work/build_step_previews.py"
+    },
+    "USB_C_12401948_preview.step": {
+      "reference": "J4",
+      "kind": "simplified visual approximation",
+      "source": "https://www.amphenol-cs.com/product/12401948e412a.html",
+      "drawing": "https://cdn.amphenol-cs.com/media/wysiwyg/files/drawing/c12401948.pdf",
+      "limitations": "Same approximate envelope as prior local VRML, with analytic shell; not a manufacturer model or fit qualification.",
+      "generator": "work/build_step_previews.py"
+    }
+  },
+  "validation": {
+    "step_export_exit_code": 0,
+    "export_flags": [
+      "--subst-models",
+      "--drill-origin",
+      "--min-distance=0.010mm"
+    ],
+    "drc": 0,
+    "unconnected": 0,
+    "schematic_parity": 0,
+    "non_model_board_data_unchanged": true
+  }
+}

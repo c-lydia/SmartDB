@@ -1,0 +1,11 @@
+{
+  "version": "2.0.0",
+  "tasks": [{
+    "label": "SmartDB: Setup",
+    "type": "shell",
+    "command": "./setup.sh",
+    "options": {"cwd": "${workspaceFolder}"},
+    "presentation": {"reveal": "always", "panel": "dedicated", "focus": true},
+    "problemMatcher": []
+  }]
+}

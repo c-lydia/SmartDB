@@ -44,15 +44,19 @@ def load_psks(path: Path) -> dict[str, bytes]:
 
     try:
         raw = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(raw, dict) or not raw:
+            raise ValueError("PSK file must contain a nonempty identity map")
         psks: dict[str, bytes] = {}
 
         for identity, value in raw.items():
-            psks[str(identity)] = bytes.fromhex(value)
+            if not isinstance(identity, str) or not identity.strip() or not isinstance(value, str):
+                raise ValueError("PSK identities and hex keys must be nonempty strings")
+            psks[identity] = bytes.fromhex(value)
     except Exception as exc:
         raise TransportConfigurationError(f"cannot load DTLS PSKs from {path}") from exc
 
-    if not psks or any(len(value) < 16 for value in psks.values()):
-        raise TransportConfigurationError("each DTLS PSK must contain at least 16 bytes")
+    if any(len(value) < 32 for value in psks.values()):
+        raise TransportConfigurationError("each DTLS PSK must contain at least 32 bytes (256 bits)")
 
     return psks
 

@@ -1,0 +1,5 @@
+$kind: http-request
+name: list_commands
+url: "{{base_url}}/devices/{{device_id}}/commands"
+method: GET
+order: 3890310342182840

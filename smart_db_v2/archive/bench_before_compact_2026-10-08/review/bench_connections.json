@@ -1,0 +1,23 @@
+{
+  "copper_layers": [
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu",
+    "B.Cu"
+  ],
+  "minimum_track_width_mm": 0.2,
+  "antenna_keepout_all_copper_layers": true,
+  "checked_circuit_pins": 84,
+  "checked_pcb_pads": 257,
+  "load_contacts_isolated_from_logic_and_CT": true,
+  "CT_design_assumption": {
+    "ratio": 2000,
+    "burden_ohms": 18,
+    "primary_rms_A": 100,
+    "secondary_rms_A": 0.05,
+    "burden_rms_V": 0.9,
+    "unfiltered_peak_V": 1.2727922061357857,
+    "bias_nominal_V": 1.65
+  },
+  "board_copper_items": 676
+}

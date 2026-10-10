@@ -1148,7 +1148,7 @@ the designated version is much clearer because you immediately know what each va
 
 In the blink example, all three features complement each other:
 
-``` bash
+``` text
 sdkconfig
     │
     ▼
@@ -1229,7 +1229,7 @@ The project successfully generated:
 
 However, linking failed:
 
-``` bash
+``` text
 undefined reference to `app_main'
 ```
 

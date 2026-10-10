@@ -1,0 +1,3 @@
+https://github.com/melexis/mlx90640-library
+commit f6be7ca1d4a55146b705f3d347f84b773b29cc86
+Headers unmodified. API patch: return ValidateAuxData failure instead of continuing with stale auxiliary data; ESP-IDF I2C adapter in main/thermal_sensor.c.

@@ -2,5 +2,7 @@ $kind: http-example
 request:
   url: "{{base_url}}/devices/{{device_id}}/commands/{{command_id}}/ack"
   method: POST
+  headers:
+    Authorization: Bearer {{device_token}}
   body: {type: json, content: '{"status":"success"}'}
 response: {statusCode: 204, statusText: No Content}

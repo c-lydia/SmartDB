@@ -6,8 +6,8 @@ request:
     type: json
     content: |-
       {
-     "max_temperature":75,
-     "max_current":10,
+       "max_temperature":75,
+       "max_current":0.8,
        "sampling_rate":10
       }
 response:
@@ -16,5 +16,5 @@ response:
   body:
     type: json
     content: |-
-      {"max_temperature":75,"max_current":10,"sampling_rate":10}
+      {"max_temperature":75,"max_current":0.8,"sampling_rate":10}
 order: 1785774739064

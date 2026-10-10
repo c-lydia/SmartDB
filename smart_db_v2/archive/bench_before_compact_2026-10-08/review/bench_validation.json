@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-08",
+  "target": "low-voltage bench load",
+  "erc": {},
+  "drc": {},
+  "unconnected": 0,
+  "parity": 0,
+  "fabrication_release": false,
+  "hardware_tested": false,
+  "copper_layers": 4,
+  "usb_impedance_validated": false
+}

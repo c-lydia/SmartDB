@@ -1,5 +1,11 @@
 # SmartDB ESP32-CAM diagnostic firmware
 
+This is the **older standalone SD-card diagnostic project**. For the current SmartDB v2
+camera, use the `esp32cam` target in [smartdb_fusion](../../smartdb_fusion/README.md).
+That project provides the USB setup menu, persistent Wi-Fi settings and `/capture` JPEG
+endpoint used by the S3. The behavior and captured test results below apply only to this
+diagnostic project; they are not validation results for the new firmware.
+
 ESP-IDF firmware for testing an AI Thinker-style ESP32-CAM, diagnosing its
 SCCB camera bus, capturing JPEG frames, and saving them to a microSD card.
 

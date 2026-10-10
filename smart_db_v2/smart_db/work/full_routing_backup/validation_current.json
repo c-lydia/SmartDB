@@ -1,0 +1,96 @@
+{
+  "recorded_at": "2026-10-08T17:05:38.705843+00:00",
+  "milestone": "I2C, USB/UART, supply and ground connections routed; remaining board routing pending",
+  "kicad_version": "10.0.6",
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected_items": 62,
+  "schematic_parity_issues": 0,
+  "rules_and_exclusions_unchanged": true,
+  "inner_ground_planes_preserved": true,
+  "four_layer_antenna_keepout_preserved": true,
+  "connector_label_net_checks": {
+    "J2": {
+      "1": "BGND",
+      "2": "LOGIC_5V_IN"
+    },
+    "J5": {
+      "1": "LOAD_IN",
+      "2": "LOAD_OUT"
+    },
+    "J3": {
+      "1": "SDA",
+      "2": "SCL",
+      "3": "BGND",
+      "4": "MCU_3V3"
+    },
+    "J1": {
+      "T": "CT_HI",
+      "S": "CT_BIAS"
+    }
+  },
+  "completed_nets": [
+    "BGND",
+    "MCU_3V3",
+    "RX",
+    "SCL",
+    "SDA",
+    "TX",
+    "USB_CC1",
+    "USB_CC2",
+    "USB_D+",
+    "USB_D-",
+    "USB_LED_A",
+    "USB_RESET",
+    "USB_VBUS",
+    "USB_VBUS_SENSE",
+    "VCC"
+  ],
+  "track_count": 193,
+  "via_count": 36,
+  "inner_signal_track_count": 0,
+  "minimum_track_width_mm": 0.2,
+  "usb_paths": {
+    "D+_A6_to_U5": {
+      "planar_length_mm": 17.518,
+      "layer_transitions": 2
+    },
+    "D+_B6_to_U5": {
+      "planar_length_mm": 18.518,
+      "layer_transitions": 2
+    },
+    "D-_A7_to_U5": {
+      "planar_length_mm": 14.815,
+      "layer_transitions": 2
+    },
+    "D-_B7_to_U5": {
+      "planar_length_mm": 15.493,
+      "layer_transitions": 2
+    }
+  },
+  "usb_main_pair": {
+    "width_mm": 0.2,
+    "gap_mm": 0.3,
+    "reference": "In2.Cu ground",
+    "impedance_validated": false
+  },
+  "sha256": {
+    "smart_db.kicad_pcb": "8b3d5e85fd0451a5dbd69f3764126e0a24f8aec7285de5b69b96e881c9977709",
+    "smart_db.kicad_sch": "d3a0784a5a0c943cc3787bef414e2bb02a339cca1d028876f95fa17218eb48a0",
+    "smart_db.kicad_pro": "31fe5ad40066cae33065b835711f2b0c8bdf7f5b8e86eacc40d09a4e9341fa04",
+    "SmartDB.pretty/ESP32_S3_WROOM_1_Edge.kicad_mod": "c436149ad146cea9c4ca31e8866c3846fc62a0126a564b55062ed109c7df6452",
+    "SmartDB.kicad_sym": "cd5f849d6b4fd30db560a7f19e45cd467713862ec64c3a17dca7144cf9f1da65",
+    "fp-lib-table": "3ba3806ed4097d8a1277b62d1c93c6bc28bb6f2d77a6cf51fb05a20f91fb5e86",
+    "sym-lib-table": "96316b180de4a9b13b0229149b6bf3e45a33ecdd8e8eb3df8842624860090243",
+    "work/erc_current.json": "1ca9861a7d8dc2e933d7b45823e249ffcf8ae7daf3ddb0e4ea3bb39e18a90cf1",
+    "work/drc_routing_current.json": "82ddb880f2c3cd8f9d173d227100b4c6e5099ba3c72f6ce11ec9deef8110e6fe",
+    "work/netlist_current.xml": "4d392fb22dbace8b0e6b4deca0915b1e587be5a2b5773a6bcd67b4512bbd7dd3",
+    "work/placement_current.pdf": "64d580d4ec4f179ddf8251e30700f40b71c9be4b43b872fa80c3b3a2f78ec8ad",
+    "work/back_labels_current.pdf": "0c0c9a31f580cb82d846c3c044520d54ed43671358e9cbf5e7f0eb47f5529820",
+    "work/schematic_current.pdf": "917803fff10dd4d1cc9083842ee2a638ca9fd0e21c4af0aa13297b8e335b66bd",
+    "work/routing_current.pdf": "f2a3e005fd532c78092251ae0638b089a0a071f7004b2d8cdbfb98962338c88c",
+    "SmartDB.pretty/PinHeader_1x04_P2.54mm_Horizontal_Edge.kicad_mod": "861cc907eb5850005a542f53ea40451534c9204c2c6c778ae7c4bfa786a7f7d3",
+    "SmartDB.pretty/USB_C_Receptacle_Amphenol_12401948E412A_Preview.kicad_mod": "3306e454d064a4d16b412e70dde7c422225fc744d8662d4c0d4ac6ed058d2206",
+    "SmartDB.3dshapes/USB_C_12401948_preview.wrl": "47a4ce7e356bb9d62b08d7e78582a3f26d27748bf60c39dd947fe81788695bde"
+  }
+}

@@ -7,7 +7,7 @@ body:
   content: |-
     {
      "max_temperature":75,
-     "max_current":10,
+     "max_current":0.8,
      "sampling_rate":10
     }
 examples: .resources/config_update.resources/examples

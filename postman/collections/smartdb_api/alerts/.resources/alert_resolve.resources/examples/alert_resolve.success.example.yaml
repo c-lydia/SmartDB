@@ -15,6 +15,12 @@ response:
     type: json
     content: |-
       {
-       "message":"Alert resolved"
+       "id": 1,
+       "device_id": "ESP32_001",
+       "type": "protection_trip",
+       "severity": "critical",
+       "message": "Local protection tripped: overcurrent",
+       "status": "resolved",
+       "resolution": "Alert resolved"
       }
 order: 1785774781614

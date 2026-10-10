@@ -1,0 +1,16 @@
+signal,gpio,module_pad,net,description
+relay_control,4,4,CTL,Active-high optocoupler input; 100k pulldown R27
+buzzer,5,5,BUZZER_DRIVE,Low-side Q2 gate through R15
+led_red,6,6,LED_R,Red LED through R16
+led_green,7,7,LED_G,Green LED through R17
+led_blue,8,12,LED_B,Blue LED through R18
+i2c_sda,10,18,SDA,ADS1115 and thermal header; moved off strapping GPIO3
+i2c_scl,2,38,SCL,ADS1115 and thermal header
+uart_tx,43,37,RX,MCU TX to CP2102N RXD
+uart_rx,44,36,TX,MCU RX from CP2102N TXD
+boot,0,27,BOOT,SW2 active low; 10k pullup R14
+reset,,3,EN,SW3 active low; 10k pullup R13 and 1uF C11
+power,,2,MCU_3V3,3.3V module rail downstream of F2 from LDL1117S33R; fuse and thermal validation pending
+ground,,1,BGND,Ground
+ground,,40,BGND,Ground
+ground,,41,BGND,Exposed ground pad

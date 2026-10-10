@@ -24,6 +24,14 @@ TestResults.xml
 
 # Docs build output
 docs/_build/
+docs/__pycache__/
+node_modules/
+dashboard/dist/
+.firebase/
+.local/
+*-debug.log
+cloud/.env*
+!cloud/.env.example
 
 # Generated proposal exports
 formal_docs/proposal/*.pdf
@@ -59,3 +67,13 @@ smart_db_v2/smart_db/.history
 
 .postman/
 backend/.pytest_cache/
+
+# Local build, editor session and duplicate transfer artifacts
+/esp_idf/esp32_cam/esp32_cam/build/
+/backend.zip
+/postman.zip
+**/__pycache__/
+*.pyc
+*.kicad_prl
+*.lck
+**/.history/

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "SmartDB")(type "KiCad")(uri "${KIPRJMOD}/SmartDB.kicad_sym")(options "")(descr "SmartDB project symbols"))
+)

@@ -1,0 +1,13 @@
+$kind: http-example
+request:
+  url: '{{camera_url}}/capture'
+  method: GET
+  headers:
+    Authorization: Bearer {{firmware_token}}
+response:
+  statusCode: 503
+  statusText: Service Unavailable
+  body:
+    type: text
+    content: Fresh camera frame unavailable
+order: 1791619200005

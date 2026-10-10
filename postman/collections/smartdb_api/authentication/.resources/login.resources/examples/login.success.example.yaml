@@ -7,7 +7,7 @@ request:
     content: |-
       {
           "email": "admin@smartdb.com",
-          "password": "12345"
+          "password": "example-password"
       }
     $type: |-
       {

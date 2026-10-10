@@ -1,0 +1,48 @@
+$kind: http-example
+request:
+  url: '{{firmware_url}}/status'
+  method: GET
+  headers:
+    Authorization: Bearer {{firmware_token}}
+response:
+  statusCode: 200
+  statusText: OK
+  body:
+    type: json
+    content: |-
+      {
+        "ready": false,
+        "synthetic": false,
+        "reason": "camera alignment not configured",
+        "installation_id": "panel-1",
+        "camera_id": "smartdb-camera-1",
+        "camera_frame_id": "",
+        "calibration_version": "uncalibrated",
+        "sequence": 0,
+        "display_min_c": 20,
+        "display_max_c": 80,
+        "regions": [
+          {
+            "id": "panel",
+            "supported": false,
+            "ambiguous": false,
+            "samples": 0,
+            "boundary_samples": 0,
+            "max_c": null,
+            "mean_c": null,
+            "rise_c_per_min": null
+          }
+        ],
+        "current": 0.24,
+        "temperature": 31.5,
+        "relay_state": "open",
+        "protection_state": "disarmed",
+        "protection_reason": "not_commissioned",
+        "config_version": 1,
+        "commissioned": false,
+        "storage_ok": true,
+        "current_sensor": "SCT-013-000 AC only; 18 ohm burden",
+        "arc_detection_available": false,
+        "events": []
+      }
+order: 1791619200000

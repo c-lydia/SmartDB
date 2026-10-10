@@ -1,0 +1,75 @@
+2026-10-09 00:41:19.668 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+2026-10-09 00:41:19.936 INFO   Hardware: 12 CPU cores, 513 CPU score, 3732 MB RAM
+2026-10-09 00:41:19.937 WARN   Deprecated settings path '-mp / --router.max_passes'; use '--router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-10-09 00:41:19.938 WARN   GUI is disabled and you don't have a console available, so the only feedback from Freerouting is in the log.
+2026-10-09 00:41:21.025 WARN   Deprecated settings path 'router.max_passes'; use 'router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-10-09 00:41:21.286 INFO   [024E87\2D3C67] Loading board file 'finish.dsn'...
+2026-10-09 00:41:21.395 WARN   DSN file 'finish.dsn' was loaded with 5 warning(s).
+2026-10-09 00:41:21.427 INFO   [024E87\2D3C67] Job '024E87\2D3C67' started at 2026-10-08T17:41:21.427467975Z.
+2026-10-09 00:41:22.067 WARN   Design Warning: Board has 19 pre-existing clearance violation(s) in the loaded design (before routing):
+  - 19 unfixable violation(s) (cannot be resolved by Freerouting):
+      * 8 pin-to-pin clearance violations (first 5 shown):
+          - J4.B12 [net BGND] <-> J4.B9 [net USB_VBUS]
+          - J4.B12 [net BGND] <-> J4.A4 [net USB_VBUS]
+          - J4.B9 [net USB_VBUS] <-> J4.A1 [net BGND]
+          - J4.B4 [net USB_VBUS] <-> J4.B1 [net BGND]
+          - J4.B4 [net USB_VBUS] <-> J4.A12 [net BGND]
+          ... and 3 more
+      * 11 fixed trace/via clearance violations (first 5 shown):
+          - FixedVia#1359 [net MCU_3V3] <-> FixedTrace#1229 [net BOOT]
+          - FixedTrace#1205 [net EN] <-> U4.8 [net unconnected-(U4-IO15-Pad8)]
+          - FixedTrace#1087 [net CT_BIAS] <-> ObstacleArea#660
+          - FixedTrace#934 [net MCU_3V3] <-> R13.2 [net EN]
+          - U5.29 [net BGND] <-> FixedVia#1370 [net BGND]
+          ... and 6 more
+  - 0 potentially fixable violations
+Notice: Freerouting does not modify component placement, board outlines, or fixed items.
+Resolving these 19 unfixable violation(s) is the responsibility of the board author in their EDA tool (e.g. KiCad).
+2026-10-09 00:41:22.124 INFO   [024E87\2D3C67] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=11.
+2026-10-09 00:41:23.266 INFO   [024E87\2D3C67] Auto-routing stage started on board 'c0bd435c81a3c476ab39c84ec1eda55c' with baseline score 816.99 for 26 unrouted items.
+2026-10-09 00:41:35.599 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net 'ADC_AIN1' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-10-09 00:41:39.445 INFO   [024E87\2D3C67] Auto-routing pass #1 on board 'c0bd435c81a3c476ab39c84ec1eda55c' was completed in 15.79 seconds with score 914.72 (12 unrouted and 19 violations), using 17.19 CPU seconds and the job allocated 17.53 GB of memory so far.
+2026-10-09 00:41:44.327 INFO   [024E87\2D3C67] Auto-routing pass #2 on board '40af3819f6be83ee204c7a05693b5411' was completed in 4.44 seconds with score 921.70 (11 unrouted and 19 violations), using 21.16 CPU seconds and the job allocated 20.80 GB of memory so far.
+2026-10-09 00:41:49.202 INFO   [024E87\2D3C67] Auto-routing pass #3 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.45 seconds with score 921.70 (11 unrouted and 19 violations), using 26.14 CPU seconds and the job allocated 24.61 GB of memory so far.
+2026-10-09 00:41:53.753 INFO   [024E87\2D3C67] Auto-routing pass #4 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.53 seconds with score 921.70 (11 unrouted and 19 violations), using 31.11 CPU seconds and the job allocated 28.34 GB of memory so far.
+2026-10-09 00:41:58.412 INFO   [024E87\2D3C67] Auto-routing pass #5 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.64 seconds with score 921.70 (11 unrouted and 19 violations), using 35.09 CPU seconds and the job allocated 31.52 GB of memory so far.
+2026-10-09 00:42:03.139 INFO   [024E87\2D3C67] Auto-routing pass #6 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.71 seconds with score 921.70 (11 unrouted and 19 violations), using 40.06 CPU seconds and the job allocated 35.21 GB of memory so far.
+2026-10-09 00:42:07.917 INFO   [024E87\2D3C67] Auto-routing pass #7 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.76 seconds with score 921.70 (11 unrouted and 19 violations), using 45.03 CPU seconds and the job allocated 38.82 GB of memory so far.
+2026-10-09 00:42:12.614 INFO   [024E87\2D3C67] Auto-routing pass #8 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.68 seconds with score 921.70 (11 unrouted and 19 violations), using 50.01 CPU seconds and the job allocated 42.50 GB of memory so far.
+2026-10-09 00:42:17.084 INFO   [024E87\2D3C67] Auto-routing pass #9 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.45 seconds with score 921.70 (11 unrouted and 19 violations), using 53.98 CPU seconds and the job allocated 45.81 GB of memory so far.
+2026-10-09 00:42:21.600 INFO   [024E87\2D3C67] Auto-routing pass #10 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.50 seconds with score 921.70 (11 unrouted and 19 violations), using 58.95 CPU seconds and the job allocated 49.57 GB of memory so far.
+2026-10-09 00:42:26.095 INFO   [024E87\2D3C67] Auto-routing pass #11 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.48 seconds with score 921.70 (11 unrouted and 19 violations), using 62.93 CPU seconds and the job allocated 52.88 GB of memory so far.
+2026-10-09 00:42:30.663 INFO   [024E87\2D3C67] Auto-routing pass #12 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.55 seconds with score 921.70 (11 unrouted and 19 violations), using 67.90 CPU seconds and the job allocated 56.60 GB of memory so far.
+2026-10-09 00:42:35.109 INFO   [024E87\2D3C67] Auto-routing pass #13 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.43 seconds with score 921.70 (11 unrouted and 19 violations), using 71.87 CPU seconds and the job allocated 59.92 GB of memory so far.
+2026-10-09 00:42:39.732 INFO   [024E87\2D3C67] Auto-routing pass #14 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.60 seconds with score 921.70 (11 unrouted and 19 violations), using 76.85 CPU seconds and the job allocated 63.62 GB of memory so far.
+2026-10-09 00:42:44.427 INFO   [024E87\2D3C67] Auto-routing pass #15 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.68 seconds with score 921.70 (11 unrouted and 19 violations), using 80.82 CPU seconds and the job allocated 66.78 GB of memory so far.
+2026-10-09 00:42:48.810 INFO   [024E87\2D3C67] Auto-routing pass #16 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.36 seconds with score 921.70 (11 unrouted and 19 violations), using 85.79 CPU seconds and the job allocated 70.60 GB of memory so far.
+2026-10-09 00:42:53.227 INFO   [024E87\2D3C67] Auto-routing pass #17 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.40 seconds with score 921.70 (11 unrouted and 19 violations), using 89.77 CPU seconds and the job allocated 73.93 GB of memory so far.
+2026-10-09 00:42:57.622 INFO   [024E87\2D3C67] Auto-routing pass #18 on board '6e4372141652651cde6c2128642fb18a' was completed in 4.38 seconds with score 921.70 (11 unrouted and 19 violations), using 94.75 CPU seconds and the job allocated 77.72 GB of memory so far.
+2026-10-09 00:42:57.655 INFO   [024E87\2D3C67] The router's score (921.70) has not improved by more than 0.5 points in the last 10 passes (11 items still unconnected). Stopping the auto-router.
+The following connections could not be routed -- please review your design (e.g. check pad clearances, trace width rules, and available routing space):
+  Net 'LOGIC_5V_FUSED' (1 unrouted connection):
+    - C19-1  ->  C20-1
+  Net 'VCC' (2 unrouted connections):
+    - TP2-1  ->  via
+    - U5-6  ->  via
+  Net 'CT_BIAS' (1 unrouted connection):
+    - R4-1  ->  C2-1
+  Net 'EN' (1 unrouted connection):
+    - C11-1  ->  R13-2
+  Net 'LED_G' (1 unrouted connection):
+    - U4-7  ->  R17-1
+  Net 'LOGIC_5V_IN' (1 unrouted connection):
+    - F1-1  ->  J2-2
+  Net 'USB_D+' (1 unrouted connection):
+    - via  ->  J4-A6
+  Net 'USB_D-' (1 unrouted connection):
+    - via  ->  via
+  Net 'BUCK_SW' (1 unrouted connection):
+    - U3-5  ->  L1-1
+  Net 'BUCK_BST' (1 unrouted connection):
+    - C21-1  ->  U3-6
+2026-10-09 00:42:58.889 INFO   [024E87\2D3C67] Auto-routing stage completed: started with 26 unrouted nets, completed in 96.36 seconds, final score: 921.70 (11 unrouted and 19 violations), using 95.75 total CPU seconds, 78.18 GB total allocated, and 285.1 MB peak heap usage.
+2026-10-09 00:42:58.905 INFO   [024E87\2D3C67] Job '024E87\2D3C67' finished with state: COMPLETED (elapsed: 1 minute 37.48 seconds, finished at UTC: 2026-10-08T17:42:58.905269177Z).
+2026-10-09 00:42:58.940 INFO   Saving output file '/home/chheng-lydia/projects/SmartDB/smart_db_v2/smart_db/work/finish.ses' (SES)...
+2026-10-09 00:42:58.943 INFO   Successfully saved output file '/home/chheng-lydia/projects/SmartDB/smart_db_v2/smart_db/work/finish.ses' (8819 bytes).

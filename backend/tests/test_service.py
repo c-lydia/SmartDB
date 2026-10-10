@@ -39,6 +39,8 @@ def test_accepts_and_deduplicates_exact_message(tmp_path: Path) -> None:
     second = svc.ingest("telemetry", encode_cbor(value), "db-001")
     assert (first.code, first.body["status"]) == ("2.04", "accepted")
     assert (second.code, second.body["status"]) == ("2.04", "duplicate")
+    assert "accepted_through_sequence" not in first.body
+    assert "accepted_through_sequence" not in second.body
 
 
 def test_rejects_identity_mismatch_and_invalid_schema(tmp_path: Path) -> None:

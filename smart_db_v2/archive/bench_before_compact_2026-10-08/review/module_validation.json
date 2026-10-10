@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-08",
+  "kicad_version": "10.0.6",
+  "module": "ESP32-S3-WROOM-1-N16R8",
+  "pinmap_checks": "passed",
+  "schematic_parity_issues": 0,
+  "erc_errors": 25,
+  "erc_warnings": 1,
+  "drc_errors": 39,
+  "drc_warnings": 44,
+  "unconnected_items": 127,
+  "ready_for_fabrication": false,
+  "source_sha256": {
+    "smart_db_v2/smart_db/smart_db.kicad_sch": "be62685fd2a718a08c07ca80276a001c6ec264ed299d911e72d2ad0fa89d429a",
+    "smart_db_v2/smart_db/smart_db.kicad_pcb": "983120c465ea447622f05e3bef4df1e98f1c7bdfaa37050024bbe55d89799649",
+    "smart_db_v2/pinmap.csv": "7f61ac034b143137ab25b5fc3d4af2f617092045f5a84e4026d9fe3d980e48e7"
+  }
+}

@@ -1,0 +1,8 @@
+$kind: http-request
+name: capture_camera
+url: '{{camera_url}}/capture'
+method: GET
+headers:
+  Authorization: Bearer {{firmware_token}}
+examples: .resources/capture_camera.resources/examples
+order: 1791619200005

@@ -1,0 +1,13 @@
+$kind: http-example
+request:
+  url: '{{firmware_url}}/fused.bmp'
+  method: GET
+  headers:
+    Authorization: Bearer {{firmware_token}}
+response:
+  statusCode: 503
+  statusText: Service Unavailable
+  body:
+    type: text
+    content: Fused frame unavailable; see /status
+order: 1791619200004

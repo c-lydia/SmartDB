@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: '{{firmware_url}}/config'
+  method: PUT
+  headers:
+    Authorization: Bearer {{firmware_token}}
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "version": 2,
+        "commissioned": false,
+        "current_limit_a": 0.8,
+        "temperature_limit_c": 60,
+        "current_scale_a_per_v": 111.1111
+      }
+response:
+  statusCode: 200
+  statusText: OK
+  body:
+    type: text
+    content: Saved. Local re-arm required.
+order: 1791619200002

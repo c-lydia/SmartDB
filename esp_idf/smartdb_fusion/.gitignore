@@ -1,0 +1,13 @@
+.pio/
+__pycache__/
+!.vscode/
+.vscode/*
+!.vscode/tasks.json
+managed_components/
+sdkconfig.*
+!sdkconfig.defaults*
+config/local_config.h
+.setup.json
+.setup-*.tmp
+test/build/
+demo-output/

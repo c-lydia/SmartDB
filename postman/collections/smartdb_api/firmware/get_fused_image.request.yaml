@@ -1,0 +1,8 @@
+$kind: http-request
+name: get_fused_image
+url: '{{firmware_url}}/fused.bmp'
+method: GET
+headers:
+  Authorization: Bearer {{firmware_token}}
+examples: .resources/get_fused_image.resources/examples
+order: 1791619200004

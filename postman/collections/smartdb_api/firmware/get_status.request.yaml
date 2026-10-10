@@ -1,0 +1,8 @@
+$kind: http-request
+name: get_status
+url: '{{firmware_url}}/status'
+method: GET
+headers:
+  Authorization: Bearer {{firmware_token}}
+examples: .resources/get_status.resources/examples
+order: 1791619200000

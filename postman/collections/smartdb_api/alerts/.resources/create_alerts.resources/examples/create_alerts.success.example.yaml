@@ -8,7 +8,7 @@ request:
       {
        "device_id":"ESP32_001",
        "type":"OVERHEAT",
-     "severity":"high",
+       "severity":"high",
        "message":"Temperature exceeded limit"
       }
 response:

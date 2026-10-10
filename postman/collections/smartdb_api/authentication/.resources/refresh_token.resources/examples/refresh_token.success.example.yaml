@@ -15,8 +15,10 @@ response:
     type: json
     content: |-
       {
-            "access_token": "...",
-        "expires_in": 900
+            "access_token": "example-access-token",
+        "refresh_token": "example-rotated-refresh-token",
+        "token_type": "bearer",
+        "expires_in": 3600
 
       }
 order: 1785772482166

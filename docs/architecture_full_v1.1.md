@@ -7,15 +7,64 @@
 | Field | Value |
 |---|---|
 | **Document scope** | ESP32 edge firmware, cloud AI inference pipeline, Firebase cloud backend, mobile application, hardware procurement, and shared interface contract |
-| **Target hardware** | ESP32 Developer Kit v1 (edge sensing/control) + cloud AI infrastructure |
+| **Target hardware** | Current v2 bench: ESP32-S3-WROOM-1-N16R8 + separate ESP32-CAM; production cloud AI remains planned |
 | **Software baseline** | C/C++ with ESP-IDF (ESP32 firmware), Flutter/Dart (mobile), Firebase (cloud), Python/YOLO + Isolation Forest (cloud AI inference) |
 | **Prepared for** | SmartDB Project Team |
-| **Version** | 1.1 – API Design Baseline |
-| **Date** | 28 July 2026 |
+| **Version** | 1.1.2 – v2 Bench Firmware and Setup Notes |
+| **Date** | 10 October 2026 |
 
 > **Design principle:** Detect electrical faults before they become fires. Monitor continuously, alert immediately, cut power automatically when a hazard is confirmed, and never require the homeowner to have technical knowledge to stay safe.
 
 ## Document Control
+
+### Current v2 bench implementation — 10 October 2026
+
+The production requirements below remain the target architecture. The implemented
+[PlatformIO ESP-IDF project](../esp_idf/smartdb_fusion/README.md) has two build targets:
+SmartDB ESP32-S3-WROOM-1-N16R8 for sensing/control/fusion and a separate AI Thinker ESP32-CAM
+for fresh JPEG capture over Wi-Fi. This supersedes the older Developer Kit v1 assumption
+for the current v2 board, without claiming that all production requirements are complete.
+
+The selected current path is SCT-013-000 plus ADS1115 for **isolated low-voltage AC bench
+monitoring**, with a configurable threshold capped at 1 A. The PCB logic input remains DC.
+Current and native MLX temperatures feed an independent local threshold task; the relay
+starts open, trips latch, and only a deliberate physical BOOT-button gesture can re-arm.
+Configuration and a bounded 16-event history persist in NVS. Voltage/power are unavailable
+and reported as null; no arc detection is claimed from the ADS1115 sample rate.
+
+RGB/thermal registration and bicubic display interpolation currently run on the S3.
+Configured component regions use native thermal measurements; real alignment is disabled
+until installation calibration is supplied. There is no trained YOLO/Isolation Forest model
+or learned risk score in this bench implementation. The camera's USB connector provides
+power/programming; it is not a USB video link to the S3.
+
+As explicitly selected for this firmware, optional telemetry uses the existing Postman
+diagnostic HTTPS API contract (`POST /api/v1/devices/{device_id}/telemetry`), with certificate
+verification, bearer authorization, sample identifiers, retries and a bounded RAM queue.
+The local bench API uses bearer-authenticated HTTP on an isolated network. This does not
+implement production CoAP/DTLS, signed configuration, OTA, full durable event delivery,
+or cloud inference. The implemented Firebase HTTP API now lives in `cloud/`: Auth-backed
+application sessions, owner-scoped Firestore telemetry/history, device credentials, in-app
+alerts, stored fused previews and asynchronous command acknowledgements. Cloud configuration
+uses the local validator and cannot commission, recalibrate or re-arm the board.
+
+The **frontend team owns the user dashboard**. `dashboard/` is an optional local developer
+console, not the product UI; it remains undeployed. See the [current system architecture](system/architecture.md)
+and [API integration guide](system/index.md). The existing CoAP backend remains separate.
+The permanent [v2 PCB](../smart_db_v2/README.md) uses J3 for MLX90640 I²C and fused J6 USB-A
+for external ESP32-CAM-MB power; camera data travels over Wi-Fi. The downloadable CAD and
+local libraries are from the source files identified in `work/validation_current.json`.
+Firmware builds and host tests pass; sensor accuracy, shared-bus timing, camera pairing,
+relay ratings/response, and thermal registration still require hardware validation.
+
+The firmware now provides an interactive `setup.sh` terminal menu plus a UART0 USB setup
+channel on both targets. Wi-Fi and connection credentials persist in a separate NVS namespace
+and take effect after restart; compile-time defines are optional defaults. The menu discovers
+serial ports, can build/flash the matching target, configures the camera before the S3, and
+updates protection limits through the same validation/storage path as HTTP. It never offers
+remote/USB re-arm. Physical USB access authorizes provisioning; status omits secrets, while
+the git-ignored local setup profile and device NVS hold plaintext credentials. This is bench
+provisioning, not the production signed-configuration or encrypted-provisioning design.
 
 | Field | Value |
 |---|---|
@@ -33,6 +82,8 @@
 | 1.0 | 28 Jul 2026 | Development baseline | Initial complete specification covering edge firmware, AI inference, cloud backend, mobile app, hardware, and shared contracts. |
 | 1.1 | 03 Aug 2026 | API Design baseline  | Initial API specification and design |
 | 1.1.1 | 04 Aug 2026 | Repository-aligned baseline | Reconciled Flutter mobile baseline, implemented gateway, HTTP/OpenAPI collection, operations, verification, and production-gap documentation. |
+| 1.1.3 | 10 Oct 2026 | Firmware/backend integration | Implemented Firebase HTTP API, stored fused previews and acknowledged cloud commands; frontend team owns user dashboard; current PCB downloads and architecture handoff. |
+| 1.1.2 | 10 Oct 2026 | v2 bench implementation notes | Added two-target ESP-IDF firmware, S3 fusion, isolated AC monitoring, persistent USB setup/TUI, and diagnostic telemetry; hardware validation remains pending. |
 
 ### Normative Language
 
@@ -164,29 +215,22 @@ Household electrical faults are a leading cause of residential fires in Cambodia
 
 SmartDB follows a **five-layer architecture**: Sensing → Edge Processing → AI Inference → Communication → Application.
 
-``` bash
-[Current Sensor + Thermal Sensor + Camera]
-        │
-        ▼
-[ESP32 Edge Node]
-  - Sensor acquisition
-  - RMS calculation
-  - Rule-based threshold evaluation
-  - Relay control
-        │
-        ▼
-[Cloud AI Inference]
-  - Isolation Forest
-  - YOLO RGB detection
-  - Thermal anomaly analysis
-  - Decision fusion
-        │
-        ▼
-[Firebase Cloud Backend]
-        │
-        ▼
-[Flutter Mobile App]
+The following diagram is the **production target**, not the current bench implementation.
+The [current v2 architecture](system/architecture.md) shows the implemented services.
+
+```mermaid
+flowchart TB
+    SENSORS["Current, thermal and RGB sensing"] --> EDGE["ESP32 edge node<br/>Acquisition, RMS and threshold evaluation"]
+    EDGE -->|"Independent local decision"| RELAY["Relay cutoff"]
+    EDGE -->|"CoAP / DTLS telemetry"| GATEWAY["Authenticated ingestion gateway"]
+    GATEWAY -->|"Validated records"| AI["Cloud AI target<br/>Anomaly detection and decision fusion"]
+    AI -->|"Enriched results"| FIREBASE["Firebase backend"]
+    GATEWAY -->|"Durable measurements"| FIREBASE
+    FIREBASE <-->|"Authenticated API"| APP["Team-owned user application<br/>Flutter mobile target"]
+    classDef planned fill:#fff5df,stroke:#9b792d,stroke-dasharray:5 4,color:#604713
+    class AI planned
 ```
+
 
 ### Ownership Boundary
 
@@ -256,16 +300,21 @@ smartdb-firmware/
 
 ### Edge Processing Pipeline
 
-``` bash
-Sensor acquisition (100ms cycle)
-   → Signal processing (RMS calculation, FFT arc-detection pre-check)
-   → Level-2 threshold evaluation
-   → Telemetry assembly
-   → Security layer (DTLS/PSK encryption, sequence numbering)
-   → UDP transmission (port 5687) to Jetson/Cloud ingestion
-   ↘ (parallel, independent path)
-   → Relay cutoff if hard safety limit exceeded
+This is the production pipeline target. The bench uses AC RMS/native thermal thresholds;
+FFT arc detection and production DTLS are not implemented in its firmware.
+
+```mermaid
+flowchart TD
+    ACQUIRE["Sensor acquisition<br/>Production 100 ms cycle target"] --> PROCESS["Signal processing<br/>RMS and planned FFT pre-check"]
+    PROCESS --> SAFETY{"Hard safety limit exceeded?"}
+    SAFETY -->|"Yes"| OPEN["Local relay cutoff and latched trip"]
+    SAFETY -->|"No"| CONTINUE["Continue local monitoring"]
+    PROCESS --> QUEUE["Bounded telemetry assembly and queue"]
+    QUEUE --> SECURITY["Sequence / replay protection<br/>Per-device DTLS-PSK"]
+    SECURITY --> UDP["CoAP over UDP 5687<br/>Ingestion gateway"]
+    OPEN -->|"Record event without waiting for network"| QUEUE
 ```
+
 
 ### Rule-Based Threshold Engine (Independent Safety Layer)
 
@@ -301,11 +350,13 @@ This is the system's non-negotiable safety backstop. It **MUST** function correc
 
 ### Power Subsystem
 
+The current KiCad v2 revision is a low-voltage bench prototype, not an implementation of the household mains-cutoff requirement. It uses a 5 V relay coil and separate normally-open J5 contacts; the provisional contact test envelope is 5–24 V DC, up to 1 A resistive. The CT is an AC sensor and cannot measure that DC test load. See [v2 hardware status](../smart_db_v2/README.md). Battery switchover below remains a system requirement, not implemented circuitry.
+
 | Component | Purpose |
 |---|---|
 | 3.7V Li-ion 21700 battery (5000mAh, x4) | Powers ESP32, current sensor interface (ADS1115), and thermal camera during a mains outage |
 | charging/protection module | Charges the battery from the 5V rail; prevents overcharge/overdischarge |
-| Boost converter (3.7V → 5V) | Steps battery voltage up for the AMS1117 regulator input |
+| Boost converter (3.7V → 5V) | Steps battery voltage up to the regulated 5 V input required by v2; its bench revision uses LDL1117S33R |
 
 On a detected outage, the device switches to battery power, continues sensing and local threshold evaluation, and queues telemetry for later sync.
 
@@ -339,40 +390,152 @@ On a detected outage, the device switches to battery power, continues sensing an
 
 ### AI Pipeline
 
-``` bash
-Current Telemetry
-        |
-        v
-Feature Extraction
-        |
-        v
-Isolation Forest
-        |
-        |
-        +----------------+
-                         |
-                         v
-                 Decision Fusion
-                         ^
-                         |
-RGB Camera               |
-        |
-        v
-YOLO Object Detection
-        |
-        |
-MLX90640 Thermal Data
-        |
-        v
-Thermal Feature Extraction
-        |
-        v
-Thermal Anomaly Score
+```mermaid
+flowchart TD
+    RGB["ESP32-CAM JPEG<br/>Capture identity and time"] --> ALIGN["Pair and register frames"]
+    THERMAL["MLX native temperatures<br/>Capture interval and validity"] --> ALIGN
+    ALIGN --> DISPLAY["Bicubic thermal display + RGB"]
+    DISPLAY --> IMAGE["Fused preview for the application"]
+    ALIGN --> REGIONS["Registered component regions"]
+    THERMAL -->|"Native samples only"| FEATURES["Region heat features<br/>Quality and uncertainty"]
+    REGIONS --> FEATURES
+    CURRENT["Current telemetry"] --> ELECTRICAL["Electrical features"]
+    ELECTRICAL --> MODEL["Planned anomaly model"]
+    RGB -.-> DETECTOR["Planned trained component detector"]
+    DETECTOR -.-> REGIONS
+    FEATURES --> DECISION["Planned learned decision fusion"]
+    MODEL --> DECISION
+    DECISION --> RESULT["Linked enrichment and alert"]
+    classDef planned fill:#fff5df,stroke:#9b792d,stroke-dasharray:5 4,color:#604713
+    class MODEL,DETECTOR,DECISION,RESULT planned
 ```
+
+Dashed-outline nodes require the production inference work. The bench uses configured
+regions, local threshold protection and a stored preview; it does not emit a learned risk score.
+
+
+### RGB and thermal fusion design — 2026-10-10
+
+**Design decision:** SmartDB associates native thermal measurements with registered
+RGB component regions and produces a composite display. The current v2 bench firmware
+implements registration, native region statistics and bicubic display rendering on the
+ESP32-S3, alongside independent local threshold protection. It uses configured regions,
+not a trained component detector. Physical calibration and hardware validation remain pending.
+
+The cloud inference pipeline described below is the production design, including backend
+raw-frame inference uploads, trained models and enriched decisions. Those inference services
+are not implemented. The bench system now uploads its already-fused BMP through the Firebase
+API as a timestamped preview, without model inference. For its actual acquisition and pairing behavior, see the
+[firmware guide](../esp_idf/smartdb_fusion/README.md#rgbthermal-fusion): the S3 requests fresh
+JPEGs over local authenticated HTTP, reads thermal data over I²C, and pairs both using
+bounded intervals on the S3 monotonic clock.
+
+#### Acquisition and frame pairing
+
+- The external ESP32-CAM sends JPEG frames over Wi-Fi. J6 provides power only;
+  camera data does not pass through the SmartDB USB-A socket.
+- The ESP32-S3 reads the MLX90640 through J3 using the manufacturer's temperature
+  conversion and bad-pixel handling. Keep the 32 × 24 calibrated temperature
+  array in degrees Celsius, validity/correction flags, and the emissivity and
+  reflected-temperature assumptions. A colourized thermal image is a derived
+  display asset, not the measurement payload.
+- Provision an installation ID that binds the RGB node, sensing node and
+  calibration profile. Every frame carries an authenticated device ID, frame ID,
+  boot ID, sequence, capture time/interval, time quality and clock uncertainty.
+  Thermal timing covers the subpages used to assemble the array. Pair by capture
+  timing and configured maximum skew, including uncertainty, rather than network
+  arrival time. Unknown timing or excessive skew makes the fused result unavailable.
+- JPEGs and full thermal arrays use a separate authenticated HTTPS upload channel,
+  with bounded payload sizes and queues. They do not enter the existing 1024-byte
+  CoAP telemetry payload. API routes and binary encoding remain implementation
+  work; existing telemetry ingestion is not an image-upload service.
+
+#### Registration and shared representation
+
+- Specify a rigid camera mount, overlapping fields of view, fixed focus and a
+  recorded working distance. Calibration uses corresponding targets visible in
+  both modalities and accounts for lens distortion, image orientation and crop.
+  A resized thermal frame alone is not spatial registration.
+- Store a versioned thermal-to-RGB transform with its camera identities, image
+  sizes, valid overlap mask, applicable scene plane/depth range and registration
+  uncertainty. A homography is the baseline for a roughly planar fixed panel;
+  components at different depths require a suitable per-plane/depth mapping or
+  broader location uncertainty. Moving either camera invalidates the profile.
+  See [OpenCV's homography guidance](https://docs.opencv.org/4.5.2/d9/dab/tutorial_homography.html).
+- The shared representation contains the RGB image, registered temperature
+  estimates, validity mask and references to the original thermal samples.
+  Pixels outside thermal coverage remain unavailable, never zero-temperature data.
+  The MLX90640's native resolution and field-of-view options are specified by
+  [Melexis](https://media.melexis.com/-/media/files/documents/datasheets/mlx90640-datasheet-melexis.pdf).
+
+#### Visual image fusion
+
+- Bicubic resampling enlarges the thermal display in the calibrated RGB coordinate
+  system. Use a labelled temperature colour scale, an adjustable thermal opacity,
+  and visible RGB structure. Preserve RGB outside the valid thermal overlap.
+  Display concept: `fused = (1 - alpha) * RGB + alpha * thermal_colour`, with
+  `alpha = 0` wherever thermal data is invalid. Resampling and alignment should
+  use a composed mapping where practical to avoid repeated interpolation.
+- The UI offers RGB, thermal and fused views. It labels the thermal overlay as
+  interpolated and shows frame age and association quality. Temperature labels
+  and thermal maxima come from the original valid measurements, not the blended
+  colours or bicubic extrema. Bicubic values can exceed the measured range;
+  [interpolation documentation](https://www.mathworks.com/help/matlab/ref/imresize.html)
+  describes this overshoot. RGB edges improve visual context without increasing
+  measured thermal resolution.
+
+#### Component-level fusion and decision output
+
+- Obtain component regions from installation annotations or a task-trained RGB
+  detector/segmenter. Map each region into native thermal coordinates and retain
+  the contributing thermal pixel footprints. Record coverage, sample count,
+  registration uncertainty and whether neighbouring components share samples.
+- For supported regions, calculate measured maximum temperature, robust regional
+  temperature, rise relative to a configured reference/baseline, heating rate
+  and persistence. Baselines are versioned and account for operating conditions.
+  Corrected pixels retain their flags; they must not be treated as independent
+  measured evidence. Sparse or ambiguous coverage produces a region-level heat
+  report without assigning an exact hot terminal.
+- Combine these thermal features with RGB component identity and time-associated
+  current evidence. A shared current sensor describes its monitored circuit;
+  software must not attribute that current to an individual component without
+  an explicit topology/sensor mapping. Keep object-recognition confidence,
+  thermal validity, registration quality and fault evidence as separate fields;
+  a confident RGB detection does not establish overheating.
+- Store an immutable backend enrichment referencing both source frames and the
+  current messages, with calibration version, region ID/label, thermal features,
+  coverage/quality, model versions when used, decision configuration version and
+  alert reasons. Do not place fusion results in device-originated telemetry.
+- The fused display is not the input to an unchanged RGB YOLO model. A learned
+  RGB-T model is a later option requiring paired registered training data, a
+  temperature/mask input path, and its own validation. The baseline already fuses
+  both sensors through shared coordinates and component-level evidence.
+
+#### Production software boundaries and current bench mapping
+
+| Module | Responsibility |
+|---|---|
+| Camera firmware | Reliable JPEG capture, capture timing and bounded Wi-Fi upload |
+| Sensing firmware | Calibrated MLX/current acquisition, local rules and health reporting |
+| `frame_pairing` | Installation binding, timing checks, bounded frame buffering |
+| `registration` | Calibration profiles, coordinate transforms and overlap masks |
+| `thermal_features` | Native-sample region statistics, trends and coverage quality |
+| `fusion` | RGB-region/thermal association and current-evidence combination |
+| `rendering` | Bicubic thermal visualization, colour scale and fused RGB output |
+
+The names in this table describe production responsibilities, not repository paths.
+The implemented bench equivalents live in `esp_idf/smartdb_fusion`: `main/app_camera.c`
+serves fresh JPEGs, `main/system_control.c` and `main/thermal_sensor.c` acquire local
+measurements, and `main/app_s3.c` with `components/fusion_core/` handles pairing,
+registration, native thermal features and rendering. Its diagnostic telemetry includes
+device-generated `vision` status; the immutable backend enrichment described above remains
+a separate planned production artifact. The older SD-card camera diagnostic is not the
+current camera target, and the CoAP/CBOR gateway still does not implement image inference.
 
 ### Fusion and Decision Rules
 
-- A decision is never made from a single frame/sample; the fusion engine requires agreement across a short decision window (analogous to a multi-sample vote).
+- AI fusion decisions use a configured evidence window. This does not delay or gate an independent local hard-threshold action.
+- Missing, stale, unregistered or insufficiently resolved inputs produce an explicit degraded/unavailable fusion status, not a normal/low-risk result. Existing local threshold actions remain independent of RGB availability and backend processing.
 - **High confidence** (both electrical anomaly and thermal hotspot agree, or a hard rule-based threshold is independently breached) → immediate mobile alert; relay cutoff already handled by the independent edge safety layer if a hard limit was crossed.
 - **Medium confidence** (one signal flags, the other is ambiguous) → mobile alert with a "please check" classification; no automatic cutoff from this path alone.
 - **Low confidence / no agreement** → no alert; logged for calibration only.
@@ -394,7 +557,11 @@ No model may enter the deployed system without a validation report, version tag,
 | Test ID | Scenario | Pass condition |
 |---|---|---|
 | AI-DET-001 | Simulated overload current pattern | Isolation Forest flags anomaly within target latency |
-| AI-DET-002 | Simulated thermal hotspot on test rig | YOLO correctly localizes the hotspot region |
+| AI-DET-002 | Thermal hotspot within a registered component region | Thermal analysis detects the heat and fusion associates it with the correct RGB region, within declared spatial uncertainty |
+| AI-REG-001 | Known common targets and fixed camera geometry | Registration error and valid overlap meet the installation's configured limits |
+| AI-TIME-001 | Delayed frames, clock uncertainty or a node reboot | Pairing rejects unsupported timing and reports unavailable/degraded fusion |
+| AI-RES-001 | Several small components share thermal pixels | Output retains region-level uncertainty rather than assigning unsupported terminal temperatures |
+| AI-VIS-001 | Bicubic overlay overshoots a measured peak | Display interpolation cannot change measured temperature labels or alarm decisions |
 | AI-FUS-001 | Both signals agree on high risk | Fusion engine outputs high-confidence band |
 | AI-FUS-002 | Only one signal flags | Fusion engine outputs medium-confidence band, no auto-cutoff from this path |
 | AI-RETRAIN-001 | Homeowner dismisses repeated false positives | Retrained model shows measurable false-positive reduction |
@@ -432,7 +599,12 @@ No model may enter the deployed system without a validation report, version tag,
 
 ## Cloud API/Event Contract
 
-### Event Schema (device → cloud, can be modified baed on necessity)
+### Illustrative backend-enriched event
+
+This is an application-facing illustration, not the device ingestion envelope.
+Production enrichment must also link the immutable source messages/frames and
+record the calibration/model/configuration versions defined above. The normative
+device envelope later in this document excludes AI and fusion results.
 
 ```json
 {
@@ -448,7 +620,8 @@ No model may enter the deployed system without a validation report, version tag,
   "source": {
     "rule_based": true,
     "isolation_forest_score": 0.92,
-    "yolo_hotspot_detected": true
+    "thermal_hotspot_detected": true,
+    "rgb_component_region_id": "panel-a-breaker-1"
   }
 }
 ```
@@ -820,15 +993,21 @@ for field deployment.
 |---|---|---|
 | `docs/architecture_full_v1.1.md` | Product, safety, architecture, and device-ingestion contract | Primary engineering specification |
 | `backend/` | Python device-ingestion gateway | Executable implementation of the CoAP contract |
+| `cloud/` | Firebase Auth/Firestore HTTP API | Implemented v2 bench API and team integration guide |
+| `dashboard/` | Optional local developer console | API testing only; user dashboard belongs to the frontend team |
+| `docs/system/architecture.md` | Current hardware/firmware/backend boundaries | Implemented bench architecture |
 | `postman/specs/smartdb_api/openapi.yaml` | User/admin HTTP API | Normative HTTP interface contract |
 | `postman/collections/smartdb_api/` | Runnable HTTP request examples | Must match the OpenAPI contract |
-| `postman/documentation/README.md` | Postman setup, coverage, security, and maintenance guide | Operational companion to the HTTP contract |
-| `esp_idf/` | ESP32 experiments and camera firmware | Firmware work area; individual projects have separate build configurations |
+| `postman/documents/README.md` | Postman setup, coverage, security, and maintenance guide | Operational companion to the HTTP contract |
+| `postman/specs/smartdb_firmware/openapi.yaml` | Local bench firmware HTTP API | S3 configuration/status and camera capture contract |
+| `esp_idf/smartdb_fusion/` | PlatformIO ESP-IDF S3 and ESP32-CAM targets | Current v2 bench firmware and setup guide |
+| `esp_idf/smartdb_fusion/setup.sh` | Interactive setup/build/flash entry point | USB provisioning, connection settings, protection limits and status |
+| `esp_idf/esp32_cam/esp32_cam/` | Earlier SD-card camera diagnostic | Historical standalone experiment; not the current v2 camera target |
 | `smart_db/` and `smart_db_v2/` | KiCad source, fabrication output, and design revisions | Hardware work area; revision used for manufacture must be explicitly selected |
 | `docs/reference/` | Background notes, vendor material, and research | Informative, not normative |
 
-The HTTP API and device API are intentionally different trust boundaries. Mobile users and
-administrators use JSON over HTTPS at `/api/v1`. Devices use canonical CBOR over CoAP/DTLS
+The production HTTP API and device API are intentionally different trust boundaries. Mobile users and
+administrators use JSON over HTTPS at `/api/v1`. Production devices use canonical CBOR over CoAP/DTLS
 at UDP 5687. The HTTP diagnostic telemetry endpoint must not become a plaintext substitute
 for production device ingestion.
 
@@ -876,7 +1055,11 @@ SMARTDB_TRANSPORT_MODE=insecure-dev smartdb-ingestion
 network. Secure mode is the default and deliberately refuses startup until a verified
 server-side DTLS-PSK integration is present. A credential file, when integrated, uses JSON
 of the form `{"db-001":"<hex-encoded-random-secret>"}` and must remain outside source
-control. Each production secret must contain at least 256 random bits.
+control. Each production secret must contain at least 256 random bits (32 bytes / 64 hex
+characters); the PSK loader enforces this minimum. Payload size is checked before the
+resource decodes the identity claim; malformed, oversized, non-map, and trailing-data
+CBOR is rejected as `4.00`. The development store cannot issue a durable contiguous
+checkpoint, so acknowledgements omit `accepted_through_sequence`.
 
 The resource/service layer is transport-independent enough to run behind DTLS, but the
 current executable does not yet establish a secure DTLS server. aiocoap's DTLS server-side
@@ -892,7 +1075,7 @@ load behavior, and key rotation/revocation in integration tests.
 
 | Environment variable | Default | Constraint/purpose |
 |---|---|---|
-| `SMARTDB_HOST` | `0.0.0.0` | UDP bind address; prefer loopback during local testing |
+| `SMARTDB_HOST` | `127.0.0.1` | UDP bind address; loopback by default |
 | `SMARTDB_PORT` | `5687` | UDP 1–65535 |
 | `SMARTDB_TRANSPORT_MODE` | `secure` | `secure` or `insecure-dev` |
 | `SMARTDB_DTLS_PSK_FILE` | unset | Required in secure mode; secret JSON path |
@@ -910,7 +1093,7 @@ adapter are verified.
 
 The OpenAPI 3.1 document defines authentication, users, devices, desired configuration,
 telemetry queries, alerts, notifications, and commands. Postman uses
-`{{base_url}} = http://localhost:8000/api/v1` and variables for device, alert, notification,
+`{{base_url}} = http://127.0.0.1:5000/api/v1` and variables for device, alert, notification,
 command, and history ranges. Collection request names and routes use plural REST resources:
 `/users`, `/devices`, `/alerts`, and `/notifications`.
 
@@ -921,9 +1104,11 @@ reads/updates with a body, `201` for synchronous creation, `202` for queued/asyn
 work, and `204` when no response body is needed. API implementations must return the shared
 structured error model and validate bearer authorization on every non-public endpoint.
 
-The Postman collection is an interface client, not proof that an HTTP backend exists. Any
-future HTTP implementation must be generated from or tested against the OpenAPI document;
-route changes require updating both artifacts in the same change.
+The implemented Firebase API is in `cloud/` and runs locally through `sh system.sh`.
+OpenAPI/collection tests and emulator-backed authentication, ownership, persistence, retry,
+command and image tests verify the bench contract. Route changes require updating the
+implementation and Postman artifacts together. The frontend team integrates through this
+API; the local developer console does not replace their user dashboard.
 
 ### Verification Matrix
 
@@ -933,9 +1118,10 @@ route changes require updating both artifacts in the same change.
 | Python package | `pip install -e '.[dev]'` | Console entry point resolves to `smartdb_ingestion.server:main` | Clean environment install succeeds |
 | CoAP local integration | POST CBOR to every resource in `insecure-dev` | Manual/integration test still required | Correct `2.xx`/`4.xx` response matrix |
 | DTLS security | Provision unique PSKs, authenticate, rotate, revoke, replay captured packets | Not implemented in the current aiocoap binding | Mandatory before network exposure |
+| Firebase HTTP API | `npm test` plus local Functions/Hosting smoke test | Emulator tests cover sessions, ownership, device credentials, telemetry deduplication, commands and bounded BMP previews | Live project deployment and operational verification |
 | HTTP contract | Validate `postman/specs/smartdb_api/openapi.yaml` with an OpenAPI 3.1 validator | Specification and requests are aligned in-repository | Validator clean and contract tests pass |
-| Firmware | Build the selected ESP-IDF project and run EDGE tests | Multiple experiments exist; release target not yet designated | Reproducible build plus hardware tests |
-| PCB | ERC, DRC, net review, isolation/creepage review, controlled fabrication export | Multiple KiCad revisions exist | Signed manufacturing revision and safety review |
+| Firmware | Build `smartdb_s3`, `esp32cam` and optional `smartdb_s3_demo`; run `sh tools/check.sh` in the firmware project after dependencies are fetched | All three builds pass; host coverage includes fusion, protection/RMS, settings persistence/redaction, setup protocol and Postman contracts; terminal launcher checked | Physical sensor, USB provisioning, timing and relay tests still required |
+| PCB | ERC, DRC, net review, isolation/creepage review, controlled fabrication export | smart_db_v2 low-voltage bench revision: module, 5 V logic/USB, CT input and relay-contact separation corrected and routed; see [v2 review](../smart_db_v2/README.md) for ERC/DRC results; thermal/BOM/hardware validation remains open | Signed manufacturing revision and safety review |
 | End to end | Execute E2E-001 through E2E-004 | Pending integrated system | All pass with retained logs |
 
 ### Known Production Gaps and Required Closure
@@ -943,13 +1129,13 @@ route changes require updating both artifacts in the same change.
 | Priority | Gap | Required closure/evidence |
 |---|---|---|
 | P0 | Server-side DTLS 1.2 PSK termination is fail-closed but not integrated | Selected supported DTLS terminator, identity binding tests, packet capture showing no plaintext, rotation/revocation test |
-| P0 | Hardware and firmware release targets are ambiguous among experiments/revisions | Designate one firmware project and one PCB revision; archive reproducible binaries, fabrication files, ERC/DRC, and review approvals |
+| P0 | Bench protection firmware is implemented, but household protection, final BOM and hardware/thermal validation remain incomplete | J2 is regulated 5 V DC. SCT-013 firmware monitors isolated low-voltage AC up to the 1 A bench limit; the earlier J5 DC resistive-load target does not establish AC contact ratings. Validate actual relay/load ratings and firmware on hardware; mains requires a separate reviewed redesign |
 | P0 | End-to-end safety timing is unverified | Fault-injection evidence that local cutoff remains below one second without backend/network |
 | P1 | Development rate limiter is simpler than the normative token-bucket policy | Implement sustained 5/s burst 20, critical 10/min, fleet isolation, retry metadata, and load/abuse tests |
-| P0 | Development replay/deduplication state is memory-only | Add an atomic Firebase/managed-database ingestion adapter; do not issue production `2.04` responses before durable storage |
+| P0 | CoAP gateway development replay/deduplication state is memory-only; the separate HTTPS API persists samples in Firestore | Add an atomic Firebase/managed-database ingestion adapter; do not issue production `2.04` responses before durable storage |
 | P1 | Config file serving does not itself verify signatures | Build offline signing/verification tooling and reject invalid, expired, rollback, wrong-device, or unsafe configurations |
 | P1 | Gateway observability is minimal | Add secret-safe structured logs, metrics, correlation IDs, security alerts, and durable-ingest latency SLOs |
-| P1 | HTTP server implementation is not present in this repository | Implement against OpenAPI, add authentication/authorization, contract tests, database migrations, and audit logging |
+| P1 | Firebase HTTP API is implemented and emulator-tested; live deployment and operational validation remain | Configure the selected project, retention/backups, audit logging, monitoring and load tests; integrate the team-owned user dashboard |
 | P2 | Generated/build artifacts and backups are mixed with source | Define artifact retention, `.gitignore`, release packaging, and authoritative-source policy without deleting historical engineering data blindly |
 
 No production claim, pilot installation, or live mains control is permitted until every P0

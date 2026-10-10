@@ -1,0 +1,106 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-10T13:16:08",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "smart_db.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "PCB text 'C26' on F.Silkscreen",
+                    "pos": {
+                        "x": 140.0,
+                        "y": 113.0
+                    },
+                    "uuid": "e6d2ba4a-f88c-48c2-bcef-8710802ec707"
+                },
+                {
+                    "description": "Segment of C7 on F.Silkscreen",
+                    "pos": {
+                        "x": 138.91,
+                        "y": 113.711252
+                    },
+                    "uuid": "f7a5cac2-ece6-4dda-877e-be6eb20b55f5"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Polygon of J2 on F.Silkscreen",
+                    "pos": {
+                        "x": 153.72,
+                        "y": 114.0
+                    },
+                    "uuid": "0cad5967-0c6b-4a05-8349-c6b5bde7cbc7"
+                },
+                {
+                    "description": "PCB text 'J2 5V IN' on F.Silkscreen",
+                    "pos": {
+                        "x": 154.25,
+                        "y": 111.5
+                    },
+                    "uuid": "71880040-96d2-53bf-a4f1-219d130508d9"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "PCB text 'J2 5V IN' on F.Silkscreen",
+                    "pos": {
+                        "x": 154.25,
+                        "y": 111.5
+                    },
+                    "uuid": "71880040-96d2-53bf-a4f1-219d130508d9"
+                },
+                {
+                    "description": "Segment of J2 on F.Silkscreen",
+                    "pos": {
+                        "x": 153.72,
+                        "y": 106.38
+                    },
+                    "uuid": "814519b6-1896-4af4-a678-676d1c71bd6a"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        }
+    ]
+}

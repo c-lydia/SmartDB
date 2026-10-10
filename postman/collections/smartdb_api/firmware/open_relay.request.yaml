@@ -1,0 +1,8 @@
+$kind: http-request
+name: open_relay
+url: '{{firmware_url}}/relay/open'
+method: POST
+headers:
+  Authorization: Bearer {{firmware_token}}
+examples: .resources/open_relay.resources/examples
+order: 1791619200003

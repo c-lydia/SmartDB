@@ -1,0 +1,5 @@
+if(IDF_TARGET STREQUAL "esp32s3")
+    idf_component_register(SRCS "MLX90640_API.c" INCLUDE_DIRS "include")
+else()
+    idf_component_register()
+endif()

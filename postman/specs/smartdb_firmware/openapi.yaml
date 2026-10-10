@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: SmartDB v2 bench firmware API
+  version: 1.1.0
+  description: Local HTTP interface on an isolated WPA2 bench network. Bearer authentication does not encrypt HTTP. No remote arm endpoint exists.
+servers:
+  - url: http://192.168.1.51
+    description: SmartDB S3; replace with its DHCP address
+security:
+  - firmwareToken: []
+paths:
+  /:
+    get:
+      summary: Browser viewer shell; data requests still require the local token
+      security: []
+      responses:
+        '200':
+          description: HTML viewer
+          content:
+            text/html:
+              schema: {type: string}
+  /status:
+    get:
+      summary: Local protection and fused-frame status
+      responses:
+        '200':
+          description: Status; ready=false when alignment, timing or imagery is unavailable
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Status'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+  /config:
+    get:
+      summary: Read applied bench configuration
+      responses:
+        '200':
+          description: Applied configuration
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Config'}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+    put:
+      summary: Persist a newer configuration and open the relay; local re-arm required
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/Config'}
+      responses:
+        '200': {description: Saved; relay remains open until physical re-arm}
+        '400': {description: Invalid JSON, limits or body larger than 512 bytes}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '409': {description: Version must increase or another update is in progress}
+        '500': {description: Storage failure; relay open}
+  /relay/open:
+    post:
+      summary: De-energize the relay without clearing a latched trip
+      responses:
+        '200': {description: Relay opening}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+  /fused.bmp:
+    get:
+      summary: Fresh QVGA registered thermal overlay
+      responses:
+        '200':
+          description: Top-down 24-bit BMP; X-Fusion-Sequence identifies the image
+          content:
+            image/bmp:
+              schema: {type: string, format: binary}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '503': {description: Missing, uncalibrated, unsupported or stale frame}
+  /capture:
+    servers:
+      - url: http://192.168.1.50
+        description: Separate ESP32-CAM, not the S3
+    get:
+      summary: JPEG captured after the request arrives
+      responses:
+        '200':
+          description: QVGA JPEG with X-Camera-ID, X-Camera-Boot, X-Camera-Sequence and X-Capture-Policy headers
+          content:
+            image/jpeg:
+              schema: {type: string, format: binary}
+        '401': {$ref: '#/components/responses/Unauthorized'}
+        '503': {description: Fresh camera frame unavailable}
+components:
+  securitySchemes:
+    firmwareToken: {type: http, scheme: bearer}
+  responses:
+    Unauthorized: {description: Authentication required; plain-text response}
+  schemas:
+    Status:
+      description: Fusion and control fields share the root; telemetry uploads instead nest fusion under vision.
+      allOf:
+        - {$ref: '../smartdb_api/openapi.yaml#/components/schemas/FusionStatus'}
+        - type: object
+          required: [current, temperature, relay_state, protection_state, protection_reason, config_version, commissioned, storage_ok, current_sensor, arc_detection_available, events]
+          properties:
+            current: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/current'}
+            temperature: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/temperature'}
+            relay_state: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/relay_state'}
+            protection_state: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/protection_state'}
+            protection_reason: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/protection_reason'}
+            config_version: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/config_version'}
+            commissioned: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/commissioned'}
+            storage_ok: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/storage_ok'}
+            current_sensor: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/current_sensor'}
+            arc_detection_available: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/arc_detection_available'}
+            events: {$ref: '../smartdb_api/openapi.yaml#/components/schemas/Telemetry/properties/events'}
+    Config:
+      type: object
+      additionalProperties: false
+      required: [version, commissioned, current_limit_a, temperature_limit_c, current_scale_a_per_v]
+      properties:
+        version: {type: integer, minimum: 1, maximum: 4294967295}
+        commissioned: {type: boolean}
+        current_limit_a: {type: number, exclusiveMinimum: 0, maximum: 1}
+        temperature_limit_c: {type: number, minimum: 20, maximum: 100}
+        current_scale_a_per_v: {type: number, minimum: 50, maximum: 200}

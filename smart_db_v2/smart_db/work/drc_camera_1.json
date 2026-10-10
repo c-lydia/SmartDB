@@ -1,0 +1,319 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-10T13:12:09",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "smart_db.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Clearance violation (netclass 'Supply' clearance 0.2500 mm; actual 0.1500 mm)",
+            "items": [
+                {
+                    "description": "Pad 1 [LOGIC_5V_FUSED] of C25 on F.Cu",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 112.45
+                    },
+                    "uuid": "f4ae9e40-42ef-4563-b67f-37e2a77688a4"
+                },
+                {
+                    "description": "Track [BGND] on F.Cu, length 1.4000 mm",
+                    "pos": {
+                        "x": 142.2,
+                        "y": 113.625
+                    },
+                    "uuid": "fa73176a-efef-4445-a5c1-d3bb74a730ff"
+                }
+            ],
+            "severity": "error",
+            "type": "clearance"
+        },
+        {
+            "description": "Items shorting two nets (nets BGND and LOGIC_5V_FUSED)",
+            "items": [
+                {
+                    "description": "Pad 2 [BGND] of C26 on F.Cu",
+                    "pos": {
+                        "x": 142.2,
+                        "y": 113.625
+                    },
+                    "uuid": "73f66b2a-184e-41d9-b371-5d168158eaa0"
+                },
+                {
+                    "description": "Pad 1 [LOGIC_5V_FUSED] of C25 on F.Cu",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 112.45
+                    },
+                    "uuid": "f4ae9e40-42ef-4563-b67f-37e2a77688a4"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Courtyards overlap",
+            "items": [
+                {
+                    "description": "Footprint C26",
+                    "pos": {
+                        "x": 142.2,
+                        "y": 114.4
+                    },
+                    "uuid": "ad8ed295-a979-47a1-b9a8-86cf63e1c236"
+                },
+                {
+                    "description": "Footprint C25",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 111.5
+                    },
+                    "uuid": "ceba8dc2-3d2a-42d7-a0f5-2a23294802ad"
+                }
+            ],
+            "severity": "error",
+            "type": "courtyards_overlap"
+        },
+        {
+            "description": "Front solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Pad 1 [LOGIC_5V_FUSED] of C25 on F.Cu",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 112.45
+                    },
+                    "uuid": "f4ae9e40-42ef-4563-b67f-37e2a77688a4"
+                },
+                {
+                    "description": "Pad 2 [BGND] of C26 on F.Cu",
+                    "pos": {
+                        "x": 142.2,
+                        "y": 113.625
+                    },
+                    "uuid": "73f66b2a-184e-41d9-b371-5d168158eaa0"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Footprint 'C_0603_1608Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C26",
+                    "pos": {
+                        "x": 142.2,
+                        "y": 114.4
+                    },
+                    "uuid": "ad8ed295-a979-47a1-b9a8-86cf63e1c236"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Footprint 'C_0805_2012Metric' does not match copy in library 'Capacitor_SMD'",
+            "items": [
+                {
+                    "description": "Footprint C25",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 111.5
+                    },
+                    "uuid": "ceba8dc2-3d2a-42d7-a0f5-2a23294802ad"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_mismatch"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'C25' on F.Silkscreen",
+                    "pos": {
+                        "x": 140.3,
+                        "y": 110.6
+                    },
+                    "uuid": "35b8d327-4fcb-45c5-9289-79f609d14a49"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.6500 mm)",
+            "items": [
+                {
+                    "description": "PCB text 'C26' on F.Silkscreen",
+                    "pos": {
+                        "x": 140.6,
+                        "y": 113.0
+                    },
+                    "uuid": "e6d2ba4a-f88c-48c2-bcef-8710802ec707"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Text height out of range (board setup constraints silk text height min height 0.8000 mm; actual 0.7500 mm)",
+            "items": [
+                {
+                    "description": "PCB text '1 GND\n2 +5V' on F.Silkscreen",
+                    "pos": {
+                        "x": 133.2,
+                        "y": 122.5
+                    },
+                    "uuid": "8214a84a-8f40-4743-a379-e636be4d7f0e"
+                }
+            ],
+            "severity": "warning",
+            "type": "text_height"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Reference field of J2",
+                    "pos": {
+                        "x": 142.68,
+                        "y": 111.5
+                    },
+                    "uuid": "73746034-745a-4746-a904-185f7adce6d2"
+                },
+                {
+                    "description": "Segment of C25 on F.Silkscreen",
+                    "pos": {
+                        "x": 142.735,
+                        "y": 111.761252
+                    },
+                    "uuid": "c81152d8-d1c9-4d5f-90a9-a424b11e83d1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "PCB text 'J2 5V IN' on F.Silkscreen",
+                    "pos": {
+                        "x": 149.0,
+                        "y": 105.3
+                    },
+                    "uuid": "71880040-96d2-53bf-a4f1-219d130508d9"
+                },
+                {
+                    "description": "Segment of C24 on F.Silkscreen",
+                    "pos": {
+                        "x": 142.654437,
+                        "y": 105.41
+                    },
+                    "uuid": "ce304036-9b98-4400-ad7a-ede8485318b6"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clearance",
+            "items": [
+                {
+                    "description": "Segment of C24 on F.Silkscreen",
+                    "pos": {
+                        "x": 148.41,
+                        "y": 105.41
+                    },
+                    "uuid": "4845debe-9e43-4980-b7c9-f97c1b42c183"
+                },
+                {
+                    "description": "PCB text 'J2 5V IN' on F.Silkscreen",
+                    "pos": {
+                        "x": 149.0,
+                        "y": 105.3
+                    },
+                    "uuid": "71880040-96d2-53bf-a4f1-219d130508d9"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_overlap"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of J2",
+                    "pos": {
+                        "x": 142.68,
+                        "y": 111.5
+                    },
+                    "uuid": "73746034-745a-4746-a904-185f7adce6d2"
+                },
+                {
+                    "description": "Pad 1 [LOGIC_5V_FUSED] of C25 on F.Cu",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 112.45
+                    },
+                    "uuid": "f4ae9e40-42ef-4563-b67f-37e2a77688a4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Reference field of J2",
+                    "pos": {
+                        "x": 142.68,
+                        "y": 111.5
+                    },
+                    "uuid": "73746034-745a-4746-a904-185f7adce6d2"
+                },
+                {
+                    "description": "Pad 2 [BGND] of C25 on F.Cu",
+                    "pos": {
+                        "x": 142.0,
+                        "y": 110.55
+                    },
+                    "uuid": "79575837-831b-4c5b-af3e-71e9df2bc733"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}

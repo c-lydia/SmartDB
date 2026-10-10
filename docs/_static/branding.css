@@ -1,0 +1,15 @@
+/* The existing monochrome SmartDB mark stays legible on the blue navigation. */
+.wy-side-nav-search a img.logo {
+  width: 140px;
+  height: auto;
+  max-width: 100%;
+  margin: 10px auto 4px;
+  padding: 0;
+  filter: brightness(0) invert(1);
+}
+
+/* Diagrams stay readable on narrow screens and can expand with their fullscreen button. */
+.wy-nav-content { max-width: 1100px; }
+pre.mermaid { background: #fff; border: 1px solid #e1e8ec; border-radius: 6px; padding: 16px; overflow-x: auto; text-align: center; }
+pre.mermaid svg { height: auto; }
+@media print { pre.mermaid { border: 0; break-inside: avoid; } }

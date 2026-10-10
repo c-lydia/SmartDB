@@ -1,0 +1,20 @@
+$kind: http-example
+request:
+  url: '{{firmware_url}}/config'
+  method: GET
+  headers:
+    Authorization: Bearer {{firmware_token}}
+response:
+  statusCode: 200
+  statusText: OK
+  body:
+    type: json
+    content: |-
+      {
+        "version": 1,
+        "commissioned": false,
+        "current_limit_a": 0.8,
+        "temperature_limit_c": 60,
+        "current_scale_a_per_v": 111.1111
+      }
+order: 1791619200001

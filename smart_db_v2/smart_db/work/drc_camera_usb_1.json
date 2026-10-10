@@ -1,0 +1,175 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-10T13:37:54",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.6",
+    "schematic_parity": [],
+    "source": "smart_db.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Items shorting two nets (nets VCC and BGND)",
+            "items": [
+                {
+                    "description": "Track [VCC] on B.Cu, length 39.9250 mm",
+                    "pos": {
+                        "x": 119.0,
+                        "y": 117.0
+                    },
+                    "uuid": "63d5860a-27e3-495d-be55-498fd46ca05f"
+                },
+                {
+                    "description": "PTH pad SH [BGND] of J6",
+                    "pos": {
+                        "x": 109.57,
+                        "y": 116.3
+                    },
+                    "uuid": "8afaa651-c48d-4c99-92a9-b1d12c4b294b"
+                }
+            ],
+            "severity": "error",
+            "type": "shorting_items"
+        },
+        {
+            "description": "Tracks crossing",
+            "items": [
+                {
+                    "description": "Track [LOGIC_5V_FUSED] on B.Cu, length 12.0000 mm",
+                    "pos": {
+                        "x": 99.5,
+                        "y": 122.0
+                    },
+                    "uuid": "43a28513-43d0-48b2-8fde-e7e5344d9490"
+                },
+                {
+                    "description": "Track [VCC] on B.Cu, length 39.9250 mm",
+                    "pos": {
+                        "x": 119.0,
+                        "y": 117.0
+                    },
+                    "uuid": "63d5860a-27e3-495d-be55-498fd46ca05f"
+                }
+            ],
+            "severity": "error",
+            "type": "tracks_crossing"
+        },
+        {
+            "description": "Rear solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Track [VCC] on B.Cu, length 39.9250 mm",
+                    "pos": {
+                        "x": 119.0,
+                        "y": 117.0
+                    },
+                    "uuid": "63d5860a-27e3-495d-be55-498fd46ca05f"
+                },
+                {
+                    "description": "PTH pad SH [BGND] of J6",
+                    "pos": {
+                        "x": 96.43,
+                        "y": 116.3
+                    },
+                    "uuid": "8edaa903-7ae2-45b6-941c-fb4d708625a0"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Rear solder mask aperture bridges items with different nets",
+            "items": [
+                {
+                    "description": "Track [VCC] on B.Cu, length 39.9250 mm",
+                    "pos": {
+                        "x": 119.0,
+                        "y": 117.0
+                    },
+                    "uuid": "63d5860a-27e3-495d-be55-498fd46ca05f"
+                },
+                {
+                    "description": "PTH pad SH [BGND] of J6",
+                    "pos": {
+                        "x": 109.57,
+                        "y": 116.3
+                    },
+                    "uuid": "8afaa651-c48d-4c99-92a9-b1d12c4b294b"
+                }
+            ],
+            "severity": "error",
+            "type": "solder_mask_bridge"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 155.0,
+                        "y": 125.0
+                    },
+                    "uuid": "9de07cfd-eab3-4b8f-ac3f-78d54c6f82d5"
+                },
+                {
+                    "description": "Segment of J6 on F.Silkscreen",
+                    "pos": {
+                        "x": 96.34,
+                        "y": 126.17
+                    },
+                    "uuid": "cb80a00d-722a-4d3d-995f-8f2b5779c301"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Segment on Edge.Cuts",
+                    "pos": {
+                        "x": 155.0,
+                        "y": 125.0
+                    },
+                    "uuid": "9de07cfd-eab3-4b8f-ac3f-78d54c6f82d5"
+                },
+                {
+                    "description": "Segment of J6 on F.Silkscreen",
+                    "pos": {
+                        "x": 109.66,
+                        "y": 118.06
+                    },
+                    "uuid": "a5c27290-f729-4f17-ae14-f60311b5db04"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        }
+    ]
+}

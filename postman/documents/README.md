@@ -6,7 +6,57 @@ The authoritative product and device architecture is
 HTTP contract is [`postman/specs/smartdb_api/openapi.yaml`](../specs/smartdb_api/openapi.yaml).
 Collection requests and examples must remain aligned with both.
 
+The website also provides detailed references for the
+[local HTTP API](../../docs/api/http.md), [USB setup protocol](../../docs/api/usb.md),
+[telemetry delivery](../../docs/api/telemetry.md) and [firmware code](../../docs/code/index.md).
+
 ## Protocol boundary
+
+### Implemented v2 bench firmware
+
+The [PlatformIO firmware](../../esp_idf/smartdb_fusion/README.md) explicitly uses the
+diagnostic HTTP contract for optional bench telemetry. In the setup menu, enter the full
+**HTTPS** upload URL and the server's telemetry bearer token, then apply settings to S3.
+The [Firebase API](../../cloud/README.md) implements these routes. Start it locally with
+`sh system.sh`; live Firebase deployment is a separate installation step. The existing
+CoAP gateway remains separate. The firmware expects 202 and retries the same `sample_id`;
+the API deduplicates that identifier within the device. Its 12-entry RAM telemetry queue
+evicts older waiting samples during long outages and does not survive reboot.
+
+For normal setup, use the firmware's `./setup.sh` menu to enter the endpoint/token and
+configure Wi-Fi over USB. Settings persist in NVS without rebuilding; `SMARTDB_TELEMETRY_URL`
+and `SMARTDB_TELEMETRY_TOKEN` are optional developer fallbacks. The menu also adjusts protection limits using the same
+validation/persistence logic as `PUT /config`, with automatic version increments. Postman
+remains available for API inspection; it is no longer required to configure the boards.
+
+The upload example now reflects real v2 capability: null voltage/power, AC RMS current,
+native thermal maximum, relay/protection status, recent events and `vision` metadata.
+Unavailable measurements and unsynchronized UTC timestamps are null. Unsupported or stale
+regions have null temperature statistics. `synthetic` distinguishes demo output; do not
+interpret synthetic readings as installation evidence. The schema still accepts the
+earlier five-field numeric telemetry shape.
+
+Local requests in `smartdb_api/firmware` use **`firmware_token`**, separately from the
+server's `token`. Set `firmware_url` to the S3 address and `camera_url` to the camera address.
+The [local firmware OpenAPI contract](../specs/smartdb_firmware/openapi.yaml) covers:
+
+| Request | Target | Behavior |
+|---|---|---|
+| `GET /status` | S3 | Fusion status plus local measurements/protection |
+| `GET /config` | S3 | Applied bench configuration |
+| `PUT /config` | S3 | Newer complete configuration; opens relay, needs physical re-arm |
+| `POST /relay/open` | S3 | Opens relay; cannot clear a trip or re-arm |
+| `GET /fused.bmp` | S3 | Fresh fused image, or 503 when unavailable |
+| `GET /capture` | Camera | Fresh QVGA JPEG with identity/sequence headers |
+
+The saved configuration example deliberately leaves `commissioned: false`. Increase the
+version above the applied version; only commission after the sensor/installation settings
+are ready. Local error responses are plain text, separate from the central API's `Error`
+schema. Image requests include unavailable-frame examples; successful responses are binary.
+Local HTTP bearer tokens are unencrypted, so use an isolated bench network. There is no
+remote close/re-arm request. Runtime BOOT hold/release is the physical re-arm mechanism.
+
+The remainder of this guide describes the production API boundary and central collection.
 
 Postman sends JSON over HTTP or HTTPS. It does **not** exercise the ESP32 ingestion protocol.
 
@@ -27,8 +77,12 @@ OpenAPI file. Select `smartdb_dev`, then check these variables:
 
 | Variable | Example | Used by |
 |---|---|---|
-| `base_url` | `http://localhost:8000/api/v1` | Every HTTP request |
-| `token` | Access token returned by login | Protected requests |
+| `base_url` | `http://127.0.0.1:5000/api/v1` | Central HTTP API requests |
+| `token` | Access token returned by login | Protected central API requests |
+| `device_token` | Provisioned one-time device key | Device-only command acknowledgement |
+| `firmware_url` | `http://192.168.1.51` | Local S3 requests in `firmware/` |
+| `camera_url` | `http://192.168.1.50` | Camera `/capture` request |
+| `firmware_token` | Shared token created by the setup menu | Local S3 and camera requests; different from the server token |
 | `device_id` | `ESP32_001` | Device, config, telemetry, and command routes |
 | `alert_id` | `1` | Alert resolution |
 | `notification_id` | `10` | Notification read state |
@@ -45,17 +99,32 @@ For protected requests, configure collection-level authorization as Bearer Token
 authorization when necessary. Production `base_url` must use `https://` with a valid,
 trusted certificate.
 
+The setup tool does not write secrets into these checked-in Postman files. Copy the actual
+board addresses from the menu. For local requests, use the shared token in your private
+Postman environment; menu **8 — Open fused-image viewer** can display it explicitly for
+copying after the S3 has been set up. Local requests already use `{{firmware_token}}` in
+their Authorization header.
+
 ## Recommended workflow
 
-1. Start an HTTP API implementation that conforms to `openapi.yaml`.
+1. Run `sh system.sh` from the repository root; the launcher prints emulator login credentials.
 2. Send `authentication/login` and copy `access_token` into the local `token` value.
 3. Register or list devices and set `device_id` to a record the user may access.
 4. Exercise configuration, telemetry queries, alerts, notifications, and commands.
 5. Use the saved examples to compare methods, routes, status codes, and response shapes.
 6. Clear tokens and one-time device credentials when testing is complete.
 
-The collection does not prove that an API implementation exists or that authorization is
-correct. Automated contract and permission tests remain required.
+The implemented API has emulator-backed permission and persistence tests (`npm test`).
+The [team handoff](../../cloud/README.md#frontend-handoff) covers token rotation, CORS,
+null/stale data, asynchronous commands and image response headers. The frontend team owns
+the user dashboard. Configuration `sampling_rate` means a 5–60 second **upload interval**,
+not the electrical/thermal acquisition rate. Desired limits apply only after acknowledgement.
+
+`GET /devices/{device_id}/commands` returns acknowledgements; a device credential receives
+only its oldest pending command. `POST /devices/{device_id}/credential/rotate` replaces a
+lost key. `GET /devices/{device_id}/fusion/frame` returns the most recent stored BMP with
+receipt/synthetic metadata. Device-only upload and command acknowledgement requests must
+use the provisioned **device key**, not the user login token.
 
 ## Collection coverage
 
