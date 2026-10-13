@@ -93,6 +93,34 @@ backend's secure transport integration and several firmware/hardware validation 
 remain explicit pre-production work. Do not use it as the sole protective mechanism for a
 live electrical installation.
 
+## Code style
+
+Maintained application code uses two-space indentation for JavaScript, CSS, and shell,
+four spaces for Python and C, and a 100-column target. Prettier handles the web/API code,
+Ruff formats and checks Python, clang-format handles the current firmware, and shfmt
+formats shell scripts. Editor defaults are in `.editorconfig`.
+
+C code uses an open, Python-like layout: one statement per line, spaces around operators,
+braced control-flow blocks, and blank lines between functions and logical steps.
+
+Install the development tools with `npm ci` and, inside a Python virtual environment,
+`python -m pip install -r requirements-dev.txt`. Install clang-format and shfmt separately;
+the formatting baseline uses clang-format 23.1.0 and shfmt 3.13.1.
+
+```sh
+npm run format        # Apply formatting
+npm run format:check  # Check formatting and Python imports/errors without rewriting files
+npm run build        # Build the developer console
+npm test             # Run the cloud API tests using local Firebase emulators
+python -m pytest backend/tests
+sh esp_idf/smartdb_fusion/tools/check.sh
+```
+
+The formatting commands cover `backend`, `cloud`, `dashboard`, documentation support
+scripts/styles, launchers, and first-party code in `esp_idf/smartdb_fusion`. They exclude
+generated outputs, local firmware configuration, upstream sensor drivers, legacy firmware
+examples, hardware design files, archives, and Postman exports.
+
 ## Related projects
 
 - [ByteLab](https://github.com/c-lydia/ByteLab) — firmware development workspace; [hosted browser edition](https://bytelab-web.vercel.app) and [SmartDB integration guide](https://smartdb-docs.vercel.app/related/bytelab.html).

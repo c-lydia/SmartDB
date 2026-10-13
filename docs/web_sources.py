@@ -4,9 +4,10 @@ Sphinx reads the small page placeholders below; source-read substitutes the real
 and registers it as a dependency. Relative links are resolved from the original file,
 then mapped to website pages or Sphinx downloads, including assets outside docs/.
 """
-from pathlib import Path
+
 import os
 import re
+from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 DOCS = Path(__file__).resolve().parent
@@ -22,11 +23,13 @@ PAGES = {
     "backend/index": "backend/README.md",
     "firmware/legacy-camera": "esp_idf/esp32_cam/esp32_cam/README.md",
 }
-LINK = re.compile(r'(!?\[[^\]\n]*\]\()([^\s)]+)(\))')
+LINK = re.compile(r"(!?\[[^\]\n]*\]\()([^\s)]+)(\))")
 
 
 def web_text(text, original, page):
-    mapping = {(ROOT / source).resolve(): DOCS / (docname + ".md") for docname, source in PAGES.items()}
+    mapping = {
+        (ROOT / source).resolve(): DOCS / (docname + ".md") for docname, source in PAGES.items()
+    }
 
     def replace(match):
         before, destination, after = match.groups()

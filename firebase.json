@@ -1,24 +1,36 @@
 {
-  "functions": [{"source": "cloud", "codebase": "smartdb", "runtime": "nodejs22", "ignore": ["node_modules", "test", "scripts", "*.log", ".env.local"]}],
-  "firestore": {"rules": "cloud/firestore.rules", "indexes": "cloud/firestore.indexes.json"},
+  "functions": [
+    {
+      "source": "cloud",
+      "codebase": "smartdb",
+      "runtime": "nodejs22",
+      "ignore": ["node_modules", "test", "scripts", "*.log", ".env.local"]
+    }
+  ],
+  "firestore": { "rules": "cloud/firestore.rules", "indexes": "cloud/firestore.indexes.json" },
   "hosting": {
     "public": "dashboard/dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
-      {"source": "/api/**", "function": {"functionId": "api", "region": "asia-southeast1"}},
-      {"source": "**", "destination": "/index.html"}
+      { "source": "/api/**", "function": { "functionId": "api", "region": "asia-southeast1" } },
+      { "source": "**", "destination": "/index.html" }
     ],
-    "headers": [{"source": "**", "headers": [
-      {"key": "X-Content-Type-Options", "value": "nosniff"},
-      {"key": "Referrer-Policy", "value": "same-origin"}
-    ]}]
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "Referrer-Policy", "value": "same-origin" }
+        ]
+      }
+    ]
   },
   "emulators": {
-    "auth": {"host": "127.0.0.1", "port": 9099},
-    "firestore": {"host": "127.0.0.1", "port": 8080},
-    "functions": {"host": "127.0.0.1", "port": 5001},
-    "hosting": {"host": "127.0.0.1", "port": 5000},
-    "ui": {"enabled": true, "host": "127.0.0.1", "port": 4000},
+    "auth": { "host": "127.0.0.1", "port": 9099 },
+    "firestore": { "host": "127.0.0.1", "port": 8080 },
+    "functions": { "host": "127.0.0.1", "port": 5001 },
+    "hosting": { "host": "127.0.0.1", "port": 5000 },
+    "ui": { "enabled": true, "host": "127.0.0.1", "port": 4000 },
     "singleProjectMode": true
   }
 }

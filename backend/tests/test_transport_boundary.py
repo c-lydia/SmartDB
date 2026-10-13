@@ -6,6 +6,7 @@ from unittest.mock import Mock
 
 import aiocoap
 import pytest
+from test_service import message
 
 from smartdb_ingestion.codec import CBOR_CONTENT_FORMAT, encode_cbor
 from smartdb_ingestion.server import IngestResource
@@ -13,7 +14,6 @@ from smartdb_ingestion.service import IngestionService
 from smartdb_ingestion.settings import Settings
 from smartdb_ingestion.storage import MessageStore
 from smartdb_ingestion.transport import IdentityAdapter, TransportConfigurationError, load_psks
-from test_service import message
 
 
 def resource(identities=None):
@@ -29,11 +29,18 @@ def post(endpoint, payload, content_format=CBOR_CONTENT_FORMAT):
     return asyncio.run(endpoint.render_post(request))
 
 
-@pytest.mark.parametrize("payload", [
-    b"\xff", encode_cbor([]), encode_cbor(None), encode_cbor({}),
-    encode_cbor({"device_id": []}), encode_cbor({"device_id": ""}),
-    encode_cbor(message()) + b"\x00",
-])
+@pytest.mark.parametrize(
+    "payload",
+    [
+        b"\xff",
+        encode_cbor([]),
+        encode_cbor(None),
+        encode_cbor({}),
+        encode_cbor({"device_id": []}),
+        encode_cbor({"device_id": ""}),
+        encode_cbor(message()) + b"\x00",
+    ],
+)
 def test_invalid_envelopes_are_bad_requests_before_authentication(payload):
     identities = Mock()
     response = post(resource(identities), payload)
@@ -61,10 +68,18 @@ def test_authentication_failure_is_unauthorized():
     assert post(resource(identities), encode_cbor(message())).code == aiocoap.UNAUTHORIZED
 
 
-@pytest.mark.parametrize("raw", [
-    {}, [], {"": "ab" * 32}, {"db-001": "ab" * 16},
-    {"db-001": "ab" * 31}, {"db-001": "not-hex"}, {"db-001": 123},
-])
+@pytest.mark.parametrize(
+    "raw",
+    [
+        {},
+        [],
+        {"": "ab" * 32},
+        {"db-001": "ab" * 16},
+        {"db-001": "ab" * 31},
+        {"db-001": "not-hex"},
+        {"db-001": 123},
+    ],
+)
 def test_rejects_invalid_or_short_psks(tmp_path, raw):
     path = tmp_path / "keys.json"
     path.write_text(json.dumps(raw))
@@ -75,7 +90,10 @@ def test_rejects_invalid_or_short_psks(tmp_path, raw):
 def test_accepts_256_bit_and_longer_psks(tmp_path):
     path = tmp_path / "keys.json"
     path.write_text(json.dumps({"db-001": "ab" * 32, "db-002": "cd" * 48}))
-    assert load_psks(path) == {"db-001": bytes.fromhex("ab" * 32), "db-002": bytes.fromhex("cd" * 48)}
+    assert load_psks(path) == {
+        "db-001": bytes.fromhex("ab" * 32),
+        "db-002": bytes.fromhex("cd" * 48),
+    }
 
 
 def test_local_development_defaults_to_loopback(monkeypatch):

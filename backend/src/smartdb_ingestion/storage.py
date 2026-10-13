@@ -3,15 +3,18 @@ from __future__ import annotations
 import threading
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True)
 class StoreResult:
     status: str
+
 
 @dataclass(frozen=True)
 class StoredMessage:
     message_id: str
     sequence_number: int
     body_hash: bytes
+
 
 class MessageStore:
     """Process-local replay and duplicate index for development.
@@ -28,8 +31,13 @@ class MessageStore:
         self._lock = threading.Lock()
 
     def store(
-        self, device_id: str, message_id: str, sequence_number: int,
-        kind: str, body_hash: bytes, body: bytes,
+        self,
+        device_id: str,
+        message_id: str,
+        sequence_number: int,
+        kind: str,
+        body_hash: bytes,
+        body: bytes,
     ) -> StoreResult:
         del kind
         del body  # The development index stores metadata only.
@@ -70,4 +78,3 @@ class MessageStore:
 
     def close(self) -> None:
         """Retained as a no-op so server lifecycle code is adapter-independent."""
-

@@ -14,12 +14,12 @@ class SlidingWindowRateLimiter:
         now = time.monotonic()
         hits = self._hits[key]
         cutoff = now - self.window_seconds
-        
+
         while hits and hits[0] <= cutoff:
             hits.popleft()
-            
+
         if len(hits) >= self.limit:
             return False
-        
+
         hits.append(now)
         return True

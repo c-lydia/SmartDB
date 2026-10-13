@@ -1,0 +1,13 @@
+node_modules/
+**/build/
+**/dist/
+**/_build/
+**/managed_components/
+**/.pio/
+.local/
+.venv/
+package-lock.json
+smart_db/
+smart_db_v2/
+esp_idf/
+postman/

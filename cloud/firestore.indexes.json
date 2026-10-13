@@ -1,4 +1,4 @@
 {
   "indexes": [],
-  "fieldOverrides": [{"collectionGroup":"frames","fieldPath":"bytes","indexes":[]}]
+  "fieldOverrides": [{ "collectionGroup": "frames", "fieldPath": "bytes", "indexes": [] }]
 }

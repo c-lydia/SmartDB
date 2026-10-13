@@ -9,7 +9,23 @@
 }
 
 /* Diagrams stay readable on narrow screens and can expand with their fullscreen button. */
-.wy-nav-content { max-width: 1100px; }
-pre.mermaid { background: #fff; border: 1px solid #e1e8ec; border-radius: 6px; padding: 16px; overflow-x: auto; text-align: center; }
-pre.mermaid svg { height: auto; }
-@media print { pre.mermaid { border: 0; break-inside: avoid; } }
+.wy-nav-content {
+  max-width: 1100px;
+}
+pre.mermaid {
+  background: #fff;
+  border: 1px solid #e1e8ec;
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+  text-align: center;
+}
+pre.mermaid svg {
+  height: auto;
+}
+@media print {
+  pre.mermaid {
+    border: 0;
+    break-inside: avoid;
+  }
+}

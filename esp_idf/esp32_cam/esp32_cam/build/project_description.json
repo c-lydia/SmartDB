@@ -1,7 +1,7 @@
 {
     "version":            "1.3",
     "project_name":       "esp32_cam",
-    "project_version":    "4d6d37f",
+    "project_version":    "38f0c0d-dirty",
     "project_path":       "/home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam",
     "idf_path":           "/home/chheng-lydia/esp/esp-idf",
     "build_dir":          "/home/chheng-lydia/projects/SmartDB/esp_idf/esp32_cam/esp32_cam/build",

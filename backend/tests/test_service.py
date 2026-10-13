@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+from pathlib import Path
 from uuid import uuid4
 
 from smartdb_ingestion.codec import encode_cbor
@@ -20,10 +21,14 @@ def message(sequence: int = 1) -> dict:
         "sent_at": "2026-08-04T10:00:01Z",
         "payload": {
             "sample_period_ms": 100,
-            "samples": [{
-                "sample_offset_ms": 0, "current_rms_a": 4.2,
-                "max_temperature_c": 41.3, "relay_state": "closed",
-            }],
+            "samples": [
+                {
+                    "sample_offset_ms": 0,
+                    "current_rms_a": 4.2,
+                    "max_temperature_c": 41.3,
+                    "relay_state": "closed",
+                }
+            ],
         },
     }
 

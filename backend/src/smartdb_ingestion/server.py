@@ -15,14 +15,24 @@ from .storage import MessageStore
 from .transport import IdentityAdapter, require_dtls_runtime
 
 LOG = logging.getLogger(__name__)
-KINDS = {"telemetry": "telemetry", "critical": "critical", "health": "health", "config_ack": "config_ack"}
+KINDS = {
+    "telemetry": "telemetry",
+    "critical": "critical",
+    "health": "health",
+    "config_ack": "config_ack",
+}
 
 COAP_CODES = {
-    "2.04": aiocoap.CHANGED, "2.05": aiocoap.CONTENT, "2.03": aiocoap.VALID,
-    "4.00": aiocoap.BAD_REQUEST, "4.01": aiocoap.UNAUTHORIZED,
-    "4.09": aiocoap.CONFLICT, "4.15": aiocoap.UNSUPPORTED_CONTENT_FORMAT,
+    "2.04": aiocoap.CHANGED,
+    "2.05": aiocoap.CONTENT,
+    "2.03": aiocoap.VALID,
+    "4.00": aiocoap.BAD_REQUEST,
+    "4.01": aiocoap.UNAUTHORIZED,
+    "4.09": aiocoap.CONFLICT,
+    "4.15": aiocoap.UNSUPPORTED_CONTENT_FORMAT,
     "4.29": aiocoap.TOO_MANY_REQUESTS,
 }
+
 
 class IngestResource(resource.Resource):
     def __init__(self, service: IngestionService, identities: IdentityAdapter, kind: str) -> None:
@@ -63,6 +73,7 @@ class IngestResource(resource.Resource):
             content_format=CBOR_CONTENT_FORMAT,
         )
 
+
 class ConfigResource(resource.Resource):
     def __init__(self, path: Path) -> None:
         super().__init__()
@@ -86,6 +97,7 @@ class ConfigResource(resource.Resource):
             etag=etag,
         )
 
+
 async def run(settings: Settings) -> None:
     if settings.transport_mode == "secure":
         require_dtls_runtime()
@@ -108,9 +120,11 @@ async def run(settings: Settings) -> None:
         await context.shutdown()
         store.close()
 
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
     asyncio.run(run(Settings()))
+
 
 if __name__ == "__main__":
     main()

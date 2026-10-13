@@ -12,10 +12,12 @@ from .models import validate_message
 from .rate_limit import SlidingWindowRateLimiter
 from .storage import MessageStore
 
+
 @dataclass(frozen=True)
 class IngestResult:
     code: str
     body: dict[str, Any]
+
 
 class IngestionService:
     def __init__(self, store: MessageStore, max_payload_bytes: int, rate_limit: int) -> None:
@@ -36,7 +38,9 @@ class IngestionService:
         del payload
 
         if authenticated_device_id is None or authenticated_device_id != envelope.device_id:
-            return IngestResult("4.01", {"error": "authenticated identity does not match device_id"})
+            return IngestResult(
+                "4.01", {"error": "authenticated identity does not match device_id"}
+            )
 
         canonical = encode_cbor(decoded)
 

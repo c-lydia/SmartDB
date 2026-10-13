@@ -4,6 +4,7 @@ import json
 from dataclasses import dataclass
 from pathlib import Path
 
+
 class TransportConfigurationError(RuntimeError):
     pass
 
@@ -11,6 +12,7 @@ class TransportConfigurationError(RuntimeError):
 @dataclass(frozen=True)
 class PeerIdentity:
     device_id: str
+
 
 class IdentityAdapter:
     """Boundary between CoAP resources and transport-authenticated identity."""
@@ -39,6 +41,7 @@ class IdentityAdapter:
 
         return PeerIdentity(identity)
 
+
 def load_psks(path: Path) -> dict[str, bytes]:
     """Load a secret file outside source control: {device_id: hex_psk}."""
 
@@ -59,6 +62,7 @@ def load_psks(path: Path) -> dict[str, bytes]:
         raise TransportConfigurationError("each DTLS PSK must contain at least 32 bytes (256 bits)")
 
     return psks
+
 
 def require_dtls_runtime() -> None:
     """Fail closed until an aiocoap server-side DTLS-PSK backend is installed/configured."""
